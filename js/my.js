@@ -23,7 +23,8 @@ function login() {
         url: '1.php',
         data: {
             q: $('#log1').val(),
-            p: $('#log2').val()
+            p: $('#log2').val(),
+            stat: 1
         },
         success: function(data) {
             if (data) {
@@ -31,9 +32,8 @@ function login() {
                 d.setTime(d.getTime() + (7 * 24 * 60 * 60 * 1000));
                 var expires = "expires=" + d.toGMTString();
                 document.cookie = "username=" + $('#log1').val() + ";" + expires;
-                document.cookie = "password=" + $('#log2').val() + ";" + expires;
                 mdui.snackbar({
-                    message: "欢迎 " + cook('username')
+                    message: "欢迎 " + cook(',username')
                 });
                 setTimeout(() => location.reload(), 500)
             } else {
@@ -74,8 +74,7 @@ function load() {
         method: 'POST',
         url: '1.php',
         data: {
-            q: cook('username'),
-            p: cook('password')
+            stat: 3
         },
         success: function(data) {
             if (data) {
@@ -161,9 +160,21 @@ var setDocsTheme = function(theme) {
 };
 
 function logout() {
-    document.cookie = "username=; password=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-    mdui.snackbar({
-        message: "已注销"
+    document.cookie = "username=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    $.ajax({
+        method: 'POST',
+        url: '1.php',
+        data: {
+            stat: 2
+        },
+        success: function() {
+            mdui.snackbar({
+                message: "已注销"
+            });
+        },
+        error: function() {
+
+        }
     });
     setTimeout(() => location.reload(), 500)
 }
