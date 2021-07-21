@@ -84,8 +84,11 @@ function load() {
                 var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
                     lineNumbers: true,
                     lineWrapping: true,
+                    matchBrackets: true,
                     foldGutter: true,
-                    theme: "dracula",
+                    mode: "text/javascript",
+                    mode: "text/x-c++src",
+                    theme: "panda-syntax",
                     gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
                 });
                 setTimeout(() => {
