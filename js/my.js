@@ -39,7 +39,9 @@ function login() {
                 mdui.snackbar({
                     message: "欢迎 " + cook(',username')
                 });
-                setTimeout(() => location.reload(), 500)
+                $('#login').removeClass('mdui-dialog-open')
+                $('.mdui-overlay').remove()
+                load()
             } else {
                 mdui.snackbar({
                     message: "用户名或密码错误"
@@ -110,28 +112,35 @@ function load() {
         },
         success: function(data) {
             if (data) {
+                $('#intro').empty()
                 $('#intro').append(cook('username') + ",欢迎来到MSC")
                 $('#log').css('display', 'none')
                 $('.more').css('display', '')
-                editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-                    lineNumbers: true,
-                    lineWrapping: true,
-                    matchBrackets: true,
-                    foldGutter: true,
-                    theme: "panda-syntax",
-                    gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
-                    autoCloseBrackets: true
-                });
-                setTimeout(() => {
-                    editor.refresh()
-                }, 1)
-                editor.setOption("mode", "text/x-c++src")
+                $('.word').empty()
+                $('.ans').css('display', '')
+                if (typeof(editor) == "undefined") {
+                    editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+                        lineNumbers: true,
+                        lineWrapping: true,
+                        matchBrackets: true,
+                        foldGutter: true,
+                        theme: "panda-syntax",
+                        gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+                        autoCloseBrackets: true
+                    });
+                    setTimeout(() => {
+                        editor.refresh()
+                    }, 1)
+                    editor.setOption("mode", "text/x-c++src")
+                }
             } else {
+                $('#intro').empty()
                 $('#intro').append("欢迎来到MSC")
                 $('#log').css('display', '')
                 $('.ans').css('display', 'none')
-                $('.ans').parent().parent().append("<div class='mdui-divider'></div>")
-                $('.ans').parent().parent().append("<br/><div class='mdui-text-color-deep-orange' style='margin-left:5%'>答题请登录</div><br/>")
+                $('.word').empty()
+                $('.word').append("<div class='mdui-divider'></div>")
+                $('.word').append("<br/><div class='mdui-text-color-deep-orange' style='margin-left:5%'>答题请登录</div><br/>")
             }
         },
         error: function() {
@@ -216,12 +225,13 @@ function logout() {
             mdui.snackbar({
                 message: "已注销"
             });
+            $('.more').css('display', 'none')
         },
         error: function() {
 
         }
     });
-    setTimeout(() => location.reload(), 500)
+    setTimeout("location.reload();", 1000)
 }
 var setCookie = function(key, value) {
     // cookie 有效期为 1 年
