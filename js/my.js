@@ -81,6 +81,17 @@ function load() {
                 $('#intro').append(cook('username') + ",欢迎来到MSC")
                 $('#log').css('display', 'none')
                 $('.more').css('display', '')
+                var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+                    lineNumbers: true,
+                    lineWrapping: true,
+                    foldGutter: true,
+                    theme: "dracula",
+                    gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
+                });
+                setTimeout(() => {
+                    editor.refresh()
+                }, 1)
+
             } else {
                 $('#intro').append("欢迎来到MSC")
                 $('#log').css('display', '')
