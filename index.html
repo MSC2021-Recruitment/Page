@@ -66,7 +66,7 @@
             <a href="javascript:;" class="mdui-btn mdui-btn-icon " mdui-menu="{target: '#example-1'}" mdui-tooltip="{content: '更多'}"><i class="mdui-icon material-icons ">more_vert</i></a>
             <ul class="mdui-menu " id="example-1">
                 <li class="mdui-menu-item">
-                    <a href="javascript:;" class="mdui-ripple" onclick="location.reload()">刷新</a>
+                    <a href="javascript:;" class="mdui-ripple" onclick="load()">刷新</a>
                 </li>
                 <li class="mdui-menu-item" disabled>
                     <a href="javascript:;">联系我们</a>
@@ -79,7 +79,7 @@
                     <a href="javascript:;" class="mdui-ripple more" onclick="logout()" style="display:none">注销</a>
                 </li>
                 <li class="mdui-menu-item">
-                    <a href="javascript:;" class=" mdui-ripple" mdui-dialog="{target: '#login'}" style="display:none" id="log">登录/注册</a>
+                    <a href="javascript:;" class=" mdui-ripple" onclick="$('#login').addClass('mdui-dialog-open');" style="display:none" id="log">登录/注册</a>
                 </li>
             </ul>
         </div>
@@ -244,11 +244,10 @@
                         </div>
                         <div class="mdui-collapse-item-body">
                             <div class="mdui-card-content">子曰：「学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知，而不愠，不亦君子乎？」</div>
+                            <div class="word"></div>
                             <div class="mdui-panel  mdui-panel-gapless" mdui-panel>
                                 <div class="mdui-panel-item ans">
-                                    <div class="mdui-panel-item-header">
-                                        答题
-                                    </div>
+                                    <div class="mdui-panel-item-header">答题</div>
                                     <div class="mdui-panel-item-body">
                                         <div style="left:2%">选择语言：
                                             <select class="mdui-select" onchange="changelang(this.value)" mdui-select="{position: 'bottom'}">
@@ -282,6 +281,7 @@
                         </div>
                         <div class="mdui-collapse-item-body">
                             <div class="mdui-card-content">子曰：「学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知，而不愠，不亦君子乎？」</div>
+                            <div class="word"></div>
                             <div class="mdui-panel  mdui-panel-gapless" mdui-panel>
                                 <div class="mdui-panel-item ans">
                                     <div class="mdui-panel-item-header">答题</div>
@@ -311,6 +311,7 @@
                         </div>
                         <div class="mdui-collapse-item-body">
                             <div class="mdui-card-content">子曰：「学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知，而不愠，不亦君子乎？」</div>
+                            <div class="word"></div>
                             <div class="mdui-panel  mdui-panel-gapless" mdui-panel>
                                 <div class="mdui-panel-item ans">
                                     <div class="mdui-panel-item-header">答题</div>
@@ -345,6 +346,7 @@
                         </div>
                         <div class="mdui-collapse-item-body">
                             <div class="mdui-card-content">子曰：「学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知，而不愠，不亦君子乎？」</div>
+                            <div class="word"></div>
                             <div class="mdui-panel  mdui-panel-gapless" mdui-panel>
                                 <div class="mdui-panel-item ans">
                                     <div class="mdui-panel-item-header">答题</div>
@@ -374,6 +376,7 @@
                         </div>
                         <div class="mdui-collapse-item-body">
                             <div class="mdui-card-content">子曰：「学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知，而不愠，不亦君子乎？」</div>
+                            <div class="word"></div>
                             <div class="mdui-panel  mdui-panel-gapless" mdui-panel>
                                 <div class="mdui-panel-item ans">
                                     <div class="mdui-panel-item-header">答题</div>
@@ -403,6 +406,7 @@
                         </div>
                         <div class="mdui-collapse-item-body">
                             <div class="mdui-card-content">子曰：「学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知，而不愠，不亦君子乎？」</div>
+                            <div class="word"></div>
                             <div class="mdui-panel  mdui-panel-gapless" mdui-panel>
                                 <div class="mdui-panel-item ans">
                                     <div class="mdui-panel-item-header">答题</div>
@@ -431,7 +435,9 @@
                     <div class="mdui-card-primary-title">Title</div>
                     <div class="mdui-card-primary-subtitle">Subtitle</div>
                 </div>
-                <div class="mdui-card-content">子曰：「学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知，而不愠，不亦君子乎？」</div>
+                <div class="mdui-card-content">子曰：「学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知，而不愠，不亦君子乎？」
+                    <div class="word"></div>
+                </div>
                 <div class="mdui-panel  mdui-panel-gapless" mdui-panel>
                     <div class="mdui-panel-item">
                         <div class="mdui-panel-item-header">答题</div>
@@ -457,7 +463,9 @@
                     <div class="mdui-card-primary-title">Title</div>
                     <div class="mdui-card-primary-subtitle">Subtitle</div>
                 </div>
-                <div class="mdui-card-content">子曰：「学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知，而不愠，不亦君子乎？」</div>
+                <div class="mdui-card-content">子曰：「学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知，而不愠，不亦君子乎？」
+                    <div class="word"></div>
+                </div>
                 <div class="mdui-panel  mdui-panel-gapless" mdui-panel>
                     <div class="mdui-panel-item">
                         <div class="mdui-panel-item-header">答题</div>
@@ -483,7 +491,9 @@
                     <div class="mdui-card-primary-title">Title</div>
                     <div class="mdui-card-primary-subtitle">Subtitle</div>
                 </div>
-                <div class="mdui-card-content">子曰：「学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知，而不愠，不亦君子乎？」</div>
+                <div class="mdui-card-content">子曰：「学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知，而不愠，不亦君子乎？」
+                    <div class="word"></div>
+                </div>
                 <div class="mdui-panel  mdui-panel-gapless" mdui-panel>
                     <div class="mdui-panel-item">
                         <div class="mdui-panel-item-header">答题</div>
@@ -509,7 +519,9 @@
                     <div class="mdui-card-primary-title">Title</div>
                     <div class="mdui-card-primary-subtitle">Subtitle</div>
                 </div>
-                <div class="mdui-card-content">子曰：「学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知，而不愠，不亦君子乎？」</div>
+                <div class="mdui-card-content">子曰：「学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知，而不愠，不亦君子乎？」
+                    <div class="word"></div>
+                </div>
                 <div class="mdui-panel  mdui-panel-gapless" mdui-panel>
                     <div class="mdui-panel-item">
                         <div class="mdui-panel-item-header">答题</div>
@@ -535,7 +547,9 @@
                     <div class="mdui-card-primary-title">Title</div>
                     <div class="mdui-card-primary-subtitle">Subtitle</div>
                 </div>
-                <div class="mdui-card-content">子曰：「学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知，而不愠，不亦君子乎？」</div>
+                <div class="mdui-card-content">子曰：「学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知，而不愠，不亦君子乎？」
+                    <div class="word"></div>
+                </div>
                 <div class="mdui-panel  mdui-panel-gapless" mdui-panel>
                     <div class="mdui-panel-item">
                         <div class="mdui-panel-item-header">答题</div>
@@ -561,7 +575,9 @@
                     <div class="mdui-card-primary-title">Title</div>
                     <div class="mdui-card-primary-subtitle">Subtitle</div>
                 </div>
-                <div class="mdui-card-content">子曰：「学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知，而不愠，不亦君子乎？」</div>
+                <div class="mdui-card-content">子曰：「学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知，而不愠，不亦君子乎？」
+                    <div class="word"></div>
+                </div>
                 <div class="mdui-panel  mdui-panel-gapless" mdui-panel>
                     <div class="mdui-panel-item">
                         <div class="mdui-panel-item-header">答题</div>
