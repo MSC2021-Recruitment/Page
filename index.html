@@ -15,11 +15,13 @@
     <link rel="stylesheet" href="codemirror/addon/fold/foldgutter.css" />
     <link rel="stylesheet" href="codemirror/theme/panda-syntax.css" />
     <script src="codemirror/mode/clike/clike.js"></script>
+    <script src="codemirror/mode/go/go.js"></script>
+    <script src="codemirror/mode/python/python.js"></script>
+    <script src="codemirror/mode/perl/perl.js"></script>
     <script src="codemirror/addon/fold/foldcode.js"></script>
     <script src="codemirror/addon/fold/foldgutter.js"></script>
     <script src="codemirror/addon/fold/brace-fold.js"></script>
     <script src="codemirror/addon/fold/comment-fold.js"></script>
-    <script src="codemirror/mode/javascript/javascript.js"></script>
     <title>Hello, world!</title>
     <style>
         .tab {
@@ -248,6 +250,15 @@
                                         答题
                                     </div>
                                     <div class="mdui-panel-item-body">
+                                        <div style="left:2%">选择语言：
+                                            <select class="mdui-select" onchange="changelang(this.value)" mdui-select="{position: 'bottom'}">
+                                            <option value="text/x-c++src" default>C/C++</option>
+                                            <option value="text/x-python">Python</option>
+                                            <option value="text/x-java">Java</option>
+                                            <option value="text/x-perl">Perl</option>
+                                            <option value="text/x-go">Go</option>
+                                            </select>
+                                        </div>
                                         <textarea class="form-control" id="code" name="code"></textarea>
                                         <div class="mdui-panel-item-actions">
                                             <button class="mdui-btn mdui-ripple" mdui-panel-item-close>cancel</button>

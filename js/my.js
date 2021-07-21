@@ -11,6 +11,10 @@ function a(x, y) {
     $(y).css('font-weight', 'bold')
 }
 
+function changelang(lan) {
+    editor.setOption("mode", lan)
+}
+
 function login() {
     if ($('#log1').val() == "" || $('#log2').val() == "") {
         mdui.snackbar({
@@ -81,20 +85,19 @@ function load() {
                 $('#intro').append(cook('username') + ",欢迎来到MSC")
                 $('#log').css('display', 'none')
                 $('.more').css('display', '')
-                var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+                editor = CodeMirror.fromTextArea(document.getElementById("code"), {
                     lineNumbers: true,
                     lineWrapping: true,
                     matchBrackets: true,
                     foldGutter: true,
-                    mode: "text/javascript",
-                    mode: "text/x-c++src",
                     theme: "panda-syntax",
-                    gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
+                    gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+                    autoCloseBrackets: true
                 });
                 setTimeout(() => {
                     editor.refresh()
                 }, 1)
-
+                editor.setOption("mode", lan)
             } else {
                 $('#intro').append("欢迎来到MSC")
                 $('#log').css('display', '')
