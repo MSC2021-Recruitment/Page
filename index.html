@@ -22,6 +22,7 @@
     <script src="codemirror/addon/fold/foldgutter.js"></script>
     <script src="codemirror/addon/fold/brace-fold.js"></script>
     <script src="codemirror/addon/fold/comment-fold.js"></script>
+    <script src="codemirror/addon/display/autorefresh.js"></script>
     <title>Hello, world!</title>
     <style>
         .tab {
@@ -79,7 +80,7 @@
                     <a href="javascript:;" class="mdui-ripple more" onclick="logout()" style="display:none">注销</a>
                 </li>
                 <li class="mdui-menu-item">
-                    <a href="javascript:;" class=" mdui-ripple" mdui-dialog="{target: '#login'}" style="display:none" id="log">登录/注册</a>
+                    <a href="javascript:;" class=" mdui-ripple" onclick="openx()" style="display:none" id="log">登录/注册</a>
                 </li>
             </ul>
         </div>
@@ -97,12 +98,12 @@
                 <div class="mdui-card-content">
                     <div class="mdui-textfield mdui-textfield-floating-label">
                         <label class="mdui-textfield-label">用户名</label>
-                        <input class="mdui-textfield-input" id="log1" maxlength="20" type="account" required/>
+                        <input class="mdui-textfield-input" id="log1" maxlength="20" type="account" style="ime-mode:disabled;" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')" required/>
                         <div class="mdui-textfield-error">请输入用户名</div>
                     </div>
                     <div class="mdui-textfield mdui-textfield-floating-label">
                         <label class="mdui-textfield-label">密码</label>
-                        <input class="mdui-textfield-input" id="log2" maxlength="20" type="password" required/>
+                        <input class="mdui-textfield-input" id="log2" maxlength="20" type="password" style="ime-mode:disabled;" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')" required/>
                         <div class="mdui-textfield-error">请输入密码</div>
                     </div>
                     <div class="mdui-divider"></div>
@@ -247,21 +248,21 @@
                             <div class="word"></div>
                             <div class="mdui-panel  mdui-panel-gapless" mdui-panel>
                                 <div class="mdui-panel-item ans">
-                                    <div class="mdui-panel-item-header">答题</div>
+                                    <div class="mdui-panel-item-header" onclick="refresh()">答题</div>
                                     <div class="mdui-panel-item-body">
                                         <div style="left:2%">选择语言：
-                                            <select class="mdui-select" onchange="changelang(this.value)" mdui-select="{position: 'bottom'}">
-                                            <option value="text/x-c++src" default>C/C++</option>
-                                            <option value="text/x-python">Python</option>
-                                            <option value="text/x-java">Java</option>
-                                            <option value="text/x-perl">Perl</option>
-                                            <option value="text/x-go">Go</option>
+                                            <select class="mdui-select" onchange="changelang(this.value)" id="s1">
+                                            <option value="text/x-c++src" class='o1c++src' >C/C++</option>
+                                            <option value="text/x-python" class='o1python'>Python</option>
+                                            <option value="text/x-java" class='o1java'>Java</option>
+                                            <option value="text/x-perl" class='o1perl'>Perl</option>
+                                            <option value="text/x-go" class='o1go'>Go</option>
                                             </select>
                                         </div>
                                         <textarea class="form-control" id="code" name="code"></textarea>
                                         <div class="mdui-panel-item-actions">
                                             <button class="mdui-btn mdui-ripple" mdui-panel-item-close>cancel</button>
-                                            <button class="mdui-btn mdui-ripple">save</button>
+                                            <button class="mdui-btn mdui-ripple" onclick="save()">save</button>
                                         </div>
                                     </div>
                                 </div>
