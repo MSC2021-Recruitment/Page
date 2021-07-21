@@ -15,14 +15,20 @@ if ($stat == 1) {
     $conn = mysqli_connect($severname, $username, $password, $dbname);
     $result = mysqli_query($conn,"SELECT * FROM msc WHERE uname = '$q'");
     $row = mysqli_fetch_array($result);
-    $upassword = $row['upass'];
     
-    if($p == $upassword) {
-        $_SESSION['loged'] = 1;
-        echo true;
+    if(!$row) {
+        echo false;
     }
     else {
-        echo false;
+        $upassword = $row['upass'];
+    
+        if($p == $upassword) {
+            $_SESSION['loged'] = 1;
+            echo true;
+        }
+        else {
+            echo false;
+        }
     }
 /*
     if ($q == 1 && $p == 1) {
@@ -37,3 +43,4 @@ if ($_SESSION['loged'] && $stat == 3) {
 if ($stat == 2) {
     $_SESSION['loged'] = 0;
 }
+?>
