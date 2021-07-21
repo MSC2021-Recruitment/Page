@@ -32,6 +32,7 @@ function login() {
         },
         success: function(data) {
             if (data) {
+                alert(data);
                 var d = new Date();
                 d.setTime(d.getTime() + (7 * 24 * 60 * 60 * 1000));
                 var expires = "expires=" + d.toGMTString();
