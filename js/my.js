@@ -45,6 +45,34 @@ function login() {
     });
 }
 
+function register() {
+    if ($('#log3').val() == "" || $('#log4').val() == "") {
+        mdui.snackbar({
+            message: '信息格式不正确'
+        });
+        return;
+    }
+    $.ajax({
+        method: 'POST',
+        url: '2.php',
+        data: {
+            q: $('#log3').val(),
+            p: $('#log4').val(),
+        },
+        success: function(data) {
+            if (data) {
+                mdui.snackbar({
+                    message: "注册成功，请重新登陆！"
+                });
+            } else {
+                mdui.snackbar({
+                    message: "NOT OK !!!"
+                });
+            }
+        }
+    });
+}
+
 function load() {
     if (document.body.clientWidth > 599) {
         var inst = new mdui.Drawer('#draw');
