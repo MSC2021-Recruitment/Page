@@ -97,7 +97,7 @@ function load() {
                 setTimeout(() => {
                     editor.refresh()
                 }, 1)
-                editor.setOption("mode", lan)
+                editor.setOption("mode", "text/x-c++src")
             } else {
                 $('#intro').append("欢迎来到MSC")
                 $('#log').css('display', '')
