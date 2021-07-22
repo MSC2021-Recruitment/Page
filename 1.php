@@ -38,7 +38,6 @@ if (!isset($_SESSION['loged']) && $stat == 3) {
 if ($stat == 2) {
     session_destroy();
 }
-<<<<<<< HEAD
 if($stat==4) {
     if(!isset($_SESSION['loged'])) {
         echo false;
@@ -66,13 +65,6 @@ if($stat==4) {
     //$_SESSION['ans']=$_POST['text'];
     //$_SESSION['mode']=$_POST['mode'];
     echo true;
-=======
-if($stat==4)
-{
-    $_SESSION['ans']=$_POST['text'];
-    $_SESSION['mode']=$_POST['mode'];
-    echo 1;
->>>>>>> e17d03b591536c518ece36178c89fb5aa685feae
 }
 if($stat==5) {
     if(!isset($_SESSION['loged'])) {
