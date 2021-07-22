@@ -21,7 +21,6 @@ if ($stat == 1) {
     }
     else {
         $upassword = $row['upass'];
-    
         if($p == $upassword) {
             $_SESSION['loged'] = 1;
             $_SESSION['uid'] =  $row['id'];
@@ -32,14 +31,14 @@ if ($stat == 1) {
         }
     }
 }
-if (($_SESSION['loged'])==1 && $stat == 3) {
+if (isset($_SESSION['loged']) && $stat == 3) {
     echo true;
 }
 if ($stat == 2) {
     session_destroy();
 }
 if($stat==4) {
-    if(!isset($_SESSION['loged'])) {
+    if(isset($_SESSION['loged'])) {
         echo false;
     }
     $conn = mysqli_connect($severname, $username, $password, $dbname);
@@ -64,7 +63,7 @@ if($stat==4) {
     echo true;
 }
 if($stat==5) {
-    if(!isset($_SESSION['loged'])) {
+    if(isset($_SESSION['loged'])) {
         echo false;
     }
     $ans= $_SESSION['ans'];
