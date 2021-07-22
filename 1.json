@@ -1,0 +1,46 @@
+{
+    "0": {
+        "rank": 1,
+        "name": "web组",
+        "num": 2,
+        "intro": "ssdds\n",
+        "body": {
+            "q1": {
+                "title": "hello",
+                "sub-title": "xxx",
+                "content": "sadsda\nadas",
+                "img-num": 2,
+                "img-url": ""
+            },
+            "q2": {
+                "title": "你好",
+                "sub-title": "xxx",
+                "content": "sadsda\nadas",
+                "img-num": 2,
+                "img-url": ""
+            }
+        }
+    },
+    "1": {
+        "rank": 2,
+        "name": "技术部",
+        "num": 2,
+        "intro": "ssdds\n",
+        "body": {
+            "q1": {
+                "title": "hello",
+                "sub-title": "xxx",
+                "content": "sadsda\nadas",
+                "img-num": 2,
+                "img-url": ""
+            },
+            "q2": {
+                "title": "你好",
+                "sub-title": "xxx",
+                "content": "sadsda\nadas",
+                "img-num": 2,
+                "img-url": ""
+            }
+        }
+    }
+}
