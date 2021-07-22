@@ -75,10 +75,17 @@ if($stat==5) {
     $conn = mysqli_connect($severname, $username, $password, $dbname);
     $result = mysqli_query($conn,"SELECT * FROM msc WHERE id='{$_SESSION['uid']}' ");
     $row = mysqli_fetch_array($result);
-
-    $ans = $row[$unum];
-    $mode = $row[$umod];
-    $a=array("ans"=>$ans,"mode"=>$mode);
-    echo json_encode($a);
+    if(!$row) {
+        $ans = NULL;
+        $mode = NULL;
+        $a=array("ans"=>$ans,"mode"=>$mode);
+        echo json_encode($a);
+    }
+    else {
+        $ans = $row[$unum];
+        $mode = $row[$umod];
+        $a=array("ans"=>$ans,"mode"=>$mode);
+        echo json_encode($a);
+    }
 }
 ?>
