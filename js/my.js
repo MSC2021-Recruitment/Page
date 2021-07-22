@@ -1,8 +1,10 @@
 var $ = mdui.$;
 var $document = $(document);
+var log1 = new mdui.Dialog('#login');
 var DEFAULT_PRIMARY = 'light-blue';
 var DEFAULT_ACCENT = 'deep-orange';
 var DEFAULT_LAYOUT = 'auto';
+var editor = new Array()
 
 function a(x, y) {
     $('.tab').css('display', 'none')
@@ -12,7 +14,7 @@ function a(x, y) {
 }
 
 function changelang(lan) {
-    editor.setOption("mode", lan)
+    editor[0].setOption("mode", lan)
 }
 
 function login() {
@@ -40,8 +42,7 @@ function login() {
                 mdui.snackbar({
                     message: "欢迎 " + cook(',username')
                 });
-                $('#login').removeClass('mdui-dialog-open')
-                $('.mdui-overlay').remove()
+                log1.close();
                 load()
             } else {
                 mdui.snackbar({
@@ -81,6 +82,7 @@ function register() {
 }
 
 function load() {
+    $('#ans1').prop('onclick', 'refresh()')
     if (document.body.clientWidth > 599) {
         var inst = new mdui.Drawer('#draw');
         inst.open()
@@ -103,7 +105,6 @@ function load() {
     setDocsTheme({
         layout: cook("docs-theme-layout")
     });
-
     var x = 0
     $.ajax({
         method: 'POST',
@@ -119,20 +120,21 @@ function load() {
                 $('.more').css('display', '')
                 $('.word').empty()
                 $('.ans').css('display', '')
-                if (typeof(editor) == "undefined") {
-                    editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+                if (typeof(editor[0]) == "undefined") {
+                    editor.push(CodeMirror.fromTextArea(document.getElementById("code"), {
                         lineNumbers: true,
                         lineWrapping: true,
                         matchBrackets: true,
                         foldGutter: true,
+                        autorefresh: true,
                         theme: "panda-syntax",
                         gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
                         autoCloseBrackets: true
-                    });
+                    }));
                     setTimeout(() => {
-                        editor.refresh()
-                    }, 1)
-                    editor.setOption("mode", "text/x-c++src")
+                        editor[0].refresh()
+                    }, 100)
+                    editor[0].setOption("mode", "text/x-c++src")
                 }
             } else {
                 $('#intro').empty()
@@ -147,6 +149,30 @@ function load() {
         error: function() {
 
         }
+    });
+    $.ajax({
+        method: 'POST',
+        url: '1.php',
+        data: {
+            stat: 5,
+            num: 0
+        },
+        success: function(data) {
+            data = JSON.parse(data)
+            console.log(typeof(data))
+            editor[0].setValue(data.ans)
+            editor[0].setOption("mode", data.mode)
+            var st = data.mode;
+            st = "o1" + st.slice(7)
+            if (st == "o1c++src")
+                st = "o1csrc";
+            $('.' + st).attr('selected', 'true')
+            if (!$('#s1').siblings().is('.mdui-select-position-bottom'))
+                new mdui.Select('#s1', {
+                    position: 'bottom'
+                });
+        }
+
     });
 }
 
@@ -232,7 +258,7 @@ function logout() {
 
         }
     });
-    setTimeout("location.reload();", 1000)
+    load()
 }
 var setCookie = function(key, value) {
     // cookie 有效期为 1 年
@@ -295,3 +321,37 @@ $(function() {
         }
     })();
 });
+
+function save() {
+    var a = editor[0].getValue()
+    $.ajax({
+        method: 'POST',
+        url: '1.php',
+        data: {
+            stat: 4,
+            text: a,
+            num: 0,
+            mode: editor[0].getOption('mode')
+        },
+        success: function(x) {
+            if (x)
+                mdui.snackbar({
+                    message: "已保存"
+                });
+        },
+        error: function() {
+
+        }
+    });
+
+}
+
+function openx() {
+    log1.open()
+}
+
+function refresh() {
+    setTimeout(() => {
+        editor[0].refresh()
+    }, 100)
+}

@@ -43,4 +43,17 @@ if ($_SESSION['loged'] && $stat == 3) {
 if ($stat == 2) {
     $_SESSION['loged'] = 0;
 }
+if($stat==4)
+{
+    $_SESSION['ans']=$_POST['text'];
+    $_SESSION['mode']=$_POST['mode'];
+    echo 0;
+}
+if($stat==5)
+{
+    $ans= $_SESSION['ans'];
+    $mode=$_SESSION['mode'];
+    $a=array("ans"=>$ans,"mode"=>$mode);
+    echo json_encode($a);
+}
 ?>
