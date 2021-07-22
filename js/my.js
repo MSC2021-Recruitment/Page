@@ -4,7 +4,7 @@ var log1 = new mdui.Dialog('#login');
 var DEFAULT_PRIMARY = 'light-blue';
 var DEFAULT_ACCENT = 'deep-orange';
 var DEFAULT_LAYOUT = 'auto';
-editor = new Array()
+var editor = new Array()
 
 function a(x, y) {
     $('.tab').css('display', 'none')
@@ -163,11 +163,13 @@ function load() {
             editor[0].setOption("mode", data.mode)
             var st = data.mode;
             st = "o1" + st.slice(7)
+            if (st == "o1c++src")
+                st = "o1csrc";
             $('.' + st).attr('selected', 'true')
-            var inst = new mdui.Select('#s1', {
-                position: 'bottom'
-            });
-            inst.handleUpdate()
+            if (!$('#s1').siblings().is('.mdui-select-position-bottom'))
+                new mdui.Select('#s1', {
+                    position: 'bottom'
+                });
         }
 
     });
