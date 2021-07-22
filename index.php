@@ -271,11 +271,11 @@ $json = json_decode($json, true);
                                 <div class="mdui-panel-item-body">
                                     <div style="left:2%">选择语言：
                                         <select class="mdui-select" onchange="changelang(this.value,'.$n.')" id="s' . $n . '">
-                                        <option value="text/x-c++src" class="o1csrc" >C/C++</option>
-                                        <option value="text/x-python" class="o1python">Python</option>
-                                        <option value="text/x-java" class="o1java">Java</option>
-                                        <option value="text/x-perl" class="o1perl">Perl</option>
-                                        <option value="text/x-go" class="o1go">Go</option>
+                                        <option value="text/x-c++src" class="o'.$n.'csrc" >C/C++</option>
+                                        <option value="text/x-python" class="o'.$n.'python">Python</option>
+                                        <option value="text/x-java" class="o'.$n.'java">Java</option>
+                                        <option value="text/x-perl" class="o'.$n.'perl">Perl</option>
+                                        <option value="text/x-go" class="o'.$n.'go">Go</option>
                                         </select>
                                     </div>
                                     <textarea class="form-control" id="code' . $n . '" name="code"></textarea>

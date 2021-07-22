@@ -183,15 +183,18 @@ function i() {
             },
             success: function(dat) {
                 dat = JSON.parse(dat)
+                if (dat.ans == null || dat.mode == null)
+                    return;
                 index.setValue(dat.ans);
                 index.setOption("mode", dat.mode);
                 var st = dat.mode;
-                st = "o1" + st.slice(7);
-                if (st == "o1c++src")
-                    st = "o1csrc";
+                var c = Number(m) + 1
+                st = "o" + c + st.slice(7);
+                if (st == "o" + c + "c++src")
+                    st = "o" + c + "csrc";
                 mdui.$('.' + st).attr('selected', 'true')
-                if (!mdui.$('#s' + m).siblings().is('.mdui-select-position-bottom'))
-                    new mdui.Select('#s' + m, {
+                if (!mdui.$('#s' + c).siblings().is('.mdui-select-position-bottom'))
+                    new mdui.Select('#s' + c, {
                         position: 'bottom'
                     });
             }
