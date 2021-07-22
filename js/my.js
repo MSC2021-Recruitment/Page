@@ -144,34 +144,9 @@ function load() {
                                 autoCloseBrackets: true
                             }));
                             editor[i - 1].setOption("mode", "text/x-c++src")
+
                         }
-                        console.log(editor.length)
-                        mdui.$.ajax({
-                            method: 'POST',
-                            url: '1.php',
-                            data: {
-                                stat: 5,
-                                num: i - 1,
-                            },
-                            success: function(dat) {
-                                dat = JSON.parse(dat)
-                                for (let [m, index] of editor.entries()) {
-                                    index.setValue(dat.ans);
-                                    index.setOption("mode", dat.mode);
-                                    var st = dat.mode;
-                                    st = "o1" + st.slice(7);
-                                    if (st == "o1c++src")
-                                        st = "o1csrc";
-                                    mdui.$('.' + st).attr('selected', 'true')
-                                    if (!mdui.$('#s' + m).siblings().is('.mdui-select-position-bottom'))
-                                        new mdui.Select('#s' + m, {
-                                            position: 'bottom'
-                                        });
-                                }
 
-                            }
-
-                        });
                     } else {
                         break;
                     }
@@ -190,7 +165,38 @@ function load() {
 
         }
     });
+    setTimeout(() => {
+        i()
+    }, 500)
 
+
+}
+
+function i() {
+    for (let [m, index] of editor.entries()) {
+        mdui.$.ajax({
+            method: 'POST',
+            url: '1.php',
+            data: {
+                stat: 5,
+                num: m
+            },
+            success: function(dat) {
+                dat = JSON.parse(dat)
+                index.setValue(dat.ans);
+                index.setOption("mode", dat.mode);
+                var st = dat.mode;
+                st = "o1" + st.slice(7);
+                if (st == "o1c++src")
+                    st = "o1csrc";
+                mdui.$('.' + st).attr('selected', 'true')
+                if (!mdui.$('#s' + m).siblings().is('.mdui-select-position-bottom'))
+                    new mdui.Select('#s' + m, {
+                        position: 'bottom'
+                    });
+            }
+        });
+    }
 }
 
 function cook(cname) {
