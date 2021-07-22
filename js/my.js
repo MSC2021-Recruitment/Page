@@ -4,7 +4,7 @@ var log1 = new mdui.Dialog('#login');
 var DEFAULT_PRIMARY = 'light-blue';
 var DEFAULT_ACCENT = 'deep-orange';
 var DEFAULT_LAYOUT = 'auto';
-var editor = new Array()
+editor = new Array()
 
 function a(x, y) {
     $('.tab').css('display', 'none')
@@ -120,21 +120,51 @@ function load() {
                 $('.more').css('display', '')
                 $('.word').empty()
                 $('.ans').css('display', '')
-                if (typeof(editor[0]) == "undefined") {
-                    editor.push(CodeMirror.fromTextArea(document.getElementById("code"), {
-                        lineNumbers: true,
-                        lineWrapping: true,
-                        matchBrackets: true,
-                        foldGutter: true,
-                        autorefresh: true,
-                        theme: "panda-syntax",
-                        gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
-                        autoCloseBrackets: true
-                    }));
-                    setTimeout(() => {
-                        editor[0].refresh()
-                    }, 100)
-                    editor[0].setOption("mode", "text/x-c++src")
+                for (var i = 1;; i++) {
+                    if (document.getElementById("code" + i)) {
+                        if (typeof(editor[i - 1]) == "undefined") {
+                            editor.push(CodeMirror.fromTextArea(document.getElementById("code" + i), {
+                                lineNumbers: true,
+                                lineWrapping: true,
+                                matchBrackets: true,
+                                foldGutter: true,
+                                autorefresh: true,
+                                theme: "panda-syntax",
+                                gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+                                autoCloseBrackets: true
+                            }));
+                            editor[i - 1].setOption("mode", "text/x-c++src")
+                        }
+                        console.log(editor.length)
+                        $.ajax({
+                            method: 'POST',
+                            url: '1.php',
+                            data: {
+                                stat: 5,
+                                num: i,
+                            },
+                            success: function(dat) {
+                                dat = JSON.parse(dat)
+                                for (let [m, index] of editor.entries()) {
+                                    index.setValue(dat.ans);
+                                    index.setOption("mode", dat.mode);
+                                    var st = dat.mode;
+                                    st = "o1" + st.slice(7);
+                                    if (st == "o1c++src")
+                                        st = "o1csrc";
+                                    $('.' + st).attr('selected', 'true')
+                                    if (!$('#s' + m).siblings().is('.mdui-select-position-bottom'))
+                                        new mdui.Select('#s' + m, {
+                                            position: 'bottom'
+                                        });
+                                }
+
+                            }
+
+                        });
+                    } else {
+                        break;
+                    }
                 }
             } else {
                 $('#intro').empty()
@@ -150,30 +180,7 @@ function load() {
 
         }
     });
-    $.ajax({
-        method: 'POST',
-        url: '1.php',
-        data: {
-            stat: 5,
-            num: 0
-        },
-        success: function(data) {
-            data = JSON.parse(data)
-            console.log(typeof(data))
-            editor[0].setValue(data.ans)
-            editor[0].setOption("mode", data.mode)
-            var st = data.mode;
-            st = "o1" + st.slice(7)
-            if (st == "o1c++src")
-                st = "o1csrc";
-            $('.' + st).attr('selected', 'true')
-            if (!$('#s1').siblings().is('.mdui-select-position-bottom'))
-                new mdui.Select('#s1', {
-                    position: 'bottom'
-                });
-        }
 
-    });
 }
 
 function cook(cname) {
@@ -323,35 +330,37 @@ $(function() {
 });
 
 function save() {
-    var a = editor[0].getValue()
-    $.ajax({
-        method: 'POST',
-        url: '1.php',
-        data: {
-            stat: 4,
-            text: a,
-            num: 0,
-            mode: editor[0].getOption('mode')
-        },
-        success: function(x) {
-            if (x)
-                mdui.snackbar({
-                    message: "已保存"
-                });
-        },
-        error: function() {
+    for (var i = 0;; i++) {
+        if (typeof(editor[i]) == "undefined")
+            break
+        $.ajax({
+            method: 'POST',
+            url: '1.php',
+            data: {
+                stat: 4,
+                text: editor[i].getValue(),
+                num: i,
+                mode: editor[i].getOption('mode')
+            },
+            success: function(x) {
+                if (x)
+                    mdui.snackbar({
+                        message: "已保存"
+                    });
+            },
+            error: function() {
 
-        }
-    });
-
+            }
+        });
+    }
 }
 
 function openx() {
     log1.open()
 }
 
-function refresh() {
+function refresh(n) {
     setTimeout(() => {
-        editor[0].refresh()
+        editor[n - 1].refresh()
     }, 100)
 }

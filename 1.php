@@ -47,7 +47,7 @@ if($stat==4)
 {
     $_SESSION['ans']=$_POST['text'];
     $_SESSION['mode']=$_POST['mode'];
-    echo 0;
+    echo 1;
 }
 if($stat==5)
 {
