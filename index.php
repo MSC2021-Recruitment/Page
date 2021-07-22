@@ -62,121 +62,122 @@ $json = json_decode($json, true);
 </head>
 
 <body class="mdui-container-fluid mdui-drawer-body-leftmdui-theme-layout-auto mdui-bottom-nav-fixed mdui-color-theme" style="font-family:Roboto,source,微软雅黑;">
-    <header class=" mdui-appbar mdui-appbar-fixed ">
-        <div class="mdui-toolbar full mdui-toolbar-spacer mdui-color-theme">
-            <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '.mdui-drawer'}"><i class="mdui-icon material-icons">menu</i></a>
-            <span class="mdui-typo-title" id="intro"></span>
-            <div class="mdui-toolbar-spacer"></div>
-            <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-dialog="{target: '#dialog-docs-theme'}" mdui-tooltip="{content: '设置主题'}"><i class="mdui-icon material-icons">color_lens</i></span>
-            <a href="javascript:;" class="mdui-btn mdui-btn-icon " mdui-menu="{target: '#example-1'}" mdui-tooltip="{content: '更多'}"><i class="mdui-icon material-icons ">more_vert</i></a>
-            <ul class="mdui-menu " id="example-1">
-                <li class="mdui-menu-item">
-                    <a href="javascript:;" class="mdui-ripple" onclick="load()">刷新</a>
-                </li>
-                <li class="mdui-menu-item" disabled>
-                    <a href="javascript:;">联系我们</a>
-                </li>
-                <li class="mdui-menu-item">
-                    <a href="javascript:;" class="mdui-ripple more" style="display:none">修改密码</a>
-                </li>
-                <li class="mdui-divider"></li>
-                <li class="mdui-menu-item">
-                    <a href="javascript:;" class="mdui-ripple more" onclick="logout()" style="display:none">注销</a>
-                </li>
-                <li class="mdui-menu-item">
-                    <a href="javascript:;" class=" mdui-ripple" onclick="openx()" style="display:none" id="log">登录/注册</a>
-                </li>
-            </ul>
-        </div>
-    </header>
-    <div class="mdui-dialog" id="login">
-        <div class="mdui-tab mdui-tab-full-width" id="login-tab" mdui-tab>
-            <a href="#login-tab1" class="mdui-ripple ">登录</a>
-            <a href="#login-tab2" class="mdui-ripple">注册</a>
-        </div>
-        <div id="login-tab1" class="mdui-p-a-2">
-            <div class="mdui-card">
-                <div class="mdui-card-primary">
-                    <div class="mdui-card-primary-title">登录</div>
-                </div>
-                <div class="mdui-card-content">
-                    <div class="mdui-textfield mdui-textfield-floating-label">
-                        <label class="mdui-textfield-label">用户名</label>
-                        <input class="mdui-textfield-input" id="log1" maxlength="20" type="account" style="ime-mode:disabled;" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')" required />
-                        <div class="mdui-textfield-error">请输入用户名</div>
+    <main>
+        <header class=" mdui-appbar mdui-appbar-fixed ">
+            <div class="mdui-toolbar full mdui-toolbar-spacer mdui-color-theme">
+                <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '.mdui-drawer'}"><i class="mdui-icon material-icons">menu</i></a>
+                <span class="mdui-typo-title" id="intro"></span>
+                <div class="mdui-toolbar-spacer"></div>
+                <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-dialog="{target: '#dialog-docs-theme'}" mdui-tooltip="{content: '设置主题'}"><i class="mdui-icon material-icons">color_lens</i></span>
+                <a href="javascript:;" class="mdui-btn mdui-btn-icon " mdui-menu="{target: '#example-1'}" mdui-tooltip="{content: '更多'}"><i class="mdui-icon material-icons ">more_vert</i></a>
+                <ul class="mdui-menu " id="example-1">
+                    <li class="mdui-menu-item">
+                        <a href="javascript:;" class="mdui-ripple" onclick="load()">刷新</a>
+                    </li>
+                    <li class="mdui-menu-item" disabled>
+                        <a href="javascript:;">联系我们</a>
+                    </li>
+                    <li class="mdui-menu-item">
+                        <a href="javascript:;" class="mdui-ripple more" style="display:none">修改密码</a>
+                    </li>
+                    <li class="mdui-divider"></li>
+                    <li class="mdui-menu-item">
+                        <a href="javascript:;" class="mdui-ripple more" onclick="logout()" style="display:none">注销</a>
+                    </li>
+                    <li class="mdui-menu-item">
+                        <a href="javascript:;" class=" mdui-ripple" onclick="openx()" style="display:none" id="log">登录/注册</a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <div class="mdui-dialog" id="login">
+            <div class="mdui-tab mdui-tab-full-width" id="login-tab" mdui-tab>
+                <a href="#login-tab1" class="mdui-ripple ">登录</a>
+                <a href="#login-tab2" class="mdui-ripple">注册</a>
+            </div>
+            <div id="login-tab1" class="mdui-p-a-2">
+                <div class="mdui-card">
+                    <div class="mdui-card-primary">
+                        <div class="mdui-card-primary-title">登录</div>
                     </div>
-                    <div class="mdui-textfield mdui-textfield-floating-label">
-                        <label class="mdui-textfield-label">密码</label>
-                        <input class="mdui-textfield-input" id="log2" maxlength="20" type="password" style="ime-mode:disabled;" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')" required />
-                        <div class="mdui-textfield-error">请输入密码</div>
+                    <div class="mdui-card-content">
+                        <div class="mdui-textfield mdui-textfield-floating-label">
+                            <label class="mdui-textfield-label">用户名</label>
+                            <input class="mdui-textfield-input" id="log1" maxlength="20" type="account" style="ime-mode:disabled;" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')" required />
+                            <div class="mdui-textfield-error">请输入用户名</div>
+                        </div>
+                        <div class="mdui-textfield mdui-textfield-floating-label">
+                            <label class="mdui-textfield-label">密码</label>
+                            <input class="mdui-textfield-input" id="log2" maxlength="20" type="password" style="ime-mode:disabled;" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')" required />
+                            <div class="mdui-textfield-error">请输入密码</div>
+                        </div>
+                        <div class="mdui-divider"></div>
                     </div>
-                    <div class="mdui-divider"></div>
+                    <div class="mdui-dialog-actions ">
+                        <button class="mdui-btn mdui-ripple " style="top:20px" onclick="login()">登录</button><br /><br />
+                    </div>
                 </div>
-                <div class="mdui-dialog-actions ">
-                    <button class="mdui-btn mdui-ripple " style="top:20px" onclick="login()">登录</button><br /><br />
+            </div>
+            <div id="login-tab2" class="mdui-p-a-2">
+                <div class="mdui-card">
+                    <div class="mdui-card-primary">
+                        <div class="mdui-card-primary-title">注册</div>
+                    </div>
+                    <div class="mdui-card-content">
+                        <div class="mdui-textfield mdui-textfield-floating-label">
+                            <label class="mdui-textfield-label">用户名</label>
+                            <input class="mdui-textfield-input" id="log3" maxlength="20" type="account" required />
+                            <div class="mdui-textfield-error">请输入用户名</div>
+                        </div>
+                        <div class="mdui-textfield mdui-textfield-floating-label">
+                            <label class="mdui-textfield-label">密码</label>
+                            <input class="mdui-textfield-input" id="log4" maxlength="20" type="password" required />
+                            <div class="mdui-textfield-error">请输入密码</div>
+                        </div>
+                        <div class="mdui-divider"></div>
+                    </div>
+                    <div class="mdui-dialog-actions">
+                        <button class="mdui-btn mdui-ripple" style="top:20px;" onclick="register()">注册</button><br /><br />
+                    </div>
                 </div>
             </div>
         </div>
-        <div id="login-tab2" class="mdui-p-a-2">
-            <div class="mdui-card">
-                <div class="mdui-card-primary">
-                    <div class="mdui-card-primary-title">注册</div>
-                </div>
-                <div class="mdui-card-content">
-                    <div class="mdui-textfield mdui-textfield-floating-label">
-                        <label class="mdui-textfield-label">用户名</label>
-                        <input class="mdui-textfield-input" id="log3" maxlength="20" type="account" required />
-                        <div class="mdui-textfield-error">请输入用户名</div>
-                    </div>
-                    <div class="mdui-textfield mdui-textfield-floating-label">
-                        <label class="mdui-textfield-label">密码</label>
-                        <input class="mdui-textfield-input" id="log4" maxlength="20" type="password" required />
-                        <div class="mdui-textfield-error">请输入密码</div>
-                    </div>
-                    <div class="mdui-divider"></div>
-                </div>
-                <div class="mdui-dialog-actions">
-                    <button class="mdui-btn mdui-ripple" style="top:20px;" onclick="register()">注册</button><br /><br />
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="mdui-drawer mdui-drawer-close mdui-shadow-12" id="draw">
-        <div class="mdui-collapse mdui-list" mdui-collapse>
-            <?php
-            foreach ($json as $json) {
-                echo
-                '<div class="mdui-collapse-item">
+        <div class="mdui-drawer mdui-drawer-close mdui-shadow-12" id="draw">
+            <div class="mdui-collapse mdui-list" mdui-collapse>
+                <?php
+                foreach ($json as $json) {
+                    echo
+                    '<div class="mdui-collapse-item">
                     <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-                        <div class="mdui-typo-subheading">'.$json['name'].'</div>
+                        <div class="mdui-typo-subheading">' . $json['name'] . '</div>
                         <i class="mdui-collapse-item-arrow mdui-icon material-icons" style="position: absolute;
                     right: 10%;">keyboard_arrow_down</i>
                     </div>
                     <div class="mdui-collapse-item-body">
-                        <a onclick="a' . "('example1-tab".(2*$json['rank']-1)."',this)" . '" class="mdui-list-item mdui-ripple q">简介</a>
-                        <a onclick="a' . "('example1-tab".(2*$json['rank'])."',this)" . '" class="mdui-list-item mdui-ripple q">福利题</a>
+                        <a onclick="a' . "('example1-tab" . (2 * $json['rank'] - 1) . "',this)" . '" class="mdui-list-item mdui-ripple q">简介</a>
+                        <a onclick="a' . "('example1-tab" . (2 * $json['rank']) . "',this)" . '" class="mdui-list-item mdui-ripple q">福利题</a>
                     </div>
                 </div>';
-            }
-            ?>
-            
+                }
+                ?>
+
+            </div>
         </div>
-    </div>
-    <div id="pages">
-        <?php
-        $json = file_get_contents("1.json");
-        $json = json_decode($json, true);
-        $n = 1;
-        foreach ($json as $group) {
-            echo "<div id='example1-tab" . (2 * $group['rank'] - 1) . "' class='mdui-p-a-2 tab'>" .
-                $group['intro'] .
-                "</div>";
-            echo '<div id="example1-tab' . (2 * $group['rank']) . '"class="mdui-p-a-2 tab">
+        <div id="pages">
+            <?php
+            $json = file_get_contents("1.json");
+            $json = json_decode($json, true);
+            $n = 1;
+            foreach ($json as $group) {
+                echo "<div id='example1-tab" . (2 * $group['rank'] - 1) . "' class='mdui-p-a-2 tab'>" .
+                    $group['intro'] .
+                    "</div>";
+                echo '<div id="example1-tab' . (2 * $group['rank']) . '"class="mdui-p-a-2 tab">
         <div class="mdui-card">
             <div class="mdui-collapse" mdui-collapse>';
-            foreach ($group['body'] as $body) {
-                echo
-                '<div class="mdui-collapse-item">
+                foreach ($group['body'] as $body) {
+                    echo
+                    '<div class="mdui-collapse-item">
                     <div class="mdui-collapse-item-header">
                         <div class="mdui-card-primary mdui-btn mdui-btn-block mdui-text-left mdui-ripple" style="height:auto">
                             <div class="mdui-card-primary-title">' . $body['title'] . '</div>
@@ -188,7 +189,7 @@ $json = json_decode($json, true);
                         <div class="word"></div>
                         <div class="mdui-panel  mdui-panel-gapless" mdui-panel>
                             <div class="mdui-panel-item ans">
-                                <div class="mdui-panel-item-header" onclick="refresh('.$n.')">答题</div>
+                                <div class="mdui-panel-item-header" onclick="refresh(' . $n . ')">答题</div>
                                 <div class="mdui-panel-item-body">
                                     <div style="left:2%">选择语言：
                                         <select class="mdui-select" onchange="changelang(this.value)" id="s' . $n . '">
@@ -202,25 +203,25 @@ $json = json_decode($json, true);
                                     <textarea class="form-control" id="code' . $n . '" name="code"></textarea>
                                     <div class="mdui-panel-item-actions">
                                         <button class="mdui-btn mdui-ripple" mdui-panel-item-close>cancel</button>
-                                        <button class="mdui-btn mdui-ripple" onclick="save('. $n .')">save</button>
+                                        <button class="mdui-btn mdui-ripple" onclick="save(' . $n . ')">save</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>';
-                $n=$n+1;
-            }
-            echo
-            '</div>
+                    $n = $n + 1;
+                }
+                echo
+                '</div>
         </div>
         </div>';
+            }
+            ?>
 
-        }
-        ?>
-
-    </div>
-    <div class="mdui-bottom-nav mdui-valign" id="bot" style="background-color:white;z-index:1000;">copyright</div>
+        </div>
+        <div class="mdui-bottom-nav mdui-valign" id="bot" style="background-color:white;z-index:1000;">copyright</div>
+    </main>
     <div class="mdui-dialog" id="dialog-docs-theme" style="top: 175.5px; display: none; height: 970px;">
         <div class="mdui-dialog-title">设置文档主题</div>
         <div class="mdui-dialog-content" style="height: 850px;">
