@@ -66,8 +66,9 @@ if($stat==5) {
     if(isset($_SESSION['loged'])) {
         echo false;
     }
-    $ans= $_SESSION['ans'];
-    $mode=$_SESSION['mode'];
+
+    $ans= "sd";
+    $mode="text/x-java";
     $a=array("ans"=>$ans,"mode"=>$mode);
     echo json_encode($a);
 }

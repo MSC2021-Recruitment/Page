@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh" style="font-family:Roboto,source,微软雅黑;">
 <?php
 $json = file_get_contents("1.json");
 $json = json_decode($json, true);
@@ -27,6 +27,9 @@ $json = json_decode($json, true);
     <script src="codemirror/addon/fold/brace-fold.js"></script>
     <script src="codemirror/addon/fold/comment-fold.js"></script>
     <script src="codemirror/addon/display/autorefresh.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/materialize.css">
+    <link rel="stylesheet" type="text/css" href="css/loginStyle.css">
     <title>Hello, world!</title>
     <style>
         .tab {
@@ -62,10 +65,85 @@ $json = json_decode($json, true);
 </head>
 
 <body class="mdui-container-fluid mdui-drawer-body-leftmdui-theme-layout-auto mdui-bottom-nav-fixed mdui-color-theme" style="font-family:Roboto,source,微软雅黑;">
-    <main>
+    <div class="row gmailStyle" style="display:none">
+        <div class="container-fluid">
+            <div class="valign-wrapper screenHeight">
+                <div class="col card s12 m8 l6 xl4 autoMargin setMaxWidth overflowHidden">
+                    <div class="row hidden" id="progress-bar">
+                        <div class="progress mar-no">
+                            <div class="indeterminate"></div>
+                        </div>
+                    </div>
+                    <div class="clearfix mar-all pad-all"></div>
+                    <img src="images/Googlelogo.png" class="logoImage" />
+                    <h5 class="center-align mar-top mar-bottom formTitle">登录</h5>
+                    <p class="center-align pad-no mar-no"></p>
+                    <div class="clearfix mar-all pad-all"></div>
+                    <div id="formContainer" class="goRight">
+                        <form class="loginForm">
+                            <div class="input-fields-div autoMargin">
+                                <div class="input-field">
+                                    <input id="user_name" type="text" class="validate">
+                                    <label for="user_name">邮箱</label>
+                                </div>
+                                <div class="input-field">
+                                    <input id="pass_word" type="password" class="validate">
+                                    <label for="pass_word">密码</label>
+                                    <a href="javascript:void(0)" class="showPassword" onclick="showPassword()"><i class="material-icons md-18">visibility</i></a>
+                                </div>
+                                <p>没有账户？<a href="javascript:;" onclick="create()" class="createAccountNow">创建账户<br\><p class="mdui-invisible">x</p></a></p>
+                            </div>
+
+                            <div class="input-fields-div autoMargin right-align">
+                                <div  onclick="closex();" class=" waves-effect waves-light btn">返回</div>
+                                <div  onclick="login()" class=" waves-effect waves-light btn">登录</div>
+                            </div>
+                        </form>
+                        <form class="signUpForm">
+                            <div class="input-fields-div autoMargin">
+                                <div class="row input-inline-field">
+                                    <div class="input-field col s6">
+                                        <input id="name" type="text" class="validate">
+                                        <label for="name">姓名</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <input id="school_number" type="text" class="validate">
+                                        <label for="school_number">学号</label>
+                                    </div>
+                                </div>
+                                <div class="input-field">
+                                    <input id="reg_user_name" type="text" class="validate">
+                                    <label for="reg_user_name">邮箱</label>
+                                </div>
+                                <div class="row input-inline-field">
+                                    <div id="reg_passwordDiv" class="input-field col s6">
+                                        <input id="reg_pass_word" type="password" class="validate">
+                                        <label for="reg_pass_word">密码</label>
+                                        <a href="javascript:void(0)" class="showPassword" onclick="showPassword()"><i class="material-icons md-18">visibility</i></a>
+                                    </div>
+                                    <div id="rePasswordDiv" class="input-field col s6">
+                                        <input id="verify" type="password" class="validate">
+                                        <label for="verify">验证码</label>
+                                    </div>
+                                </div>
+                                <p>我有账户&nbsp;<a href="javascript:;" onclick="rcreate()" class="backToLogin">现在登录</a></p>
+                            </div>
+                            <div class="input-fields-div autoMargin right-align">
+                                <div  onclick="closex()" class=" waves-effect waves-light btn">返回</div>
+                                <div  onclick="register()" class=" waves-effect waves-light btn">注册</div>
+                            </div>
+                        </form>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix mar-all pad-all"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main  id="main">
         <header class=" mdui-appbar mdui-appbar-fixed ">
             <div class="mdui-toolbar full mdui-toolbar-spacer mdui-color-theme">
-                <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '.mdui-drawer'}"><i class="mdui-icon material-icons">menu</i></a>
+                <a href="javascript:;" class="mdui-btn mdui-btn-icon" onclick="changedraw()"><i class="mdui-icon material-icons">menu</i></a>
                 <span class="mdui-typo-title" id="intro"></span>
                 <div class="mdui-toolbar-spacer"></div>
                 <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-dialog="{target: '#dialog-docs-theme'}" mdui-tooltip="{content: '设置主题'}"><i class="mdui-icon material-icons">color_lens</i></span>
@@ -114,7 +192,7 @@ $json = json_decode($json, true);
                         <div class="mdui-divider"></div>
                     </div>
                     <div class="mdui-dialog-actions ">
-                        <button class="mdui-btn mdui-ripple " style="top:20px" onclick="login()">登录</button><br /><br />
+                        <div class="mdui-btn mdui-ripple " style="top:20px" onclick="login()">登录</div><br /><br />
                     </div>
                 </div>
             </div>
@@ -137,7 +215,7 @@ $json = json_decode($json, true);
                         <div class="mdui-divider"></div>
                     </div>
                     <div class="mdui-dialog-actions">
-                        <button class="mdui-btn mdui-ripple" style="top:20px;" onclick="register()">注册</button><br /><br />
+                        <div class="mdui-btn mdui-ripple" style="top:20px;" onclick="register()">注册</div><br /><br />
                     </div>
                 </div>
             </div>
@@ -192,7 +270,7 @@ $json = json_decode($json, true);
                                 <div class="mdui-panel-item-header" onclick="refresh(' . $n . ')">答题</div>
                                 <div class="mdui-panel-item-body">
                                     <div style="left:2%">选择语言：
-                                        <select class="mdui-select" onchange="changelang(this.value)" id="s' . $n . '">
+                                        <select class="mdui-select" onchange="changelang(this.value,'.$n.')" id="s' . $n . '">
                                         <option value="text/x-c++src" class="o1csrc" >C/C++</option>
                                         <option value="text/x-python" class="o1python">Python</option>
                                         <option value="text/x-java" class="o1java">Java</option>
@@ -202,8 +280,8 @@ $json = json_decode($json, true);
                                     </div>
                                     <textarea class="form-control" id="code' . $n . '" name="code"></textarea>
                                     <div class="mdui-panel-item-actions">
-                                        <button class="mdui-btn mdui-ripple" mdui-panel-item-close>cancel</button>
-                                        <button class="mdui-btn mdui-ripple" onclick="save(' . $n . ')">save</button>
+                                        <div class="mdui-btn mdui-ripple" mdui-panel-item-close>cancel</div>
+                                        <div class="mdui-btn mdui-ripple" onclick="save(' . $n . ')">save</div>
                                     </div>
                                 </div>
                             </div>
@@ -220,7 +298,7 @@ $json = json_decode($json, true);
             ?>
 
         </div>
-        <div class="mdui-bottom-nav mdui-valign" id="bot" style="background-color:white;z-index:1000;">copyright</div>
+        <div class="mdui-bottom-nav mdui-valign" id="bot" style="z-index:1000;">copyright</div>
     </main>
     <div class="mdui-dialog" id="dialog-docs-theme" style="top: 175.5px; display: none; height: 970px;">
         <div class="mdui-dialog-title">设置文档主题</div>
@@ -507,12 +585,16 @@ $json = json_decode($json, true);
         </div>
         <div class="mdui-divider"></div>
         <div class="mdui-dialog-actions">
-            <button class="mdui-btn mdui-ripple mdui-float-left" mdui-dialog-cancel="">恢复默认主题</button>
-            <button class="mdui-btn mdui-ripple" mdui-dialog-confirm="">ok</button>
+            <div class="mdui-btn mdui-ripple mdui-float-left" mdui-dialog-cancel="">恢复默认主题</div>
+            <div class="mdui-btn mdui-ripple" mdui-dialog-confirm="">ok</div>
         </div>
     </div>
     <script src="js/mdui.min.js"></script>
-    <script src="js/my.js?v=4"></script>
+    <script src="js/my.js?v=5"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/cash.min.js"></script>
+    <script type="text/javascript" src="js/routie.min.js"></script>
+    <script type="text/javascript" src="js/loginScript.js"></script>
 </body>
 
 </html>

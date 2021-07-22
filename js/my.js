@@ -1,35 +1,35 @@
-var $ = mdui.$;
-var $document = $(document);
+var $document = mdui.$(document);
 var log1 = new mdui.Dialog('#login');
 var DEFAULT_PRIMARY = 'light-blue';
 var DEFAULT_ACCENT = 'deep-orange';
 var DEFAULT_LAYOUT = 'auto';
 editor = new Array()
+inst = new mdui.Drawer('#draw');
 
 function a(x, y) {
-    $('.tab').css('display', 'none')
-    $('.q').css('font-weight', 'normal')
-    $(document.getElementById(x)).css('display', 'inherit')
-    $(y).css('font-weight', 'bold')
+    mdui.$('.tab').css('display', 'none')
+    mdui.$('.q').css('font-weight', 'normal')
+    mdui.$(document.getElementById(x)).css('display', 'inherit')
+    mdui.$(y).css('font-weight', 'bold')
 }
 
-function changelang(lan) {
-    editor[0].setOption("mode", lan)
+function changelang(lan, n) {
+    editor[n - 1].setOption("mode", lan)
 }
 
 function login() {
-    if ($('#log1').val() == "" || $('#log2').val() == "") {
+    if (mdui.$('#user_name').val() == "" || mdui.$('#pass_word').val() == "") {
         mdui.snackbar({
             message: '信息格式不正确'
         });
         return;
     }
-    $.ajax({
+    mdui.$.ajax({
         method: 'POST',
         url: '1.php',
         data: {
-            q: $('#log1').val(),
-            p: $('#log2').val(),
+            q: mdui.$('#user_name').val(),
+            p: mdui.$('#pass_word').val(),
             stat: 1
         },
         success: function(data) {
@@ -37,11 +37,15 @@ function login() {
                 var d = new Date();
                 d.setTime(d.getTime() + (7 * 24 * 60 * 60 * 1000));
                 var expires = "expires=" + d.toGMTString();
-                document.cookie = "username=" + $('#log1').val() + ";" + expires;
-                mdui.snackbar({
-                    message: "欢迎 " + cook(',username')
-                });
-                log1.close();
+                document.cookie = "username=" + mdui.$('#user_name').val() + ";" + expires;
+                setTimeout(() => {
+                    mdui.snackbar({
+                        message: "欢迎 " + cook(',username')
+                    });
+                }, 100)
+                mdui.$('#user_name').val('')
+                mdui.$('#pass_word').val('')
+                closex()
                 load()
             } else {
                 mdui.snackbar({
@@ -53,18 +57,26 @@ function login() {
 }
 
 function register() {
-    if ($('#log3').val() == "" || $('#log4').val() == "") {
+    if (mdui.$('#name').val() == "" || mdui.$('#school_number').val() == "" || mdui.$('#reg_user_name').val() == "" || mdui.$('#reg_pass_word').val() == "") {
         mdui.snackbar({
             message: '信息格式不正确'
         });
         return;
+    } else if (mdui.$('#verify').val() == "") {
+        mdui.snackbar({
+            message: '请输入验证码'
+        });
+        return;
     }
-    $.ajax({
+    mdui.$.ajax({
         method: 'POST',
         url: '2.php',
         data: {
-            q: $('#log3').val(),
-            p: $('#log4').val(),
+            username: mdui.$('#reg_user_name').val(),
+            password: mdui.$('#reg_pass_word').val(),
+            name: mdui.$('#name').val(),
+            school_number: mdui.$('#school_number').val(),
+            verify: mdui.$('#verify').val()
         },
         success: function(data) {
             if (data) {
@@ -81,9 +93,8 @@ function register() {
 }
 
 function load() {
-    $('#ans1').prop('onclick', 'refresh()')
+    mdui.$('#ans1').prop('onclick', 'refresh()')
     if (document.body.clientWidth > 599) {
-        var inst = new mdui.Drawer('#draw');
         inst.open()
     }
     if (cook("docs-theme-primary") == undefined) {
@@ -105,7 +116,7 @@ function load() {
         layout: cook("docs-theme-layout")
     });
     var x = 0
-    $.ajax({
+    mdui.$.ajax({
         method: 'POST',
         url: '1.php',
         data: {
@@ -113,12 +124,12 @@ function load() {
         },
         success: function(data) {
             if (data) {
-                $('#intro').empty()
-                $('#intro').append(cook('username') + ",欢迎来到MSC")
-                $('#log').css('display', 'none')
-                $('.more').css('display', '')
-                $('.word').empty()
-                $('.ans').css('display', '')
+                mdui.$('#intro').empty()
+                mdui.$('#intro').append(cook('username') + ",欢迎来到MSC")
+                mdui.$('#log').css('display', 'none')
+                mdui.$('.more').css('display', '')
+                mdui.$('.word').empty()
+                mdui.$('.ans').css('display', '')
                 for (var i = 1;; i++) {
                     if (document.getElementById("code" + i)) {
                         if (typeof(editor[i - 1]) == "undefined") {
@@ -135,7 +146,7 @@ function load() {
                             editor[i - 1].setOption("mode", "text/x-c++src")
                         }
                         console.log(editor.length)
-                        $.ajax({
+                        mdui.$.ajax({
                             method: 'POST',
                             url: '1.php',
                             data: {
@@ -151,8 +162,8 @@ function load() {
                                     st = "o1" + st.slice(7);
                                     if (st == "o1c++src")
                                         st = "o1csrc";
-                                    $('.' + st).attr('selected', 'true')
-                                    if (!$('#s' + m).siblings().is('.mdui-select-position-bottom'))
+                                    mdui.$('.' + st).attr('selected', 'true')
+                                    if (!mdui.$('#s' + m).siblings().is('.mdui-select-position-bottom'))
                                         new mdui.Select('#s' + m, {
                                             position: 'bottom'
                                         });
@@ -166,13 +177,13 @@ function load() {
                     }
                 }
             } else {
-                $('#intro').empty()
-                $('#intro').append("欢迎来到MSC")
-                $('#log').css('display', '')
-                $('.ans').css('display', 'none')
-                $('.word').empty()
-                $('.word').append("<div class='mdui-divider'></div>")
-                $('.word').append("<br/><div class='mdui-text-color-deep-orange' style='margin-left:5%'>答题请登录</div><br/>")
+                mdui.$('#intro').empty()
+                mdui.$('#intro').append("欢迎来到MSC")
+                mdui.$('#log').css('display', '')
+                mdui.$('.ans').css('display', 'none')
+                mdui.$('.word').empty()
+                mdui.$('.word').append("<div class='mdui-divider'></div>")
+                mdui.$('.word').append("<br/><div class='mdui-text-color-deep-orange' style='margin-left:5%'>答题请登录</div><br/>")
             }
         },
         error: function() {
@@ -205,7 +216,7 @@ var setDocsTheme = function(theme) {
     }
 
     var i, len;
-    var $body = $('body');
+    var $body = mdui.$('body');
     var classStr = $body.attr('class');
     var classs = classStr.split(' ');
 
@@ -218,7 +229,7 @@ var setDocsTheme = function(theme) {
         }
         $body.addClass('mdui-theme-primary-' + theme.primary);
         setCookie('docs-theme-primary', theme.primary);
-        $('input[name="doc-theme-primary"][value="' + theme.primary + '"]').prop('checked', true);
+        mdui.$('input[name="doc-theme-primary"][value="' + theme.primary + '"]').prop('checked', true);
     }
 
     // 设置强调色
@@ -230,7 +241,7 @@ var setDocsTheme = function(theme) {
         }
         $body.addClass('mdui-theme-accent-' + theme.accent);
         setCookie('docs-theme-accent', theme.accent);
-        $('input[name="doc-theme-accent"][value="' + theme.accent + '"]').prop('checked', true);
+        mdui.$('input[name="doc-theme-accent"][value="' + theme.accent + '"]').prop('checked', true);
     }
 
     // 设置主题色
@@ -242,13 +253,13 @@ var setDocsTheme = function(theme) {
         }
         $body.addClass('mdui-theme-layout-' + theme.layout);
         setCookie('docs-theme-layout', theme.layout);
-        $('input[name="doc-theme-layout"][value="' + theme.layout + '"]').prop('checked', true);
+        mdui.$('input[name="doc-theme-layout"][value="' + theme.layout + '"]').prop('checked', true);
     }
 };
 
 function logout() {
     document.cookie = "username=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-    $.ajax({
+    mdui.$.ajax({
         method: 'POST',
         url: '1.php',
         data: {
@@ -258,7 +269,7 @@ function logout() {
             mdui.snackbar({
                 message: "已注销"
             });
-            $('.more').css('display', 'none')
+            mdui.$('.more').css('display', 'none')
         },
         error: function() {
 
@@ -274,7 +285,7 @@ var setCookie = function(key, value) {
 };
 
 document.DOMContentLoaded = load()
-$(function() {
+mdui.$(function() {
     /**
      * 设置文档主题
      */
@@ -283,21 +294,21 @@ $(function() {
     // 切换主色
     $document.on('change', 'input[name="doc-theme-primary"]', function() {
         setDocsTheme({
-            primary: $(this).val()
+            primary: mdui.$(this).val()
         });
     });
 
     // 切换强调色
     $document.on('change', 'input[name="doc-theme-accent"]', function() {
         setDocsTheme({
-            accent: $(this).val()
+            accent: mdui.$(this).val()
         });
     });
 
     // 切换主题色
     $document.on('change', 'input[name="doc-theme-layout"]', function() {
         setDocsTheme({
-            layout: $(this).val()
+            layout: mdui.$(this).val()
         });
     });
 
@@ -312,7 +323,7 @@ $(function() {
 
     // 如果抽屉栏当前激活项不在视野中，则滚动抽屉栏，使激活项位于垂直居中
     (function() {
-        var $drawer = $('#main-drawer');
+        var $drawer = mdui.$('#main-drawer');
         var $activeItem = $drawer.find('.mdui-list-item-active');
 
         if (!$activeItem.length) {
@@ -329,7 +340,7 @@ $(function() {
 });
 
 function save(dest) {
-    $.ajax({
+    mdui.$.ajax({
 
         method: 'POST',
         url: '1.php',
@@ -353,11 +364,47 @@ function save(dest) {
 
 
 function openx() {
-    log1.open()
+    inst.close()
+    setTimeout(() => {
+        $('#main').css('display', 'none');
+        $('.gmailStyle').css('display', '');
+    }, 400)
 }
+
+function closex() {
+    if ($('#fformTitle').html != "登录") {
+        $(".formTitle").html("登录");
+        /* Show Login Form */
+        $("#formContainer").removeClass("goLeft").addClass("goRight")
+    }
+    $('#main').css('display', '');
+    $('.gmailStyle').css('display', 'none');
+    if (document.body.clientWidth > 599) {
+        inst.open()
+    }
+}
+
+function changedraw() {
+    inst.toggle();
+}
+
 
 function refresh(n) {
     setTimeout(() => {
         editor[n - 1].refresh()
     }, 100)
+}
+
+function create() {
+    $(".formTitle").html("注册")
+    showProgress()
+        /* Show Signup Form */
+    $("#formContainer").removeClass("goRight").addClass("goLeft")
+}
+
+function rcreate() {
+    $(".formTitle").html("登录")
+    showProgress()
+        /* Show Signup Form */
+    $("#formContainer").removeClass("goLeft").addClass("goRight")
 }
