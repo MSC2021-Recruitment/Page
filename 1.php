@@ -48,8 +48,8 @@ if($stat==4) {
     $uans = $_POST["text"];
     $umod = $_POST["mode"];
     echo $unum,$uans,$umod;
-    $sql1 = "ALTER TABLE msc ADD $unum TEXT NOT NULL";
-    $sql2 = "ALTER TABLE msc ADD $umodid VARCHAR(30) NOT NULL";
+    $sql1 = "ALTER TABLE msc ADD $unum TEXT";
+    $sql2 = "ALTER TABLE msc ADD $umodid VARCHAR(30)";
     
     mysqli_query($conn,$sql1);
     mysqli_query($conn,"UPDATE msc SET $unum = '$uans' WHERE id='{$_SESSION['uid']}' ");
@@ -67,8 +67,17 @@ if($stat==5) {
         echo false;
     }
 
-    $ans= "sd";
-    $mode="text/x-java";
+    $uu = 'FL';
+    $unum = $uu . $_POST['num'];
+    //$unum = $uu . "114514";
+    $umod = $unum . "mode";
+
+    $conn = mysqli_connect($severname, $username, $password, $dbname);
+    $result = mysqli_query($conn,"SELECT * FROM msc WHERE id='{$_SESSION['uid']}' ");
+    $row = mysqli_fetch_array($result);
+
+    $ans = $row[$unum];
+    $mode = $row[$umod];
     $a=array("ans"=>$ans,"mode"=>$mode);
     echo json_encode($a);
 }
