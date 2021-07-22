@@ -140,7 +140,7 @@ function load() {
                             url: '1.php',
                             data: {
                                 stat: 5,
-                                num: i,
+                                num: i - 1,
                             },
                             success: function(dat) {
                                 dat = JSON.parse(dat)
@@ -328,31 +328,29 @@ $(function() {
     })();
 });
 
-function save() {
-    for (var i = 0;; i++) {
-        if (typeof(editor[i]) == "undefined")
-            break
-        $.ajax({
-            method: 'POST',
-            url: '1.php',
-            data: {
-                stat: 4,
-                text: editor[i].getValue(),
-                num: i,
-                mode: editor[i].getOption('mode')
-            },
-            success: function(x) {
-                if (x)
-                    mdui.snackbar({
-                        message: "已保存"
-                    });
-            },
-            error: function() {
+function save(dest) {
+    $.ajax({
 
-            }
-        });
-    }
+        method: 'POST',
+        url: '1.php',
+        data: {
+            stat: 4,
+            text: editor[dest - 1].getValue(),
+            num: dest - 1,
+            mode: editor[dest - 1].getOption('mode')
+        },
+        success: function(x) {
+            if (x)
+                mdui.snackbar({
+                    message: "已保存"
+                });
+        },
+        error: function() {
+
+        }
+    });
 }
+
 
 function openx() {
     log1.open()

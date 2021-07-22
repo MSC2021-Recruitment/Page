@@ -202,7 +202,7 @@ $json = json_decode($json, true);
                                     <textarea class="form-control" id="code' . $n . '" name="code"></textarea>
                                     <div class="mdui-panel-item-actions">
                                         <button class="mdui-btn mdui-ripple" mdui-panel-item-close>cancel</button>
-                                        <button class="mdui-btn mdui-ripple" onclick="save(code' . $n . ')">save</button>
+                                        <button class="mdui-btn mdui-ripple" onclick="save('. $n .')">save</button>
                                     </div>
                                 </div>
                             </div>

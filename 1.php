@@ -32,7 +32,7 @@ if ($stat == 1) {
         }
     }
 }
-if (!isset($_SESSION['loged']) && $stat == 3) {
+if (($_SESSION['loged'])==1 && $stat == 3) {
     echo true;
 }
 if ($stat == 2) {
@@ -43,23 +43,20 @@ if($stat==4) {
         echo false;
     }
     $conn = mysqli_connect($severname, $username, $password, $dbname);
-    
     $uu = 'FL';
     $unum = $uu . $_POST["num"];
     $umodid = $unum . "mode";
     $uans = $_POST["text"];
     $umod = $_POST["mode"];
-    
+    echo $unum,$uans,$umod;
     $sql1 = "ALTER TABLE msc ADD $unum TEXT NOT NULL";
     $sql2 = "ALTER TABLE msc ADD $umodid VARCHAR(30) NOT NULL";
     
     mysqli_query($conn,$sql1);
-    mysqli_query($conn,"UPDATE msc SET $unum = '$uans'
-    WHERE id='$uid' ");
+    mysqli_query($conn,"UPDATE msc SET $unum = '$uans' WHERE id='{$_SESSION['uid']}' ");
 
     mysqli_query($conn,$sql2);
-    mysqli_query($conn,"UPDATE msc SET $umodid = '$umod'
-    WHERE id='$uid' ");
+    mysqli_query($conn,"UPDATE msc SET $umodid = '$umod' WHERE id='{$_SESSION['uid']}' ");
 
     
     //$_SESSION['ans']=$_POST['text'];
