@@ -359,6 +359,7 @@ function load() {
                 mdui.$('#log').css('display', 'none')
                 mdui.$('.more').css('display', '')
                 mdui.$('.word').empty()
+                mdui.$('.mdui-divider').css('display', '')
                 mdui.$('.ans').css('display', '')
                 for (var i = 1;; i++) {
                     if (document.getElementById("code" + i)) {
@@ -385,7 +386,6 @@ function load() {
                 mdui.$('#intro').empty()
                 mdui.$('#intro').append("欢迎来到MSC")
                 mdui.$('#log').css('display', '')
-                mdui.$('.mdui-divider').css('display', '')
                 mdui.$('.ans').css('display', 'none')
                 mdui.$('.word').empty()
                 mdui.$('.word').append("<div class='mdui-divider'></div>")

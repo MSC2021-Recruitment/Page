@@ -262,7 +262,7 @@ $json = json_decode($json, true);
         </div>
         <div id="pages">
             <div id='example1-tab0' class='mdui-p-a-2 tab' style="display:inherit">
-                <div class="mdui-container " style="height: auto !important;">
+                <div class="mdui-container mdui-theme-layout" style="height: auto !important;">
                     <h1 class="mdui-text-color-theme">标题</h1>
                     <div class="mdui-typo" style="height: auto !important;">
                         <p>总介绍</p>
