@@ -182,9 +182,10 @@ function i() {
                 num: m
             },
             success: function(dat) {
+                var s = dat.indexOf('{')
+                var e = dat.indexOf('}')
+                dat = dat.substr(s, e + 1)
                 dat = JSON.parse(dat)
-                if (dat.ans == null || dat.mode == null)
-                    return;
                 index.setValue(dat.ans);
                 index.setOption("mode", dat.mode);
                 var st = dat.mode;
@@ -284,7 +285,9 @@ function logout() {
 
         }
     });
-    load()
+    setTimeout(() => {
+        location.reload()
+    }, 500)
 }
 var setCookie = function(key, value) {
     // cookie 有效期为 1 年
