@@ -109,3 +109,8 @@ if ($stat == 6) {
         echo false;
     }
 }
+if ($stat == 7) {
+    include 'email.php';
+}
+
+?>
