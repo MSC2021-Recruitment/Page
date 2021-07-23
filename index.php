@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" style="font-family:Roboto,source,微软雅黑;">
+<html lang="zh" style="font-family:Roboto,source,微软雅黑; height: 100%;">
 <?php
 $json = file_get_contents("1.json");
 $json = json_decode($json, true);
@@ -64,11 +64,11 @@ $json = json_decode($json, true);
     </style>
 </head>
 
-<body class="mdui-container-fluid mdui-drawer-body-leftmdui-theme-layout-auto mdui-bottom-nav-fixed mdui-color-theme" style="font-family:Roboto,source,微软雅黑;">
-    <div class="row gmailStyle" style="display:none">
-        <div class="container-fluid">
+<body class="mdui-container-fluid mdui-drawer-body-leftmdui-theme-layout-auto mdui-bottom-nav-fixed mdui-color-theme" style="font-family:Roboto,source,微软雅黑;height:100% ">
+    <div class="row gmailStyle" style="display:none;height:100%">
+        <div class="container-fluid" style="height:100%">
             <div class="valign-wrapper screenHeight">
-                <div class="col card s12 m8 l6 xl4 autoMargin setMaxWidth overflowHidden">
+                <div class="col card s12 m8 l6 xl4 autoMargin setMaxWidth overflowHidden ">
                     <div class="row hidden" id="progress-bar">
                         <div class="progress mar-no">
                             <div class="indeterminate"></div>
