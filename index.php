@@ -47,9 +47,19 @@ $json = json_decode($json, true);
             .mdui-drawer {
                 top: 64px;
             }
+
+            .img {
+                height: 25%;
+                width: 25%
+            }
         }
 
-        @media (max-width: 599.9px) {}
+        @media (max-width: 1024px) {
+            .img {
+                height: 50%;
+                width: 50%
+            }
+        }
 
         @font-face {
             font-family: source;
@@ -83,11 +93,11 @@ $json = json_decode($json, true);
                         <form class="loginForm">
                             <div class="input-fields-div autoMargin">
                                 <div class="input-field">
-                                    <input id="user_name" type="text" class="validate">
+                                    <input id="user_name" type="text" class="validate" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')">
                                     <label for="user_name">邮箱</label>
                                 </div>
                                 <div class="input-field">
-                                    <input id="pass_word" type="password" class="validate">
+                                    <input id="pass_word" type="password" class="validate" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')">
                                     <label for="pass_word">密码</label>
                                 </div>
                                 <p>没有账户？<a href="javascript:;" onclick="create()" class="createAccountNow">创建账户<br\>
@@ -107,21 +117,21 @@ $json = json_decode($json, true);
                                         <label for="name">姓名</label>
                                     </div>
                                     <div class="input-field col s6">
-                                        <input id="school_number" type="text" class="validate">
+                                        <input id="school_number" type="text" class="validate" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')">
                                         <label for="school_number">学号</label>
                                     </div>
                                 </div>
                                 <div class="input-field">
-                                    <input id="reg_user_name" type="text" class="validate">
+                                    <input id="reg_user_name" type="text" class="validate" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')">
                                     <label for="reg_user_name">邮箱</label>
                                 </div>
                                 <div class="row input-inline-field">
                                     <div id="reg_passwordDiv" class="input-field col s6">
-                                        <input id="reg_pass_word" type="password" class="validate">
+                                        <input id="reg_pass_word" type="password" class="validate" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')">
                                         <label for="reg_pass_word">密码</label>
                                     </div>
                                     <div id="rePasswordDiv" class="input-field col s6">
-                                        <input id="verify" type="text" class="validate">
+                                        <input id="verify" type="text" class="validate" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')">
                                         <label for="verify">验证码</label>
                                     </div>
                                 </div>
@@ -150,6 +160,7 @@ $json = json_decode($json, true);
                 <span class="mdui-typo-title" id="intro"></span>
                 <div class="mdui-toolbar-spacer"></div>
                 <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-dialog="{target: '#dialog-docs-theme'}" mdui-tooltip="{content: '设置主题'}"><i class="mdui-icon material-icons">color_lens</i></span>
+                <a href="javascript:;" class="mdui-btn " onclick="openx()" style="display:none" id="log">登录/注册</a>
                 <a href="javascript:;" class="mdui-btn mdui-btn-icon " mdui-menu="{target: '#example-1'}" mdui-tooltip="{content: '更多'}"><i class="mdui-icon material-icons ">more_vert</i></a>
                 <ul class="mdui-menu " id="example-1">
                     <li class="mdui-menu-item">
@@ -161,12 +172,9 @@ $json = json_decode($json, true);
                     <li class="mdui-menu-item">
                         <a href="javascript:;" class="mdui-ripple more" style="display:none">修改密码</a>
                     </li>
-                    <li class="mdui-divider"></li>
+                    <li class="mdui-divider " style="display:none" ></li>
                     <li class="mdui-menu-item">
                         <a href="javascript:;" class="mdui-ripple more" onclick="logout()" style="display:none">注销</a>
-                    </li>
-                    <li class="mdui-menu-item">
-                        <a href="javascript:;" class=" mdui-ripple" onclick="openx()" style="display:none" id="log">登录/注册</a>
                     </li>
                 </ul>
             </div>
@@ -254,7 +262,35 @@ $json = json_decode($json, true);
         </div>
         <div id="pages">
             <div id='example1-tab0' class='mdui-p-a-2 tab' style="display:inherit">
-                sdadda
+                <div class="mdui-container " style="height: auto !important;">
+                    <h1 class="mdui-text-color-theme">标题</h1>
+                    <div class="mdui-typo" style="height: auto !important;">
+                        <p>总介绍</p>
+                    </div>
+                    <div class="" style="height: auto !important;">
+                        <div class="mdui-typo" style="height: auto !important;">
+                            <h2 class=" mdui-text-color-theme">二级标题 <a class="doc-anchor" id="quick-start"></a></h2>
+                            <p>内容</p>
+                        </div>
+                        <div class="mdui-typo">
+                            <h4 class="" style="font-weight:bold">三级标题 <a class="doc-anchor" id="css"></a></h4>
+                            <p>内容</p>
+                        </div>
+                        <div class="mdui-typo">
+                            <h4 class="" style="font-weight:bold">三级标题 <a class="doc-anchor" id="js"></a></h4>
+                            <p>内容</p>
+                        </div>
+                        <div class="mdui-typo" style="height: auto !important;">
+                            <h2 class=" mdui-text-color-theme">二级标题 <a class="doc-anchor" id="template"></a></h2>
+                            <p>以上就是一个完整的页面所需要的全部内容。你可以自行在其中添加更多组件和内容，来构建一个网站。</p>
+                        </div>
+                    </div>
+                    <div class="img">
+                        <img src="images/rx.jpg" class="mdui-img-fluid">
+                    </div>
+
+
+                </div>
             </div>
             <?php
             $json = file_get_contents("1.json");
@@ -605,7 +641,7 @@ $json = json_decode($json, true);
     </div>
     <div class="mdui-bottom-nav mdui-valign" id="bot" style="z-index:-100;  ">copyright</div>
     <script src="js/mdui.min.js"></script>
-    <script src="js/my.js?v=8"></script>
+    <script src="js/my.js?v=10"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/cash.min.js"></script>
     <script type="text/javascript" src="js/routie.min.js"></script>

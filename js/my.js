@@ -269,6 +269,7 @@ function a(x, y) {
     mdui.$('.q').css('font-weight', 'normal')
     mdui.$(document.getElementById(x)).css('display', 'inherit')
     mdui.$(y).css('font-weight', 'bold')
+    mdui.$(y).children().children().css('font-weight', 'bold')
 }
 
 function changelang(lan, n) {
@@ -291,7 +292,7 @@ function closex() {
     }
     $('#main').css('display', '');
     $('.gmailStyle').css('display', 'none');
-    if (document.body.clientWidth > 599) {
+    if (document.body.clientWidth >= 1024) {
         inst.open()
     }
 }
@@ -323,7 +324,7 @@ function rcreate() {
 
 function load() {
     mdui.$('#ans1').prop('onclick', 'refresh()')
-    if (document.body.clientWidth > 599) {
+    if (document.body.clientWidth >= 1024) {
         inst.open()
     }
     if (cook("docs-theme-primary") == undefined) {
@@ -384,6 +385,7 @@ function load() {
                 mdui.$('#intro').empty()
                 mdui.$('#intro').append("欢迎来到MSC")
                 mdui.$('#log').css('display', '')
+                mdui.$('.mdui-divider').css('display', '')
                 mdui.$('.ans').css('display', 'none')
                 mdui.$('.word').empty()
                 mdui.$('.word').append("<div class='mdui-divider'></div>")
