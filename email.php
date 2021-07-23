@@ -13,7 +13,7 @@ function sendMail($to,$title,$content){
     require_once("./PHPMailer-6.5.0/src/SMTP.php");
     //引入PHPMailer的核心文件 使用require_once包含避免出现PHPMailer类重复定义的警告
     $mail = new PHPMailer();//实例化PHPMailer核心类
-    $mail->SMTPDebug = 1;//是否启用smtp的debug进行调试 开发环境建议开启 生产环境注释掉即可 默认关闭debug调试模式
+    $mail->SMTPDebug = 0;//是否启用smtp的debug进行调试 开发环境建议开启 生产环境注释掉即可 默认关闭debug调试模式
     $mail->isSMTP();//使用smtp鉴权方式发送邮件
     $mail->SMTPAuth=true;//smtp需要鉴权 这个必须是true
     $mail->Host = 'smtp.qq.com';//链接qq域名邮箱的服务器地址
