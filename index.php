@@ -124,7 +124,7 @@ $json = json_decode($json, true);
                                         <label for="verify">验证码</label>
                                     </div>
                                 </div>
-                                <div><div style="display:inline-block;width:40%;">我有账户&nbsp;<a href="javascript:;" onclick="rcreate()" class="backToLogin">现在登录</a></div><div class="mdui-text-right" style="text-align:right;display:inline-block;right:10%;width:50%"> <a href="javascript:;" >发送验证码</a></div></div>
+                                <div><div style="display:inline-block;width:40%;">我有账户&nbsp;<a href="javascript:;" onclick="rcreate()" class="backToLogin">现在登录</a></div><div class="mdui-text-right" style="text-align:right;display:inline-block;right:10%;width:50%"> <a href="javascript:;" onclick="send()">发送验证码</a></div></div>
                                 <div class="mdui-invisible">sd</div>
                             </div>
                             <div class="input-fields-div autoMargin right-align">
