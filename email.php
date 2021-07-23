@@ -1,7 +1,7 @@
 <?php
 
-//$uemail = $_POST["username"];
-$uemail = "1464837318@qq.com";
+$uemail = $_POST["username"];
+//$uemail = "1464837318@qq.com";
 //$uemail = $_GET["u"];
 
 $uver = "777";
@@ -46,10 +46,9 @@ $text1 = "666";
 $flag = sendMail($uemail,'MSC招新网站注册验证码',$text1);
 if($flag){
 //    echo "OK";
-    $_SESSION['uver'] = $uver;
-    echo true;
+    $_SESSION['uveru'] = $uver;
+    echo 60;
 }else{
-//    echo "OOPOS";
     echo false;
 }
 
