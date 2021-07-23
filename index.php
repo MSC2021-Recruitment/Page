@@ -641,7 +641,7 @@ $json = json_decode($json, true);
     </div>
     <div class="mdui-bottom-nav mdui-valign" id="bot" style="z-index:-100;  ">copyright</div>
     <script src="js/mdui.min.js"></script>
-    <script src="js/my.js?v=11"></script>
+    <script src="js/my.js?v=10"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/cash.min.js"></script>
     <script type="text/javascript" src="js/routie.min.js"></script>
