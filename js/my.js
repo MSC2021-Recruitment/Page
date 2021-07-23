@@ -61,9 +61,9 @@ function send() {
     mdui.$.ajax({
         method: 'POST',
         url: '1.php',
-        stat: 7,
         data: {
-            username: mdui.$('#reg_user_name').val()
+            username: mdui.$('#reg_user_name').val(),
+            stat: 7
         },
         success: function(data) {
             if (data == 1)
