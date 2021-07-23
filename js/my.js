@@ -5,6 +5,7 @@ var DEFAULT_ACCENT = 'deep-orange';
 var DEFAULT_LAYOUT = 'auto';
 editor = new Array()
 inst = new mdui.Drawer('#draw');
+mdui.$('#mainpage').css('font-weight', 'bold')
 
 function login() {
     if (mdui.$('#user_name').val() == "" || mdui.$('#pass_word').val() == "") {
@@ -353,7 +354,7 @@ function load() {
         success: function(data) {
             if (data) {
                 mdui.$('#intro').empty()
-                mdui.$('#intro').append(cook('username') + ",欢迎来到MSC")
+                mdui.$('#intro').append(data + ",欢迎来到MSC")
                 mdui.$('#log').css('display', 'none')
                 mdui.$('.more').css('display', '')
                 mdui.$('.word').empty()

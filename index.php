@@ -90,12 +90,13 @@ $json = json_decode($json, true);
                                     <input id="pass_word" type="password" class="validate">
                                     <label for="pass_word">密码</label>
                                 </div>
-                                <p>没有账户？<a href="javascript:;" onclick="create()" class="createAccountNow">创建账户<br\><p class="mdui-invisible">x</p></a></p>
+                                <p>没有账户？<a href="javascript:;" onclick="create()" class="createAccountNow">创建账户<br\>
+                                            <p class="mdui-invisible">x</p></a></p>
                             </div>
 
                             <div class="input-fields-div autoMargin right-align">
-                                <div  onclick="closex();" class=" waves-effect waves-light btn">返回</div>
-                                <div  onclick="login()" class=" waves-effect waves-light btn">登录</div>
+                                <div onclick="closex();" class=" waves-effect waves-light btn">返回</div>
+                                <div onclick="login()" class=" waves-effect waves-light btn">登录</div>
                             </div>
                         </form>
                         <form class="signUpForm">
@@ -124,12 +125,15 @@ $json = json_decode($json, true);
                                         <label for="verify">验证码</label>
                                     </div>
                                 </div>
-                                <div><div style="display:inline-block;width:40%;">我有账户&nbsp;<a href="javascript:;" onclick="rcreate()" class="backToLogin">现在登录</a></div><div class="mdui-text-right" style="text-align:right;display:inline-block;right:10%;width:50%"> <a href="javascript:;" onclick="send()">发送验证码</a></div></div>
+                                <div>
+                                    <div style="display:inline-block;width:40%;">我有账户&nbsp;<a href="javascript:;" onclick="rcreate()" class="backToLogin">现在登录</a></div>
+                                    <div class="mdui-text-right" style="text-align:right;display:inline-block;right:10%;width:50%"> <a href="javascript:;" onclick="send()">发送验证码</a></div>
+                                </div>
                                 <div class="mdui-invisible">sd</div>
                             </div>
                             <div class="input-fields-div autoMargin right-align">
-                                <div  onclick="closex()" class=" waves-effect waves-light btn">返回</div>
-                                <div  onclick="register()" class=" waves-effect waves-light btn">注册</div>
+                                <div onclick="closex()" class=" waves-effect waves-light btn">返回</div>
+                                <div onclick="register()" class=" waves-effect waves-light btn">注册</div>
                             </div>
                         </form>
                         <div class="clearfix"></div>
@@ -139,7 +143,7 @@ $json = json_decode($json, true);
             </div>
         </div>
     </div>
-    <main  id="main">
+    <main id="main">
         <header class=" mdui-appbar mdui-appbar-fixed ">
             <div class="mdui-toolbar full mdui-toolbar-spacer mdui-color-theme">
                 <a href="javascript:;" class="mdui-btn mdui-btn-icon" onclick="changedraw()"><i class="mdui-icon material-icons">menu</i></a>
@@ -221,6 +225,14 @@ $json = json_decode($json, true);
         </div>
         <div class="mdui-drawer mdui-drawer-close mdui-shadow-12" id="draw">
             <div class="mdui-collapse mdui-list" mdui-collapse>
+                <div class="mdui-collapse-item " onClick="a('example1-tab0',this)">
+                    <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+                        <a class="mdui-typo-subheading q" id="mainpage">简介</a>
+                    </div>
+                    <div class="mdui-collapse-item-body">
+                        <a></a>
+                    </div>
+                </div>
                 <?php
                 foreach ($json as $json) {
                     echo
@@ -241,6 +253,9 @@ $json = json_decode($json, true);
             </div>
         </div>
         <div id="pages">
+            <div id='example1-tab0' class='mdui-p-a-2 tab' style="display:inherit">
+                sdadda
+            </div>
             <?php
             $json = file_get_contents("1.json");
             $json = json_decode($json, true);
@@ -269,12 +284,12 @@ $json = json_decode($json, true);
                                 <div class="mdui-panel-item-header" onclick="refresh(' . $n . ')">答题</div>
                                 <div class="mdui-panel-item-body">
                                     <div style="left:2%">选择语言：
-                                        <select class="mdui-select" onchange="changelang(this.value,'.$n.')" id="s' . $n . '">
-                                        <option value="text/x-c++src" class="o'.$n.'csrc" >C/C++</option>
-                                        <option value="text/x-python" class="o'.$n.'python">Python</option>
-                                        <option value="text/x-java" class="o'.$n.'java">Java</option>
-                                        <option value="text/x-perl" class="o'.$n.'perl">Perl</option>
-                                        <option value="text/x-go" class="o'.$n.'go">Go</option>
+                                        <select class="mdui-select" onchange="changelang(this.value,' . $n . ')" id="s' . $n . '">
+                                        <option value="text/x-c++src" class="o' . $n . 'csrc" >C/C++</option>
+                                        <option value="text/x-python" class="o' . $n . 'python">Python</option>
+                                        <option value="text/x-java" class="o' . $n . 'java">Java</option>
+                                        <option value="text/x-perl" class="o' . $n . 'perl">Perl</option>
+                                        <option value="text/x-go" class="o' . $n . 'go">Go</option>
                                         </select>
                                     </div>
                                     <textarea class="form-control" id="code' . $n . '" name="code"></textarea>
@@ -590,7 +605,7 @@ $json = json_decode($json, true);
     </div>
     <div class="mdui-bottom-nav mdui-valign" id="bot" style="z-index:-100;  ">copyright</div>
     <script src="js/mdui.min.js"></script>
-    <script src="js/my.js?v=7"></script>
+    <script src="js/my.js?v=8"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/cash.min.js"></script>
     <script type="text/javascript" src="js/routie.min.js"></script>
