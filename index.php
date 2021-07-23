@@ -64,7 +64,7 @@ $json = json_decode($json, true);
     </style>
 </head>
 
-<body class="mdui-container-fluid mdui-drawer-body-leftmdui-theme-layout-auto mdui-bottom-nav-fixed mdui-color-theme" style="font-family:Roboto,source,微软雅黑;height:100% ">
+<body class="mdui-container-fluid mdui-drawer-body-leftmdui-theme-layout-auto mdui-bottom-nav-fixed mdui-color-theme " style="font-family:Roboto,source,微软雅黑;height:100% ">
     <div class="row gmailStyle" style="display:none;height:100%">
         <div class="container-fluid" style="height:100%">
             <div class="valign-wrapper screenHeight">
@@ -295,10 +295,10 @@ $json = json_decode($json, true);
         </div>
         </div>';
             }
+            echo "<div style='height:60px' class='mdui-invisible'></div>";
             ?>
 
         </div>
-        <div class="mdui-bottom-nav mdui-valign" id="bot" style="z-index:1000;">copyright</div>
     </main>
     <div class="mdui-dialog" id="dialog-docs-theme" style="top: 175.5px; display: none; height: 970px;">
         <div class="mdui-dialog-title">设置文档主题</div>
@@ -589,6 +589,7 @@ $json = json_decode($json, true);
             <div class="mdui-btn mdui-ripple" mdui-dialog-confirm="">ok</div>
         </div>
     </div>
+    <div class="mdui-bottom-nav mdui-valign" id="bot" style="z-index:-100;  ">copyright</div>
     <script src="js/mdui.min.js"></script>
     <script src="js/my.js?v=7"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
