@@ -89,7 +89,6 @@ $json = json_decode($json, true);
                                 <div class="input-field">
                                     <input id="pass_word" type="password" class="validate">
                                     <label for="pass_word">密码</label>
-                                    <a href="javascript:void(0)" class="showPassword" onclick="showPassword()"><i class="material-icons md-18">visibility</i></a>
                                 </div>
                                 <p>没有账户？<a href="javascript:;" onclick="create()" class="createAccountNow">创建账户<br\><p class="mdui-invisible">x</p></a></p>
                             </div>
@@ -119,14 +118,14 @@ $json = json_decode($json, true);
                                     <div id="reg_passwordDiv" class="input-field col s6">
                                         <input id="reg_pass_word" type="password" class="validate">
                                         <label for="reg_pass_word">密码</label>
-                                        <a href="javascript:void(0)" class="showPassword" onclick="showPassword()"><i class="material-icons md-18">visibility</i></a>
                                     </div>
                                     <div id="rePasswordDiv" class="input-field col s6">
-                                        <input id="verify" type="password" class="validate">
+                                        <input id="verify" type="text" class="validate">
                                         <label for="verify">验证码</label>
                                     </div>
                                 </div>
-                                <p>我有账户&nbsp;<a href="javascript:;" onclick="rcreate()" class="backToLogin">现在登录</a></p>
+                                <div><div style="display:inline-block;width:40%;">我有账户&nbsp;<a href="javascript:;" onclick="rcreate()" class="backToLogin">现在登录</a></div><div class="mdui-text-right" style="text-align:right;display:inline-block;right:10%;width:50%"> <a href="javascript:;" >发送验证码</a></div></div>
+                                <div class="mdui-invisible">sd</div>
                             </div>
                             <div class="input-fields-div autoMargin right-align">
                                 <div  onclick="closex()" class=" waves-effect waves-light btn">返回</div>

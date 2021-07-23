@@ -83,3 +83,29 @@ if ($stat == 5) {
     $a = array("ans" => $ans, "mode" => $mode);
     echo json_encode($a);
 }
+if ($stat == 6) {
+    $q = $_POST["username"]; //email
+    $p = $_POST["password"]; //password
+    $xm = $_POST["name"]; //true name
+    $sid = $_POST["school_number"]; //school card id
+
+    $severname = "localhost";
+    $username = "root";
+    $password = "root";
+    $dbname = "msc";
+    $conn = mysqli_connect($severname, $username, $password, $dbname);
+    $res = mysqli_query($conn, "SELECT * FROM msc WHERE uname = '$q'");
+    $row = mysqli_fetch_array($res);
+
+    if (!$row) {
+        $sql = "INSERT INTO msc (uname,upass,schoolid,uxm) VALUES ('$q','$p','$sid','$xm')";
+
+        if (mysqli_query($conn, $sql)) {
+            echo true;
+        } else {
+            echo false;
+        }
+    } else {
+        echo false;
+    }
+}
