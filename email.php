@@ -1,16 +1,19 @@
 <?php
+//session_start();
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 $uemail = $_POST["username"];
+$codetm = $uemail . "code";
 //$uemail = "1464837318@qq.com";
 //$uemail = $_GET["u"];
 
-$uver = "777";
+$strs = "QWERTYUIOPASDFGHJKLZXCVBNM1234567890qwertyuiopasdfghjklzxcvbnm";
+$uver = substr(str_shuffle($strs),mt_rand(0,strlen($strs)-11),5);
 //$uver = $_GET["ver"];
 
 function sendMail($to,$title,$content){
-    require_once("./PHPMailer-6.5.0/src/PHPMailer.php"); 
-    require_once("./PHPMailer-6.5.0/src/SMTP.php");
+    include_once("./PHPMailer-6.5.0/src/PHPMailer.php"); 
+    include_once("./PHPMailer-6.5.0/src/SMTP.php");
     //引入PHPMailer的核心文件 使用require_once包含避免出现PHPMailer类重复定义的警告
     $mail = new PHPMailer();//实例化PHPMailer核心类
     $mail->SMTPDebug = 0;//是否启用smtp的debug进行调试 开发环境建议开启 生产环境注释掉即可 默认关闭debug调试模式
@@ -37,20 +40,37 @@ function sendMail($to,$title,$content){
 }
 date_default_timezone_set('PRC');
 header("Content-Type:text/html;charset=utf-8");
+
 $text = "皑如山上雪，皎若云间月。<br>闻君有两意，故来相决绝。<br>
 今日斗酒会，明旦沟水头。<br>躞蹀御沟上，沟水东西流。<br>
 凄凄复凄凄，嫁娶不须啼。<br>愿得一人心，白首不相离。<br>
 竹竿何袅袅，鱼尾何簁簁！<br>男儿重意气，何用钱刀为！</p>";
+$text1 = "本次注册的验证码是：<br>" . $uver . "<br>请在10分钟内使用";
 
-$text1 = "666";
+if(isset($_SESSION[$uemail])) {
+    $_SESSION[$uemail] = 1;
+} else {
+    $time1 = $_SESSION[$uemail];
+    $time2 = date('U');
+    if($time2 - $time1 < 120) {
+        echo 0;
+        exit;
+    }
+}
+
+if($_SESSION[$uemail] = 1) {
+    $_SESSION[$uemail] = date('U');
+}
 
 $flag = sendMail($uemail,'MSC招新网站注册验证码',$text1);
+
 if($flag){
 //    echo "OK";
     $_SESSION['uveru'] = $uver;
-    echo 60;
-}else{
-    echo false;
+    $_SESSION[$codetm] = date('U');
+    echo 1;
+} else {
+    echo 2;
 }
 
 ?>
