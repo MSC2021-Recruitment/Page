@@ -23,6 +23,7 @@ if ($stat == 1) {
         if ($p == $upassword) {
             $_SESSION['loged'] = 1;
             $_SESSION['uid'] =  $row['id'];
+            $_SESSION['name']=$row['uxm'];
             echo true;
         } else {
             echo false;
@@ -30,7 +31,7 @@ if ($stat == 1) {
     }
 }
 if (isset($_SESSION['loged']) && $stat == 3) {
-    echo true;
+    echo $_SESSION['name'];
 }
 if ($stat == 2) {
     session_destroy();

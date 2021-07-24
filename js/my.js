@@ -216,6 +216,11 @@ var setDocsTheme = function(theme) {
         setCookie('docs-theme-layout', theme.layout);
         mdui.$('input[name="doc-theme-layout"][value="' + theme.layout + '"]').prop('checked', true);
     }
+    HTMLElement.prototype.__defineGetter__("currentStyle", function() {
+        return this.ownerDocument.defaultView.getComputedStyle(this, null);
+    });
+    var color = document.body.currentStyle.backgroundColor;
+    mdui.$('.sp').css('background-color', color)
 };
 
 function logout() {
@@ -433,6 +438,7 @@ mdui.$(function() {
         setDocsTheme({
             layout: mdui.$(this).val()
         });
+
     });
 
     // 恢复默认主题

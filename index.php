@@ -74,8 +74,8 @@ $json = json_decode($json, true);
     </style>
 </head>
 
-<body class="mdui-container-fluid mdui-drawer-body-leftmdui-theme-layout-auto mdui-bottom-nav-fixed mdui-color-theme " style="font-family:Roboto,source,微软雅黑;height:100% ">
-    <div class="row gmailStyle" style="display:none;height:100%">
+<body class="mdui-container-fluid mdui-drawer-body-left mdui-theme-layout-auto mdui-bottom-nav-fixed mdui-color-theme " style="font-family:Roboto,source,微软雅黑;height:100% " id="body">
+    <div class="row gmailStyle " style="display:none;height:100%">
         <div class="container-fluid" style="height:100%">
             <div class="valign-wrapper screenHeight">
                 <div class="col card s12 m8 l6 xl4 autoMargin setMaxWidth overflowHidden ">
@@ -99,8 +99,9 @@ $json = json_decode($json, true);
                                 <div class="input-field">
                                     <input id="pass_word" type="password" class="validate" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')">
                                     <label for="pass_word">密码</label>
+                                    <a href="javascript:void(0)" class="showPassword" onclick="showPassword()"><i class="material-icons md-18">visibility</i></a>
                                 </div>
-                                <p>没有账户？<a href="javascript:;" onclick="create()" class="createAccountNow">创建账户<br\>
+                                <p class="mdui-text-color-black">没有账户？<a href="javascript:;" onclick="create()" class="createAccountNow">创建账户<br\>
                                             <p class="mdui-invisible">x</p></a></p>
                             </div>
 
@@ -129,6 +130,7 @@ $json = json_decode($json, true);
                                     <div id="reg_passwordDiv" class="input-field col s6">
                                         <input id="reg_pass_word" type="password" class="validate" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')">
                                         <label for="reg_pass_word">密码</label>
+                                        <a href="javascript:void(0)" class="showPassword" onclick="showPassword()"><i class="material-icons md-18">visibility</i></a>
                                     </div>
                                     <div id="rePasswordDiv" class="input-field col s6">
                                         <input id="verify" type="text" class="validate" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')">
@@ -136,7 +138,8 @@ $json = json_decode($json, true);
                                     </div>
                                 </div>
                                 <div>
-                                    <div style="display:inline-block;width:40%;">我有账户&nbsp;<a href="javascript:;" onclick="rcreate()" class="backToLogin">现在登录</a></div>
+                                    <div style="display:inline-block;width:40%;" class="mdui-text-color-black">
+                                        我有账户&nbsp;<a href="javascript:;" onclick="rcreate()" class="backToLogin">现在登录</a></div>
                                     <div class="mdui-text-right" style="text-align:right;display:inline-block;right:10%;width:50%"> <a href="javascript:;" onclick="send()">发送验证码</a></div>
                                 </div>
                                 <div class="mdui-invisible">sd</div>
@@ -160,7 +163,7 @@ $json = json_decode($json, true);
                 <span class="mdui-typo-title" id="intro"></span>
                 <div class="mdui-toolbar-spacer"></div>
                 <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-dialog="{target: '#dialog-docs-theme'}" mdui-tooltip="{content: '设置主题'}"><i class="mdui-icon material-icons">color_lens</i></span>
-                <a href="javascript:;" class="mdui-btn " onclick="openx()" style="display:none" id="log">登录/注册</a>
+                <a href="javascript:;" class=" mdui-typo-title" onclick="openx()" style="display:none" id="log">登录</a>
                 <a href="javascript:;" class="mdui-btn mdui-btn-icon " mdui-menu="{target: '#example-1'}" mdui-tooltip="{content: '更多'}"><i class="mdui-icon material-icons ">more_vert</i></a>
                 <ul class="mdui-menu " id="example-1">
                     <li class="mdui-menu-item">
@@ -172,7 +175,6 @@ $json = json_decode($json, true);
                     <li class="mdui-menu-item">
                         <a href="javascript:;" class="mdui-ripple more" style="display:none">修改密码</a>
                     </li>
-                    <li class="mdui-divider " style="display:none" ></li>
                     <li class="mdui-menu-item">
                         <a href="javascript:;" class="mdui-ripple more" onclick="logout()" style="display:none">注销</a>
                     </li>
@@ -242,6 +244,7 @@ $json = json_decode($json, true);
                     </div>
                 </div>
                 <?php
+                $count = 1;
                 foreach ($json as $json) {
                     echo
                     '<div class="mdui-collapse-item">
@@ -250,10 +253,12 @@ $json = json_decode($json, true);
                         <i class="mdui-collapse-item-arrow mdui-icon material-icons" style="position: absolute;
                     right: 10%;">keyboard_arrow_down</i>
                     </div>
-                    <div class="mdui-collapse-item-body">
-                        <a onclick="a' . "('example1-tab" . (2 * $json['rank'] - 1) . "',this)" . '" class="mdui-list-item mdui-ripple q">简介</a>
-                        <a onclick="a' . "('example1-tab" . (2 * $json['rank']) . "',this)" . '" class="mdui-list-item mdui-ripple q">福利题</a>
-                    </div>
+                    <div class="mdui-collapse-item-body">';
+                    foreach($json['body'] as $body){
+                        echo '<a onclick="a' . "('example1-tab" . $count . "',this)" . '" class="mdui-list-item mdui-ripple q">'.$body['title'].'</a>';
+                        $count++;
+                    }
+                   echo '</div>
                 </div>';
                 }
                 ?>
@@ -262,7 +267,7 @@ $json = json_decode($json, true);
         </div>
         <div id="pages">
             <div id='example1-tab0' class='mdui-p-a-2 tab' style="display:inherit">
-                <div class="mdui-container mdui-theme-layout" style="height: auto !important;">
+                <div class="mdui-container sp" style="height: auto !important;">
                     <h1 class="mdui-text-color-theme">标题</h1>
                     <div class="mdui-typo" style="height: auto !important;">
                         <p>总介绍</p>
@@ -289,63 +294,92 @@ $json = json_decode($json, true);
                         <img src="images/rx.jpg" class="mdui-img-fluid">
                     </div>
 
-
                 </div>
             </div>
             <?php
             $json = file_get_contents("1.json");
             $json = json_decode($json, true);
             $n = 1;
+            $count = 1;
             foreach ($json as $group) {
-                echo "<div id='example1-tab" . (2 * $group['rank'] - 1) . "' class='mdui-p-a-2 tab'>" .
-                    $group['intro'] .
-                    "</div>";
-                echo '<div id="example1-tab' . (2 * $group['rank']) . '"class="mdui-p-a-2 tab">
-        <div class="mdui-card">
-            <div class="mdui-collapse" mdui-collapse>';
                 foreach ($group['body'] as $body) {
-                    echo
-                    '<div class="mdui-collapse-item">
-                    <div class="mdui-collapse-item-header">
-                        <div class="mdui-card-primary mdui-btn mdui-btn-block mdui-text-left mdui-ripple" style="height:auto">
-                            <div class="mdui-card-primary-title">' . $body['title'] . '</div>
-                            <div class="mdui-card-primary-subtitle">' . $body['sub-title'] . '</div>
-                        </div>
-                    </div>
-                    <div class="mdui-collapse-item-body">
-                        <div class="mdui-card-content">' . $body['content'] . '</div>
-                        <div class="word"></div>
-                        <div class="mdui-panel  mdui-panel-gapless" mdui-panel>
-                            <div class="mdui-panel-item ans">
-                                <div class="mdui-panel-item-header" onclick="refresh(' . $n . ')">答题</div>
-                                <div class="mdui-panel-item-body">
-                                    <div style="left:2%">选择语言：
-                                        <select class="mdui-select" onchange="changelang(this.value,' . $n . ')" id="s' . $n . '">
-                                        <option value="text/x-c++src" class="o' . $n . 'csrc" >C/C++</option>
-                                        <option value="text/x-python" class="o' . $n . 'python">Python</option>
-                                        <option value="text/x-java" class="o' . $n . 'java">Java</option>
-                                        <option value="text/x-perl" class="o' . $n . 'perl">Perl</option>
-                                        <option value="text/x-go" class="o' . $n . 'go">Go</option>
-                                        </select>
+                    echo "<div id='example1-tab$count' class='mdui-p-a-2 tab'>";
+                    if ($body['type'] == "question") {
+                        echo
+                        '<div class="mdui-card">
+                            <div class="mdui-collapse" mdui-collapse>';
+                        foreach ($body['body'] as $content)
+                            echo
+                            '<div class="mdui-collapse-item">
+                                    <div class="mdui-collapse-item-header">
+                                        <div class="mdui-card-primary mdui-btn mdui-btn-block mdui-text-left mdui-ripple" style="height:auto">
+                                            <div class="mdui-card-primary-title">' . $content['title'] . '</div>
+                                            <div class="mdui-card-primary-subtitle">' . $content['sub-title'] . '</div>
+                                        </div>
                                     </div>
-                                    <textarea class="form-control" id="code' . $n . '" name="code"></textarea>
-                                    <div class="mdui-panel-item-actions">
-                                        <div class="mdui-btn mdui-ripple" mdui-panel-item-close>cancel</div>
-                                        <div class="mdui-btn mdui-ripple" onclick="save(' . $n . ')">save</div>
+                                    <div class="mdui-collapse-item-body">
+                                        <div class="mdui-card-content">' . $content['content'] . '</div>
+                                        <div class="word"></div>
+                                        <div class="mdui-panel  mdui-panel-gapless" mdui-panel>
+                                            <div class="mdui-panel-item ans">
+                                                <div class="mdui-panel-item-header" onclick="refresh(' . $n . ')">答题</div>
+                                                <div class="mdui-panel-item-body">
+                                                    <div style="left:2%">选择语言：
+                                                        <select class="mdui-select" onchange="changelang(this.value,' . $n . ')" id="s' . $n . '">
+                                                        <option value="text/x-c++src" class="o' . $n . 'csrc" >C/C++</option>
+                                                        <option value="text/x-python" class="o' . $n . 'python">Python</option>
+                                                        <option value="text/x-java" class="o' . $n . 'java">Java</option>
+                                                        <option value="text/x-perl" class="o' . $n . 'perl">Perl</option>
+                                                        <option value="text/x-go" class="o' . $n . 'go">Go</option>
+                                                        </select>
+                                                    </div>
+                                                    <textarea class="form-control" id="code' . $n . '" name="code"></textarea>
+                                                    <div class="mdui-panel-item-actions">
+                                                        <div class="mdui-btn mdui-ripple" mdui-panel-item-close>cancel</div>
+                                                        <div class="mdui-btn mdui-ripple" onclick="save(' . $n . ')">save</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
+                                    </div>';
+                        $n = $n + 1;
+                        echo
+                        '</div>
                         </div>
-                    </div>
-                </div>';
-                    $n = $n + 1;
+                        </div>';
+                    } else if ($body['type'] == "text") {
+                        echo '<div class="mdui-container sp" style="height: auto !important;"> 
+                        <h1 class="mdui-text-color-theme">'.$body['a1']['title'].'</h1>
+                        <div class="mdui-typo" style="height: auto !important;">
+                            <p>'.$body['a1']['content'].'</p>
+                        </div>';
+                        foreach ($body['a1']['next'] as $b) {
+                            echo '<div class="" style="height: auto !important;">
+                            <div class="mdui-typo" style="height: auto !important;">
+                                <h2 class=" mdui-text-color-theme">'.$b['title'].'
+                                    <a class="" id=""></a>
+                                </h2>
+                                <p>'.$b['content'].'</p>
+                            </div>';
+                            foreach($b['next'] as $c){
+                                echo '<div class="mdui-typo">
+                                <h4 class="" style="font-weight:bold">'.$c['title'].'
+                                    <a class="" id="c"></a>
+                                </h4>
+                                <p>'.$c['content'].'</p>
+                            </div>';
+                            }
+                            echo '</div>';
+                        }
+                        echo
+                        '</div>
+                        </div>';
+                    }
+                    $count++;
                 }
-                echo
-                '</div>
-        </div>
-        </div>';
             }
-            echo "<div style='height:60px' class='mdui-invisible'></div>";
+            echo "<div style='height:60px' class='mdui-invisible'></div> ";
             ?>
 
         </div>
@@ -639,9 +673,9 @@ $json = json_decode($json, true);
             <div class="mdui-btn mdui-ripple" mdui-dialog-confirm="">ok</div>
         </div>
     </div>
-    <div class="mdui-bottom-nav mdui-valign" id="bot" style="z-index:-100;  ">copyright</div>
+    <div class='mdui-bottom-nav mdui-text-center' id='bot' style='z-index:-100;'>copyright</div>
     <script src="js/mdui.min.js"></script>
-    <script src="js/my.js?v=11"></script>
+    <script src="js/my.js?v=13"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/cash.min.js"></script>
     <script type="text/javascript" src="js/routie.min.js"></script>
