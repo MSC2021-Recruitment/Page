@@ -254,11 +254,11 @@ $json = json_decode($json, true);
                     right: 10%;">keyboard_arrow_down</i>
                     </div>
                     <div class="mdui-collapse-item-body">';
-                    foreach($json['body'] as $body){
-                        echo '<a onclick="a' . "('example1-tab" . $count . "',this)" . '" class="mdui-list-item mdui-ripple q">'.$body['title'].'</a>';
+                    foreach ($json['body'] as $body) {
+                        echo '<a onclick="a' . "('example1-tab" . $count . "',this)" . '" class="mdui-list-item mdui-ripple q">' . $body['title'] . '</a>';
                         $count++;
                     }
-                   echo '</div>
+                    echo '</div>
                 </div>';
                 }
                 ?>
@@ -308,7 +308,7 @@ $json = json_decode($json, true);
                         echo
                         '<div class="mdui-card">
                             <div class="mdui-collapse" mdui-collapse>';
-                        foreach ($body['body'] as $content)
+                        foreach ($body['body'] as $content) {
                             echo
                             '<div class="mdui-collapse-item">
                                     <div class="mdui-collapse-item-header">
@@ -343,31 +343,32 @@ $json = json_decode($json, true);
                                         </div>
                                     </div>
                                     </div>';
-                        $n = $n + 1;
+                            $n = $n + 1;
+                        }
                         echo
                         '</div>
                         </div>
                         </div>';
                     } else if ($body['type'] == "text") {
                         echo '<div class="mdui-container sp" style="height: auto !important;"> 
-                        <h1 class="mdui-text-color-theme">'.$body['a1']['title'].'</h1>
+                        <h1 class="mdui-text-color-theme">' . $body['a1']['title'] . '</h1>
                         <div class="mdui-typo" style="height: auto !important;">
-                            <p>'.$body['a1']['content'].'</p>
+                            <p>' . $body['a1']['content'] . '</p>
                         </div>';
                         foreach ($body['a1']['next'] as $b) {
                             echo '<div class="" style="height: auto !important;">
                             <div class="mdui-typo" style="height: auto !important;">
-                                <h2 class=" mdui-text-color-theme">'.$b['title'].'
+                                <h2 class=" mdui-text-color-theme">' . $b['title'] . '
                                     <a class="" id=""></a>
                                 </h2>
-                                <p>'.$b['content'].'</p>
+                                <p>' . $b['content'] . '</p>
                             </div>';
-                            foreach($b['next'] as $c){
+                            foreach ($b['next'] as $c) {
                                 echo '<div class="mdui-typo">
-                                <h4 class="" style="font-weight:bold">'.$c['title'].'
+                                <h4 class="" style="font-weight:bold">' . $c['title'] . '
                                     <a class="" id="c"></a>
                                 </h4>
-                                <p>'.$c['content'].'</p>
+                                <p>' . $c['content'] . '</p>
                             </div>';
                             }
                             echo '</div>';
