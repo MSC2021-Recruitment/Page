@@ -79,10 +79,8 @@ $json = json_decode($json, true);
         <div class="container-fluid" style="height:100%">
             <div class="valign-wrapper screenHeight">
                 <div class="col card s12 m8 l6 xl4 autoMargin setMaxWidth overflowHidden ">
-                    <div class="row hidden" id="progress-bar">
-                        <div class="progress mar-no">
-                            <div class="indeterminate"></div>
-                        </div>
+                    <div class="mdui-progress" id="progress-bar">
+                        <div class="mdui-progress-indeterminate"></div>
                     </div>
                     <div class="clearfix mar-all pad-all"></div>
                     <img src="images/Googlelogo.png" class="logoImage" />
@@ -92,49 +90,48 @@ $json = json_decode($json, true);
                     <div id="formContainer" class="goRight">
                         <form class="loginForm">
                             <div class="input-fields-div autoMargin">
-                                <div class="input-field">
-                                    <input id="user_name" type="text" class="validate" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')">
-                                    <label for="user_name">邮箱</label>
+                                <div class="mdui-textfield mdui-textfield-floating-label">
+                                    <label class="mdui-textfield-label">邮箱</label>
+                                    <input id="user_name" type="account" class="mdui-textfield-input" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')" required>
                                 </div>
-                                <div class="input-field">
-                                    <input id="pass_word" type="password" class="validate" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')">
-                                    <label for="pass_word">密码</label>
-                                    <a href="javascript:void(0)" class="showPassword" onclick="showPassword()"><i class="material-icons md-18">visibility</i></a>
+                                <div class="mdui-textfield mdui-textfield-floating-label">
+                                    <label class="mdui-textfield-label">密码</label>
+                                    <input id="pass_word" type="password" class="mdui-textfield-input" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')" required>
                                 </div>
                                 <p class="mdui-text-color-black">没有账户？<a href="javascript:;" onclick="create()" class="createAccountNow">创建账户<br\>
-                                            <p class="mdui-invisible">x</p></a></p>
+                                <p class="mdui-invisible">x</p></a></p>
                             </div>
 
                             <div class="input-fields-div autoMargin right-align">
-                                <div onclick="closex();" class=" waves-effect waves-light btn">返回</div>
-                                <div onclick="login()" class=" waves-effect waves-light btn">登录</div>
+                                <div onclick="closex();" class="mdui-btn mdui-btn-ripple">返回</div>
+                                <div onclick="login()" class=" mdui-btn mdui-btn-ripple">登录</div>
                             </div>
                         </form>
                         <form class="signUpForm">
                             <div class="input-fields-div autoMargin">
-                                <div class="row input-inline-field">
-                                    <div class="input-field col s6">
-                                        <input id="name" type="text" class="validate">
-                                        <label for="name">姓名</label>
+                                <div class=" ">
+                                    <div class="mdui-textfield  mdui-textfield-floating-label" style="display:inline-block;width:49.5%">
+                                        <label class="mdui-textfield-label">姓名</label>
+                                        <input id="name" type="txt" class="mdui-textfield-input" required>
                                     </div>
-                                    <div class="input-field col s6">
-                                        <input id="school_number" type="text" class="validate" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')">
-                                        <label for="school_number">学号</label>
+                                    <div class="mdui-textfield mdui-textfield-floating-label" style="display:inline-block;width:49.5%;right:0">
+                                        <label class="mdui-textfield-label">学号</label>
+                                        <input id="school_number" type="txt" class="mdui-textfield-input" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')" required>
                                     </div>
                                 </div>
-                                <div class="input-field">
-                                    <input id="reg_user_name" type="text" class="validate" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')">
-                                    <label for="reg_user_name">邮箱</label>
+                                <div class="mdui-textfield mdui-textfield-floating-label" style="width:99%">
+                                    <label class="mdui-textfield-label">邮箱</label>
+                                    <input id="reg_user_name" type="txt" class="mdui-textfield-input" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')" required>
+
                                 </div>
-                                <div class="row input-inline-field">
-                                    <div id="reg_passwordDiv" class="input-field col s6">
-                                        <input id="reg_pass_word" type="password" class="validate" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')">
-                                        <label for="reg_pass_word">密码</label>
-                                        <a href="javascript:void(0)" class="showPassword" onclick="showPassword()"><i class="material-icons md-18">visibility</i></a>
+                                <div class="">
+                                    <div class="mdui-textfield mdui-textfield-floating-label" style="display:inline-block;width:49.5%">
+                                        <label class="mdui-textfield-label">密码</label>
+                                        <input id="reg_pass_word" type="txt" class="mdui-textfield-input" required>
                                     </div>
-                                    <div id="rePasswordDiv" class="input-field col s6">
-                                        <input id="verify" type="text" class="validate" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')">
-                                        <label for="verify">验证码</label>
+                                    <div class="mdui-textfield  mdui-textfield-floating-label" style="display:inline-block;width:49.5%;right:0">
+                                        <label class="mdui-textfield-label">验证码</label>
+                                        <input id="verify" type="txt" class="mdui-textfield-input" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')" required>
                                     </div>
                                 </div>
                                 <div>
@@ -145,8 +142,8 @@ $json = json_decode($json, true);
                                 <div class="mdui-invisible">sd</div>
                             </div>
                             <div class="input-fields-div autoMargin right-align">
-                                <div onclick="closex()" class=" waves-effect waves-light btn">返回</div>
-                                <div onclick="register()" class=" waves-effect waves-light btn">注册</div>
+                                <div onclick="closex()" class=" mdui-btn mdui-btn-ripple">返回</div>
+                                <div onclick="register()" class=" mdui-btn mdui-btn-ripple">注册</div>
                             </div>
                         </form>
                         <div class="clearfix"></div>
@@ -181,58 +178,7 @@ $json = json_decode($json, true);
                 </ul>
             </div>
         </header>
-        <div class="mdui-dialog" id="login">
-            <div class="mdui-tab mdui-tab-full-width" id="login-tab" mdui-tab>
-                <a href="#login-tab1" class="mdui-ripple ">登录</a>
-                <a href="#login-tab2" class="mdui-ripple">注册</a>
-            </div>
-            <div id="login-tab1" class="mdui-p-a-2">
-                <div class="mdui-card">
-                    <div class="mdui-card-primary">
-                        <div class="mdui-card-primary-title">登录</div>
-                    </div>
-                    <div class="mdui-card-content">
-                        <div class="mdui-textfield mdui-textfield-floating-label">
-                            <label class="mdui-textfield-label">用户名</label>
-                            <input class="mdui-textfield-input" id="log1" maxlength="20" type="account" style="ime-mode:disabled;" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')" required />
-                            <div class="mdui-textfield-error">请输入用户名</div>
-                        </div>
-                        <div class="mdui-textfield mdui-textfield-floating-label">
-                            <label class="mdui-textfield-label">密码</label>
-                            <input class="mdui-textfield-input" id="log2" maxlength="20" type="password" style="ime-mode:disabled;" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')" required />
-                            <div class="mdui-textfield-error">请输入密码</div>
-                        </div>
-                        <div class="mdui-divider"></div>
-                    </div>
-                    <div class="mdui-dialog-actions ">
-                        <div class="mdui-btn mdui-ripple " style="top:20px" onclick="login()">登录</div><br /><br />
-                    </div>
-                </div>
-            </div>
-            <div id="login-tab2" class="mdui-p-a-2">
-                <div class="mdui-card">
-                    <div class="mdui-card-primary">
-                        <div class="mdui-card-primary-title">注册</div>
-                    </div>
-                    <div class="mdui-card-content">
-                        <div class="mdui-textfield mdui-textfield-floating-label">
-                            <label class="mdui-textfield-label">用户名</label>
-                            <input class="mdui-textfield-input" id="log3" maxlength="20" type="account" required />
-                            <div class="mdui-textfield-error">请输入用户名</div>
-                        </div>
-                        <div class="mdui-textfield mdui-textfield-floating-label">
-                            <label class="mdui-textfield-label">密码</label>
-                            <input class="mdui-textfield-input" id="log4" maxlength="20" type="password" required />
-                            <div class="mdui-textfield-error">请输入密码</div>
-                        </div>
-                        <div class="mdui-divider"></div>
-                    </div>
-                    <div class="mdui-dialog-actions">
-                        <div class="mdui-btn mdui-ripple" style="top:20px;" onclick="register()">注册</div><br /><br />
-                    </div>
-                </div>
-            </div>
-        </div>
+        
         <div class="mdui-drawer mdui-drawer-close mdui-shadow-12" id="draw">
             <div class="mdui-collapse mdui-list" mdui-collapse>
                 <div class="mdui-collapse-item " onClick="a('example1-tab0',this)">
