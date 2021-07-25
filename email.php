@@ -4,6 +4,14 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 $uemail = $_POST["username"];
 $codetm = $uemail . "code";
+include_once("connect.php");
+$res = mysqli_query($conn,"SELECT * FROM msc WHERE uname = '$uemail'");
+$row = mysqli_fetch_array($res);
+if($row)
+{
+    echo -2;
+    exit;
+}
 //$uemail = "1464837318@qq.com";
 //$uemail = $_GET["u"];
 
@@ -47,18 +55,18 @@ $text = "皑如山上雪，皎若云间月。<br>闻君有两意，故来相决�
 竹竿何袅袅，鱼尾何簁簁！<br>男儿重意气，何用钱刀为！</p>";
 $text1 = "本次注册的验证码是：<br>" . $uver . "<br>请在10分钟内使用";
 
-if(isset($_SESSION[$uemail])) {
+if(!isset($_SESSION[$uemail])) {
     $_SESSION[$uemail] = 1;
 } else {
     $time1 = $_SESSION[$uemail];
     $time2 = date('U');
     if($time2 - $time1 < 120) {
-        echo 0;
+        echo 120-$time2 + $time1;
         exit;
     }
 }
 
-if($_SESSION[$uemail] = 1) {
+if($_SESSION[$uemail] == 1) {
     $_SESSION[$uemail] = date('U');
 }
 
@@ -67,10 +75,11 @@ $flag = sendMail($uemail,'MSC招新网站注册验证码',$text1);
 if($flag){
 //    echo "OK";
     $_SESSION['uveru'] = $uver;
+    $_SESSION[$uemail] = date('U');
     $_SESSION[$codetm] = date('U');
-    echo 1;
+    echo 0;
 } else {
-    echo 2;
+    echo -1;
 }
 
 ?>

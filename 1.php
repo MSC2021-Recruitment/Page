@@ -20,9 +20,6 @@ if ($stat == 4) {
 if ($stat == 5) {
     include_once("getanswer.php");
 }
-if ($stat == 6) {
-    include_once("register.php");
-}
 if ($stat == 7) {
     include 'email.php';
 }

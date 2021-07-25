@@ -53,6 +53,7 @@ function login() {
 }
 
 function send() {
+    $("#progress-bar").removeClass("hidden")
     if (!mdui.$('#reg_user_name').val().match(/^\w+@\w+\.\w+$/i)) {
         mdui.snackbar({
             message: '邮箱格式不正确'
@@ -67,11 +68,24 @@ function send() {
             stat: 7
         },
         success: function(data) {
-            if (data == 1)
+            console.log(data)
+            if (data == 0) {
+                $("#progress-bar").addClass("hidden")
                 mdui.snackbar({
                     message: "验证码已发送"
                 });
-            else {
+            } else if (data == -1) {
+                $("#progress-bar").addClass("hidden")
+                mdui.snackbar({
+                    message: "发送失败"
+                });
+            } else if (data == -2) {
+                $("#progress-bar").addClass("hidden")
+                mdui.snackbar({
+                    message: "账号已存在"
+                });
+            } else if (data > 0) {
+                $("#progress-bar").addClass("hidden")
                 mdui.snackbar({
                     message: "请等待" + data + "秒"
                 });
@@ -109,13 +123,25 @@ function register() {
             verify: mdui.$('#verify').val()
         },
         success: function(data) {
-            if (data) {
+            if (data == 1) {
                 mdui.snackbar({
-                    message: "注册成功，请重新登陆！"
+                    message: "注册成功，请登录！"
                 });
-            } else {
+                $(".formTitle").html("登录")
+                showProgress()
+                    /* Show Signup Form */
+                $("#formContainer").removeClass("goLeft").addClass("goRight")
+            } else if (data == 2) {
                 mdui.snackbar({
-                    message: "NOT OK !!!"
+                    message: "注册失败，请重试"
+                });
+            } else if (data == 4) {
+                mdui.snackbar({
+                    message: "注册失败，账号已存在"
+                });
+            } else if (data == 0) {
+                mdui.snackbar({
+                    message: "验证码错误"
                 });
             }
         }
