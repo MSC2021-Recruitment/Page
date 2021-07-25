@@ -75,7 +75,22 @@ a {
     padding: 0 !important;
 }
 
-#formContainer {
+#formContainer1 {
+    width: 200%;
+    position: relative;
+}
+
+#formContainer2 {
+    width: 200%;
+    position: relative;
+}
+
+#formContainer3 {
+    width: 200%;
+    position: relative;
+}
+
+#formContainer4 {
     width: 200%;
     position: relative;
 }
@@ -155,12 +170,42 @@ a {
     position: relative;
 }
 
-#formContainer.goLeft {
+#formContainer1.goLeft {
     -webkit-animation: slideLeft 0.2s forwards;
     animation: slideLeft 0.2s forwards;
 }
 
-#formContainer.goRight {
+#formContainer1.goRight {
+    -webkit-animation: zeroLeft 0.2s forwards;
+    animation: zeroLeft 0.2s forwards;
+}
+
+#formContainer2.goLeft {
+    -webkit-animation: slideLeft 0.2s forwards;
+    animation: slideLeft 0.2s forwards;
+}
+
+#formContainer2.goRight {
+    -webkit-animation: zeroLeft 0.2s forwards;
+    animation: zeroLeft 0.2s forwards;
+}
+
+#formContainer3.goLeft {
+    -webkit-animation: slideLeft 0.2s forwards;
+    animation: slideLeft 0.2s forwards;
+}
+
+#formContainer3.goRight {
+    -webkit-animation: zeroLeft 0.2s forwards;
+    animation: zeroLeft 0.2s forwards;
+}
+
+#formContainer4.goLeft {
+    -webkit-animation: slideLeft 0.2s forwards;
+    animation: slideLeft 0.2s forwards;
+}
+
+#formContainer4.goRight {
     -webkit-animation: zeroLeft 0.2s forwards;
     animation: zeroLeft 0.2s forwards;
 }

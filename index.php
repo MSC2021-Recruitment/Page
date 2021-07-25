@@ -75,19 +75,19 @@ $json = json_decode($json, true);
 </head>
 
 <body class="mdui-container-fluid mdui-drawer-body-left mdui-theme-layout-auto mdui-bottom-nav-fixed mdui-color-theme " style="font-family:Roboto,source,微软雅黑;height:100% " id="body">
-    <div class="row gmailStyle " style="display:none;height:100%">
+    <div class="row gmailStyle " id="login" style="display:none;height:100%">
         <div class="container-fluid" style="height:100%">
             <div class="valign-wrapper screenHeight">
                 <div class="col card s12 m8 l6 xl4 autoMargin setMaxWidth overflowHidden ">
-                    <div class="mdui-progress" id="progress-bar">
+                    <div class="mdui-progress progress-bar" id="">
                         <div class="mdui-progress-indeterminate"></div>
                     </div>
                     <div class="clearfix mar-all pad-all"></div>
                     <img src="images/Googlelogo.png" class="logoImage" />
-                    <h5 class="center-align mar-top mar-bottom formTitle">登录</h5>
+                    <h5 class="center-align mar-top mar-bottom formTitle1">登录</h5>
                     <p class="center-align pad-no mar-no"></p>
                     <div class="clearfix mar-all pad-all"></div>
-                    <div id="formContainer" class="goRight">
+                    <div id="formContainer1" class="goRight">
                         <form class="loginForm">
                             <div class="input-fields-div autoMargin">
                                 <div class="mdui-textfield mdui-textfield-floating-label">
@@ -98,10 +98,12 @@ $json = json_decode($json, true);
                                     <label class="mdui-textfield-label">密码</label>
                                     <input id="pass_word" type="password" class="mdui-textfield-input" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')" required>
                                 </div>
-                                <p class="mdui-text-color-black">没有账户？<a href="javascript:;" onclick="create()" class="createAccountNow">创建账户<br\>
+                                <div style="display:inline-block;width:40%;" class="mdui-text-color-black">
+                                    没有账户？&nbsp;<a href="javascript:;" onclick="create()" class="backToLogin">创建账户</a></div>
+                                <div class="mdui-text-right" style="text-align:right;display:inline-block;right:10%;width:50%"> <a href="javascript:;" onclick="openf()">忘记密码</a>
+                                </div>
                                 <p class="mdui-invisible">x</p></a></p>
                             </div>
-
                             <div class="input-fields-div autoMargin right-align">
                                 <div onclick="closex();" class="mdui-btn mdui-btn-ripple">返回</div>
                                 <div onclick="login()" class=" mdui-btn mdui-btn-ripple">登录</div>
@@ -137,7 +139,7 @@ $json = json_decode($json, true);
                                 <div>
                                     <div style="display:inline-block;width:40%;" class="mdui-text-color-black">
                                         我有账户&nbsp;<a href="javascript:;" onclick="rcreate()" class="backToLogin">现在登录</a></div>
-                                    <div class="mdui-text-right" style="text-align:right;display:inline-block;right:10%;width:50%"> <a href="javascript:;" onclick="send()">发送验证码</a></div>
+                                    <div class="mdui-text-right" style="text-align:right;display:inline-block;right:10%;width:50%"> <a href="javascript:;" onclick="send('reg')">发送验证码</a></div>
                                 </div>
                                 <div class="mdui-invisible">sd</div>
                             </div>
@@ -153,6 +155,163 @@ $json = json_decode($json, true);
             </div>
         </div>
     </div>
+    <div class="row gmailStyle" id="forget" style="display:none;height:100%">
+        <div class="container-fluid" style="height:100%">
+            <div class="valign-wrapper screenHeight">
+                <div class="col card s12 m8 l6 xl4 autoMargin setMaxWidth overflowHidden ">
+                    <div class="mdui-progress progress-bar" id="">
+                        <div class="mdui-progress-indeterminate"></div>
+                    </div>
+                    <div class="clearfix mar-all pad-all"></div>
+                    <img src="images/Googlelogo.png" class="logoImage" />
+                    <h5 class="center-align mar-top mar-bottom formTitle">忘记密码</h5>
+                    <p class="center-align pad-no mar-no"></p>
+                    <div class="clearfix mar-all pad-all"></div>
+                    <div id="formContainer2" class="goRight">
+                        <form class="loginForm">
+                            <div class="input-fields-div autoMargin">
+                                <div class="mdui-textfield mdui-textfield-floating-label">
+                                    <label class="mdui-textfield-label">邮箱</label>
+                                    <input id="forget_username" type="account" class="mdui-textfield-input" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')" required>
+                                </div>
+                                <div class="mdui-textfield mdui-textfield-floating-label">
+                                    <label class="mdui-textfield-label">验证码</label>
+                                    <input id="forget_verify" type="txt" class="mdui-textfield-input" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')" required>
+                                </div>
+                                <div style="display:inline-block;width:40%;" class="mdui-text-color-black">
+                                </div>
+                                <div class="mdui-text-right" style="text-align:right;display:inline-block;right:10%;width:50%"> <a href="javascript:;" onclick="send('forget')">获取验证码</a>
+                                </div>
+                                <p class="mdui-invisible">x</p></a></p>
+                            </div>
+                            <div class="input-fields-div autoMargin right-align">
+                                <div onclick="closef();" class="mdui-btn mdui-btn-ripple">返回</div>
+                                <div onclick="check();" class="mdui-btn mdui-btn-ripple">下一步</div>
+                            </div>
+                        </form>
+                        <form class="signUpForm">
+                            <div class="input-fields-div autoMargin">
+                                <div class="mdui-textfield mdui-textfield-floating-label">
+                                    <label class="mdui-textfield-label">密码</label>
+                                    <input id="forget_password" type="password" class="mdui-textfield-input" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')" required>
+                                </div>
+                                <div class="mdui-textfield mdui-textfield-floating-label">
+                                    <label class="mdui-textfield-label">确认密码</label>
+                                    <input id="re_forget_password" type="password" class="mdui-textfield-input" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')" required>
+                                </div>
+                                <div style="display:inline-block;width:40%;" class="mdui-text-color-black">
+                                </div>
+                                <div class="mdui-text-right mdui-invisible" style="text-align:right;display:inline-block;right:10%;width:50%"> <a href="javascript:;" onclick="send('forget')">获取验证码</a>
+                                </div>
+                                <p class="mdui-invisible">x</p></a></p>
+                            </div>
+                            <div class="input-fields-div autoMargin right-align">
+                                <div onclick="rcreate('2');" class="mdui-btn mdui-btn-ripple">返回</div>
+                                <div onclick="forget();" class=" mdui-btn mdui-btn-ripple">完成</div>
+                            </div>
+                        </form>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix mar-all pad-all"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row gmailStyle" id="change" style="display:none;height:100%">
+        <div class="container-fluid" style="height:100%">
+            <div class="valign-wrapper screenHeight">
+                <div class="col card s12 m8 l6 xl4 autoMargin setMaxWidth overflowHidden ">
+                    <div class="mdui-progress progress-bar" id="">
+                        <div class="mdui-progress-indeterminate"></div>
+                    </div>
+                    <div class="clearfix mar-all pad-all"></div>
+                    <img src="images/Googlelogo.png" class="logoImage" />
+                    <h5 class="center-align mar-top mar-bottom formTitle">忘记密码</h5>
+                    <p class="center-align pad-no mar-no"></p>
+                    <div class="clearfix mar-all pad-all"></div>
+                    <div id="formContainer3" class="goRight">
+                        <form class="loginForm">
+                            <div class="input-fields-div autoMargin">
+                                <div class="mdui-textfield mdui-textfield-floating-label">
+                                    <label class="mdui-textfield-label">旧密码</label>
+                                    <input id="old_password" type="password" class="mdui-textfield-input" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')" required>
+                                </div>
+                                <div class="mdui-textfield mdui-textfield-floating-label">
+                                    <label class="mdui-textfield-label">新密码</label>
+                                    <input id="new_password" type="password" class="mdui-textfield-input" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')" required>
+                                </div>
+                                <div style="display:inline-block;width:40%;" class="mdui-text-color-black">
+                                </div>
+                                <div class="mdui-invisible" style="text-align:right;display:inline-block;right:10%;width:50%">
+                                </div>
+                                <p class="mdui-invisible">x</p></a></p>
+                            </div>
+                            <div class="input-fields-div autoMargin right-align">
+                                <div onclick="closec()" class="mdui-btn mdui-btn-ripple">返回</div>
+                                <div onclick="change()" class="mdui-btn mdui-btn-ripple">提交</div>
+                            </div>
+                        </form>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix mar-all pad-all"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row gmailStyle" id="info" style="display:none;height:100%">
+        <div class="container-fluid" style="height:100%">
+            <div class="valign-wrapper screenHeight">
+                <div class="col card s12 m8 l6 xl4 autoMargin setMaxWidth overflowHidden ">
+                    <div class="mdui-progress progress-bar" id="">
+                        <div class="mdui-progress-indeterminate"></div>
+                    </div>
+                    <div class="clearfix mar-all pad-all"></div>
+                    <img src="images/Googlelogo.png" class="logoImage" />
+                    <h5 class="center-align mar-top mar-bottom formTitle">完善信息</h5>
+                    <p class="center-align pad-no mar-no"></p>
+                    <div class="clearfix mar-all pad-all"></div>
+                    <div id="formContainer4" class="goRight">
+                        <form class="loginForm">
+                            <div class="input-fields-div autoMargin">
+                                <div class=" ">
+                                    <div class="mdui-textfield  mdui-textfield-floating-label" style="display:inline-block;width:49.5%">
+                                        <label class="mdui-textfield-label">你的专业</label>
+                                        <input id="major" type="txt" class="mdui-textfield-input" required>
+                                    </div>
+                                    <div class="mdui-textfield mdui-textfield-floating-label" style="display:inline-block;width:49.5%;right:0">
+                                        <label class="mdui-textfield-label">意向组</label>
+                                        <input id="will" type="txt" class="mdui-textfield-input" required>
+                                    </div>
+                                </div>
+                                <div class="mdui-textfield mdui-textfield-floating-label">
+                                    <textarea class="mdui-textfield-input" placeholder="个人介绍" id="self"></textarea>
+                                </div>
+                                <div style="display:inline-block;width:40%;" class="mdui-text-color-black">
+                                </div>
+                                <div class="mdui-invisible" style="text-align:right;display:inline-block;right:10%;width:50%">
+                                </div>
+                                <p class="mdui-invisible">x</p></a></p>
+                            </div>
+                            <div class="input-fields-div autoMargin right-align">
+                                <div onclick="closei()" class="mdui-btn mdui-btn-ripple">返回</div>
+                                <div  class="mdui-btn mdui-btn-ripple" mdui-dialog="{target: '#sub'}">提交</div>
+                            </div>
+                        </form>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix mar-all pad-all"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mdui-dialog" id="sub">
+        <div class="mdui-dialog-content">是否提交?提交后不可修改</div>
+        <div class="mdui-dialog-actions">
+            <div class="mdui-btn mdui-ripple "mdui-dialog-close>返回</div>
+            <div class="mdui-btn mdui-ripple "mdui-dialog-confirm onclick="sub()">提交</div>
+        </div>
+    </div>
     <main id="main">
         <header class=" mdui-appbar mdui-appbar-fixed ">
             <div class="mdui-toolbar full mdui-toolbar-spacer mdui-color-theme">
@@ -166,11 +325,17 @@ $json = json_decode($json, true);
                     <li class="mdui-menu-item">
                         <a href="javascript:;" class="mdui-ripple" onclick="load()">刷新</a>
                     </li>
+                    <li class="mdui-menu-item">
+                        <a href="javascript:;" class="mdui-ripple more" style="display:none" onclick="openc()">修改密码</a>
+                    </li>
+                    <li class="mdui-menu-item">
+                        <a href="javascript:;" class="mdui-ripple more" style="display:none" onclick="openi()">完善信息</a>
+                    </li>
                     <li class="mdui-menu-item" disabled>
                         <a href="javascript:;">联系我们</a>
                     </li>
                     <li class="mdui-menu-item">
-                        <a href="javascript:;" class="mdui-ripple more" style="display:none">修改密码</a>
+                        <a href="javascript:;" class="mdui-ripple more" style="display:none" mdui-dialog="{target: '#tips'}">帮助</a>
                     </li>
                     <li class="mdui-menu-item">
                         <a href="javascript:;" class="mdui-ripple more" onclick="logout()" style="display:none">注销</a>
@@ -178,7 +343,13 @@ $json = json_decode($json, true);
                 </ul>
             </div>
         </header>
-        
+        <div class="mdui-dialog" id="tips">
+            <div class="mdui-dialog-title">欢迎</div>
+            <div class="mdui-dialog-content">恭喜你成功注册，别忘了点击右上角的更多来完善报名信息哦</div>
+            <div class="mdui-dialog-actions">
+                <div class="mdui-btn mdui-ripple" mdui-dialog-close>关闭</div>
+            </div>
+        </div>
         <div class="mdui-drawer mdui-drawer-close mdui-shadow-12" id="draw">
             <div class="mdui-collapse mdui-list" mdui-collapse>
                 <div class="mdui-collapse-item " onClick="a('example1-tab0',this)">

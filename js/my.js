@@ -52,46 +52,77 @@ function login() {
     });
 }
 
-function send() {
-    $("#progress-bar").removeClass("hidden")
-    if (!mdui.$('#reg_user_name').val().match(/^\w+@\w+\.\w+$/i)) {
-        mdui.snackbar({
-            message: '邮箱格式不正确'
-        });
-        return;
-    }
-    mdui.$.ajax({
-        method: 'POST',
-        url: '1.php',
-        data: {
-            username: mdui.$('#reg_user_name').val(),
-            stat: 7
-        },
-        success: function(data) {
-            console.log(data)
-            if (data == 0) {
-                $("#progress-bar").addClass("hidden")
-                mdui.snackbar({
-                    message: "验证码已发送"
-                });
-            } else if (data == -1) {
-                $("#progress-bar").addClass("hidden")
-                mdui.snackbar({
-                    message: "发送失败"
-                });
-            } else if (data == -2) {
-                $("#progress-bar").addClass("hidden")
-                mdui.snackbar({
-                    message: "账号已存在"
-                });
-            } else if (data > 0) {
-                $("#progress-bar").addClass("hidden")
-                mdui.snackbar({
-                    message: "请等待" + data + "秒"
-                });
-            }
+function send(type) {
+    if (type == "reg") {
+        $("#progress-bar").removeClass("hidden")
+        if (!mdui.$('#reg_user_name').val().match(/^\w+@\w+\.\w+$/i)) {
+            mdui.snackbar({
+                message: '邮箱格式不正确'
+            });
+            return;
         }
-    });
+        mdui.$.ajax({
+            method: 'POST',
+            url: '1.php',
+            data: {
+                username: mdui.$('#reg_user_name').val(),
+                stat: 7
+            },
+            success: function(data) {
+                console.log(data)
+                if (data == 0) {
+                    $("#progress-bar").addClass("hidden")
+                    mdui.snackbar({
+                        message: "验证码已发送"
+                    });
+                } else if (data == -1) {
+                    $("#progress-bar").addClass("hidden")
+                    mdui.snackbar({
+                        message: "发送失败"
+                    });
+                } else if (data == -2) {
+                    $("#progress-bar").addClass("hidden")
+                    mdui.snackbar({
+                        message: "账号已存在"
+                    });
+                } else if (data > 0) {
+                    $("#progress-bar").addClass("hidden")
+                    mdui.snackbar({
+                        message: "请等待" + data + "秒"
+                    });
+                }
+            }
+        });
+    } else if (type == "forget") {
+        mdui.$.ajax({
+            method: 'POST',
+            url: '1.php',
+            data: {
+                username: mdui.$('#forget_username').val(),
+                stat: 12
+            },
+            success: function(data) {
+                console.log(data)
+                if (data == 0) {
+                    $("#progress-bar").addClass("hidden")
+                    mdui.snackbar({
+                        message: "验证码已发送"
+                    });
+                } else if (data == -1) {
+                    $("#progress-bar").addClass("hidden")
+                    mdui.snackbar({
+                        message: "发送失败"
+                    });
+                } else if (data > 0) {
+                    $("#progress-bar").addClass("hidden")
+                    mdui.snackbar({
+                        message: "请等待" + data + "秒"
+                    });
+                }
+            }
+        });
+    }
+
 }
 
 function register() {
@@ -148,6 +179,133 @@ function register() {
     });
 }
 
+function check() {
+    if (mdui.$('#forget_username').val() == "") {
+        mdui.snackbar({
+            message: "请输入邮箱"
+        });
+        return;
+    } else if (mdui.$('#forget_verify').val() == "") {
+        mdui.snackbar({
+            message: "请输入验证码"
+        });
+        return;
+    }
+    mdui.$.ajax({
+        method: 'POST',
+        url: '1.php',
+        stat: 8,
+        data: {
+            username: mdui.$('#forget_username').val(),
+            verify: mdui.$('#forget_verify').val(),
+            stat: 8
+        },
+        success: function(data) {
+            if (data)
+                create('2')
+        }
+
+    });
+}
+
+function forget() {
+    if (mdui.$('#forget_password').val() == mdui.$('#re_forget_password').val() && mdui.$('#forget_password').val() != "") {
+        mdui.$.ajax({
+            method: 'POST',
+            url: '1.php',
+            data: {
+                state: 9,
+                password: mdui.$('#forget_password').val()
+            },
+            success: function(data) {
+                if (data) {
+                    mdui.snackbar({
+                        message: "修改成功"
+                    });
+                    closef();
+                } else {
+                    mdui.snackbar({
+                        message: "出现错误"
+                    });
+                }
+
+            }
+        });
+    } else {
+        mdui.snackbar({
+            message: "请检查信息是否正确"
+        });
+    }
+}
+
+function change() {
+    if (mdui.$('#old_password').val() == "" || mdui.$('#new_password').val() == "") {
+        mdui.snackbar({
+            message: "请确保信息完整"
+        });
+        return;
+    }
+    mdui.$.ajax({
+        method: 'POST',
+        url: '1.php',
+        data: {
+            state: 10,
+            old_password: mdui.$('#old_password').val(),
+            new_password: mdui.$('#new_password').val()
+        },
+        success: function(data) {
+            if (data == 1) {
+                mdui.snackbar({
+                    message: "修改成功"
+                });
+                closec();
+            } else if (data == 0) {
+                mdui.snackbar({
+                    message: "旧密码错误"
+                });
+            } else {
+                mdui.snackbar({
+                    message: "未知错误"
+                });
+            }
+
+        }
+    });
+
+}
+
+function sub() {
+    if (mdui.$('#major').val() == "" && mdui.$('#will').val() == "" && mdui.$('#self').val() == "") {
+        mdui.snackbar({
+            message: "请填满哦"
+        });
+        return;
+    }
+    mdui.$.ajax({
+        method: 'POST',
+        url: '1.php',
+        data: {
+            state: 11,
+            major: mdui.$('#major').val(),
+            will: mdui.$('#will').val(),
+            self: mdui.$('#self').val()
+        },
+        success: function(data) {
+            if (data == 1) {
+                mdui.snackbar({
+                    message: "提交成功"
+                });
+                closei();
+            } else {
+                mdui.snackbar({
+                    message: "提交失败"
+                });
+            }
+
+        }
+    });
+
+}
 
 function i() {
     for (let [m, index] of editor.entries()) {
@@ -311,8 +469,11 @@ function openx() {
     inst.close()
     setTimeout(() => {
         $('#main').css('display', 'none');
-        $('.gmailStyle').css('display', '');
+        $('#login').css('display', '');
     }, 400)
+    setTimeout(function() {
+        $(".progress-bar").addClass("hidden")
+    }, 500)
 }
 
 function closex() {
@@ -322,16 +483,71 @@ function closex() {
         $("#formContainer").removeClass("goLeft").addClass("goRight")
     }
     $('#main').css('display', '');
-    $('.gmailStyle').css('display', 'none');
+    $('#login').css('display', 'none');
     if (document.body.clientWidth >= 1024) {
         inst.open()
     }
 }
 
+function openi() {
+    inst.close()
+    setTimeout(() => {
+        $('#main').css('display', 'none');
+        $('#info').css('display', '');
+    }, 400)
+    setTimeout(function() {
+        $(".progress-bar").addClass("hidden")
+    }, 500)
+}
+
+function closei() {
+    $('#main').css('display', '');
+    $('#info').css('display', 'none');
+    if (document.body.clientWidth >= 1024) {
+        inst.open()
+    }
+}
+
+function openc() {
+    inst.close()
+    setTimeout(() => {
+        $('#main').css('display', 'none');
+        $('#change').css('display', '');
+    }, 400)
+    setTimeout(function() {
+        $(".progress-bar").addClass("hidden")
+    }, 500)
+}
+
+function closec() {
+    $('#main').css('display', '');
+    $('#change').css('display', 'none');
+    if (document.body.clientWidth >= 1024) {
+        inst.open()
+    }
+}
+
+function openf() {
+    $('#forget').css('display', '');
+    $('#login').css('display', 'none');
+    $(".progress-bar").removeClass("hidden")
+    setTimeout(function() {
+        $(".progress-bar").addClass("hidden")
+    }, 500)
+}
+
+function closef() {
+    $('#forget').css('display', 'none');
+    $('#login').css('display', '');
+    $(".progress-bar").removeClass("hidden")
+    setTimeout(function() {
+        $(".progress-bar").addClass("hidden")
+    }, 500)
+}
+
 function changedraw() {
     inst.toggle();
 }
-
 
 function refresh(n) {
     setTimeout(() => {
@@ -339,18 +555,20 @@ function refresh(n) {
     }, 100)
 }
 
-function create() {
-    $(".formTitle").html("注册")
+function create(a = "1") {
+    if (a == "1")
+        $(".formTitle").html("注册")
     showProgress()
         /* Show Signup Form */
-    $("#formContainer").removeClass("goRight").addClass("goLeft")
+    $("#formContainer" + a).removeClass("goRight").addClass("goLeft")
 }
 
-function rcreate() {
-    $(".formTitle").html("登录")
+function rcreate(a = "1") {
+    if (a == "1")
+        $(".formTitle").html("登录")
     showProgress()
         /* Show Signup Form */
-    $("#formContainer").removeClass("goLeft").addClass("goRight")
+    $("#formContainer" + a).removeClass("goLeft").addClass("goRight")
 }
 
 function load() {

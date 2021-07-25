@@ -1,34 +1,10 @@
 var allPasswordInp = [];
 
-(function() {
-
-    $("input[type=password]").each(function(idx, ele) {
-        allPasswordInp.push(ele)
-    })
-
-    routie({
-        '': function() {
-            showProgress()
-
-            $(".formTitle").html("登录")
-                /* Show Login Form */
-            $("#formContainer").removeClass("goLeft").addClass("goRight")
-
-        },
-
-
-
-        'createAccountNow': function() {
-
-        }
-    });
-
-})()
 
 function showProgress() {
-    $("#progress-bar").removeClass("hidden")
+    $(".progress-bar").removeClass("hidden")
     setTimeout(function() {
-        $("#progress-bar").addClass("hidden")
+        $(".progress-bar").addClass("hidden")
     }, 500)
 }
 
