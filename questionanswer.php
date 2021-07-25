@@ -2,6 +2,7 @@
 
 if (isset($_SESSION['loged'])) {
     echo false;
+    exit;
 }
 include_once("connect.php");
 $uu = 'FL';

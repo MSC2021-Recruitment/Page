@@ -214,7 +214,7 @@ function forget() {
             method: 'POST',
             url: '1.php',
             data: {
-                state: 9,
+                stat: 9,
                 password: mdui.$('#forget_password').val()
             },
             success: function(data) {
@@ -249,7 +249,7 @@ function change() {
         method: 'POST',
         url: '1.php',
         data: {
-            state: 10,
+            stat: 10,
             old_password: mdui.$('#old_password').val(),
             new_password: mdui.$('#new_password').val()
         },
@@ -285,7 +285,7 @@ function sub() {
         method: 'POST',
         url: '1.php',
         data: {
-            state: 11,
+            stat: 11,
             major: mdui.$('#major').val(),
             will: mdui.$('#will').val(),
             self: mdui.$('#self').val()

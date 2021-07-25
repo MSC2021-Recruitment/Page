@@ -16,6 +16,7 @@ if(!$row) {
     $codetm1 = $_SESSION[$codetm];
     $codetm2 = date('U');
     if($codetm2 - $codetm1 > 600) {
+        unset($_SESSION[$codetm]);
         echo 5;
     }
     $uverify = $_SESSION['uveru'];
@@ -24,9 +25,9 @@ if(!$row) {
         exit;
     }
     if (mysqli_query($conn, $sql)) {
-        echo 1;
         unset($_SESSION[$q]);
         unset($_SESSION[$codetm]);
+        echo 1;
         //echo false;
     } else {
         echo 2;

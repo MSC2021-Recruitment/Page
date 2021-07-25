@@ -2,6 +2,7 @@
 
 if (isset($_SESSION['loged'])) {
     echo false;
+    exit;
 }
 
 $uu = 'FL';
