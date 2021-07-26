@@ -409,7 +409,6 @@ var setDocsTheme = function(theme) {
         });
         var color = document.body.currentStyle.backgroundColor;
         mdui.$('.sp').css('background-color', color)
-        console.log(color)
         if (color == "rgb(255, 255, 255)")
             mdui.$('.overflowHidden').css('background-color', '');
         else {
