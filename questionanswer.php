@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_SESSION['loged'])) {
+if (!isset($_SESSION['loged'])) {
     echo false;
     exit;
 }
