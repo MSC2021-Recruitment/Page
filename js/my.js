@@ -29,7 +29,7 @@ function login() {
             stat: 1
         },
         success: function(data) {
-            if (data) {
+            if (data == 1) {
                 var d = new Date();
                 d.setTime(d.getTime() + (7 * 24 * 60 * 60 * 1000));
                 var expires = "expires=" + d.toGMTString();
@@ -39,10 +39,10 @@ function login() {
                         message: "欢迎 " + cook(',username')
                     });
                 }, 100)
-                mdui.$('#user_name').val('')
-                mdui.$('#pass_word').val('')
                 closex()
                 load()
+                var a = new mdui.Dialog('#tips')
+                a.open()
             } else {
                 mdui.snackbar({
                     message: "用户名或密码错误"
@@ -94,6 +94,7 @@ function send(type) {
             }
         });
     } else if (type == "forget") {
+        $("#progress-bar").removeClass("hidden")
         mdui.$.ajax({
             method: 'POST',
             url: '1.php',
@@ -201,8 +202,13 @@ function check() {
             stat: 8
         },
         success: function(data) {
-            if (data)
+            if (data == 1)
                 create('2')
+            else {
+                mdui.snackbar({
+                    message: "请检查验证码"
+                });
+            }
         }
 
     });
@@ -557,18 +563,18 @@ function refresh(n) {
 
 function create(a = "1") {
     if (a == "1")
-        $(".formTitle").html("注册")
+        mdui.$("#tit").text("注册")
     showProgress()
         /* Show Signup Form */
-    $("#formContainer" + a).removeClass("goRight").addClass("goLeft")
+    mdui.$("#formContainer" + a).removeClass("goRight").addClass("goLeft")
 }
 
 function rcreate(a = "1") {
     if (a == "1")
-        $(".formTitle").html("登录")
+        mdui.$("#tit").text("登录")
     showProgress()
         /* Show Signup Form */
-    $("#formContainer" + a).removeClass("goLeft").addClass("goRight")
+    mdui.$("#formContainer" + a).removeClass("goLeft").addClass("goRight")
 }
 
 function load() {

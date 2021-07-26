@@ -71,6 +71,12 @@ $json = json_decode($json, true);
             src: url("fonts/SourceHanSansSC-Bold.ttf");
             font-weight: bold;
         }
+
+        .forms {
+            position: relative;
+            width: 50%;
+            float: left;
+        }
     </style>
 </head>
 
@@ -84,7 +90,7 @@ $json = json_decode($json, true);
                     </div>
                     <div class="clearfix mar-all pad-all"></div>
                     <img src="images/Googlelogo.png" class="logoImage" />
-                    <h5 class="center-align mar-top mar-bottom formTitle1">登录</h5>
+                    <h5 class="center-align mar-top mar-bottom formTitle1" id="tit">登录</h5>
                     <p class="center-align pad-no mar-no"></p>
                     <div class="clearfix mar-all pad-all"></div>
                     <div id="formContainer1" class="goRight">
@@ -112,26 +118,26 @@ $json = json_decode($json, true);
                         <form class="signUpForm">
                             <div class="input-fields-div autoMargin">
                                 <div class=" ">
-                                    <div class="mdui-textfield  mdui-textfield-floating-label" style="display:inline-block;width:49.5%">
+                                    <div class="mdui-textfield  mdui-textfield-floating-label" style="display:inline-block;width:48%">
                                         <label class="mdui-textfield-label">姓名</label>
                                         <input id="name" type="txt" class="mdui-textfield-input" required>
                                     </div>
-                                    <div class="mdui-textfield mdui-textfield-floating-label" style="display:inline-block;width:49.5%;right:0">
+                                    <div class="mdui-textfield mdui-textfield-floating-label" style="display:inline-block;width:48%;right:0">
                                         <label class="mdui-textfield-label">学号</label>
                                         <input id="school_number" type="txt" class="mdui-textfield-input" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')" required>
                                     </div>
                                 </div>
-                                <div class="mdui-textfield mdui-textfield-floating-label" style="width:99%">
+                                <div class="mdui-textfield mdui-textfield-floating-label" style="width:96%">
                                     <label class="mdui-textfield-label">邮箱</label>
                                     <input id="reg_user_name" type="txt" class="mdui-textfield-input" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')" required>
 
                                 </div>
                                 <div class="">
-                                    <div class="mdui-textfield mdui-textfield-floating-label" style="display:inline-block;width:49.5%">
+                                    <div class="mdui-textfield mdui-textfield-floating-label" style="display:inline-block;width:48%">
                                         <label class="mdui-textfield-label">密码</label>
                                         <input id="reg_pass_word" type="txt" class="mdui-textfield-input" required>
                                     </div>
-                                    <div class="mdui-textfield  mdui-textfield-floating-label" style="display:inline-block;width:49.5%;right:0">
+                                    <div class="mdui-textfield  mdui-textfield-floating-label" style="display:inline-block;width:48%;right:0">
                                         <label class="mdui-textfield-label">验证码</label>
                                         <input id="verify" type="txt" class="mdui-textfield-input" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')" required>
                                     </div>
@@ -168,7 +174,7 @@ $json = json_decode($json, true);
                     <p class="center-align pad-no mar-no"></p>
                     <div class="clearfix mar-all pad-all"></div>
                     <div id="formContainer2" class="goRight">
-                        <form class="loginForm">
+                        <form class="forms">
                             <div class="input-fields-div autoMargin">
                                 <div class="mdui-textfield mdui-textfield-floating-label">
                                     <label class="mdui-textfield-label">邮箱</label>
@@ -189,7 +195,7 @@ $json = json_decode($json, true);
                                 <div onclick="check();" class="mdui-btn mdui-btn-ripple">下一步</div>
                             </div>
                         </form>
-                        <form class="signUpForm">
+                        <form class="forms">
                             <div class="input-fields-div autoMargin">
                                 <div class="mdui-textfield mdui-textfield-floating-label">
                                     <label class="mdui-textfield-label">密码</label>
@@ -230,7 +236,7 @@ $json = json_decode($json, true);
                     <p class="center-align pad-no mar-no"></p>
                     <div class="clearfix mar-all pad-all"></div>
                     <div id="formContainer3" class="goRight">
-                        <form class="loginForm">
+                        <form class="forms">
                             <div class="input-fields-div autoMargin">
                                 <div class="mdui-textfield mdui-textfield-floating-label">
                                     <label class="mdui-textfield-label">旧密码</label>
@@ -272,20 +278,20 @@ $json = json_decode($json, true);
                     <p class="center-align pad-no mar-no"></p>
                     <div class="clearfix mar-all pad-all"></div>
                     <div id="formContainer4" class="goRight">
-                        <form class="loginForm">
+                        <form class="forms">
                             <div class="input-fields-div autoMargin">
                                 <div class=" ">
-                                    <div class="mdui-textfield  mdui-textfield-floating-label" style="display:inline-block;width:49.5%">
+                                    <div class="mdui-textfield  mdui-textfield-floating-label" style="display:inline-block;width:48%">
                                         <label class="mdui-textfield-label">你的专业</label>
                                         <input id="major" type="txt" class="mdui-textfield-input" required>
                                     </div>
-                                    <div class="mdui-textfield mdui-textfield-floating-label" style="display:inline-block;width:49.5%;right:0">
+                                    <div class="mdui-textfield mdui-textfield-floating-label" style="display:inline-block;width:48%;right:0">
                                         <label class="mdui-textfield-label">意向组</label>
                                         <input id="will" type="txt" class="mdui-textfield-input" required>
                                     </div>
                                 </div>
                                 <div class="mdui-textfield mdui-textfield-floating-label">
-                                    <textarea class="mdui-textfield-input" placeholder="个人介绍" id="self"></textarea>
+                                    <textarea class="mdui-textfield-input" placeholder="个人介绍" id="self" style="width:96%"></textarea>
                                 </div>
                                 <div style="display:inline-block;width:40%;" class="mdui-text-color-black">
                                 </div>
@@ -295,7 +301,7 @@ $json = json_decode($json, true);
                             </div>
                             <div class="input-fields-div autoMargin right-align">
                                 <div onclick="closei()" class="mdui-btn mdui-btn-ripple">返回</div>
-                                <div  class="mdui-btn mdui-btn-ripple" mdui-dialog="{target: '#sub'}">提交</div>
+                                <div class="mdui-btn mdui-btn-ripple" mdui-dialog="{target: '#sub'}">提交</div>
                             </div>
                         </form>
                         <div class="clearfix"></div>
@@ -308,8 +314,8 @@ $json = json_decode($json, true);
     <div class="mdui-dialog" id="sub">
         <div class="mdui-dialog-content">是否提交?提交后不可修改</div>
         <div class="mdui-dialog-actions">
-            <div class="mdui-btn mdui-ripple "mdui-dialog-close>返回</div>
-            <div class="mdui-btn mdui-ripple "mdui-dialog-confirm onclick="sub()">提交</div>
+            <div class="mdui-btn mdui-ripple " mdui-dialog-close>返回</div>
+            <div class="mdui-btn mdui-ripple " mdui-dialog-confirm onclick="sub()">提交</div>
         </div>
     </div>
     <main id="main">
@@ -793,7 +799,7 @@ $json = json_decode($json, true);
     </div>
     <div class='mdui-bottom-nav mdui-text-center' id='bot' style='z-index:-100;'>copyright</div>
     <script src="js/mdui.min.js"></script>
-    <script src="js/my.js?v=14"></script>
+    <script src="js/my.js?v=16"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/cash.min.js"></script>
     <script type="text/javascript" src="js/routie.min.js"></script>
