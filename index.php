@@ -80,7 +80,7 @@ $json = json_decode($json, true);
     </style>
 </head>
 
-<body class="mdui-container-fluid mdui-drawer-body-left mdui-theme-layout-auto mdui-bottom-nav-fixed mdui-color-theme " style="font-family:Roboto,source,微软雅黑;height:100% " id="body">
+<body class="mdui-container-fluid mdui-drawer-body-left mdui-theme-layout-auto mdui-bottom-nav-fixed mdui-color-theme " style="font-family:Roboto,source,微软雅黑;height:100% " id="body" onload="load()">
     <div class="row gmailStyle" id="login" style="display:none;height:100%">
         <div class="container-fluid" style="height:100%">
             <div class="valign-wrapper screenHeight">
@@ -143,7 +143,7 @@ $json = json_decode($json, true);
                                     </div>
                                 </div>
                                 <div>
-                                    <div style="display:inline-block;width:40%;" class="mdui-text-color-black">
+                                    <div style="display:inline-block;width:40%;" class="">
                                         我有账户&nbsp;<a href="javascript:;" onclick="rcreate()" class="backToLogin">现在登录</a></div>
                                     <div class="mdui-text-right" style="text-align:right;display:inline-block;right:10%;width:50%"> <a href="javascript:;" onclick="send('reg')">发送验证码</a></div>
                                 </div>
@@ -205,7 +205,7 @@ $json = json_decode($json, true);
                                     <label class="mdui-textfield-label">确认密码</label>
                                     <input id="re_forget_password" type="password" class="mdui-textfield-input" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')" required>
                                 </div>
-                                <div style="display:inline-block;width:40%;" class="mdui-text-color-black">
+                                <div style="display:inline-block;width:40%;" class="">
                                 </div>
                                 <div class="mdui-text-right mdui-invisible" style="text-align:right;display:inline-block;right:10%;width:50%"> <a href="javascript:;" onclick="send('forget')">获取验证码</a>
                                 </div>
@@ -416,7 +416,6 @@ $json = json_decode($json, true);
                     <div class="img">
                         <img src="images/rx.jpg" class="mdui-img-fluid">
                     </div>
-
                 </div>
             </div>
             <?php

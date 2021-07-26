@@ -4,7 +4,7 @@ var DEFAULT_PRIMARY = 'light-blue';
 var DEFAULT_ACCENT = 'deep-orange';
 var DEFAULT_LAYOUT = 'auto';
 editor = new Array()
-inst = new mdui.Drawer('#draw');
+
 mdui.$('#mainpage').css('font-weight', 'bold')
 
 function login() {
@@ -582,6 +582,7 @@ function rcreate(a = "1") {
 }
 
 function load() {
+    inst = new mdui.Drawer('#draw');
     mdui.$('#ans1').prop('onclick', 'refresh()')
     if (document.body.clientWidth >= 1024) {
         inst.open()
@@ -665,8 +666,6 @@ var setCookie = function(key, value) {
     date.setTime(date.getTime() + 365 * 24 * 3600 * 1000);
     document.cookie = key + '=' + value + '; expires=' + date.toGMTString() + '; path=/';
 };
-
-document.DOMContentLoaded = load()
 mdui.$(function() {
     /**
      * 设置文档主题
