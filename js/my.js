@@ -312,8 +312,7 @@ function sub() {
     });
 
 }
-
-function i() {
+i = function() {
     for (let [m, index] of editor.entries()) {
         mdui.$.ajax({
             method: 'POST',
@@ -616,10 +615,10 @@ function load() {
                 mdui.$('.word').empty()
                 mdui.$('.mdui-divider').css('display', '')
                 mdui.$('.ans').css('display', '')
-                for (var i = 1;; i++) {
-                    if (document.getElementById("code" + i)) {
+                for (var m = 1;; m++) {
+                    if (document.getElementById("code" + m)) {
                         if (typeof(editor[i - 1]) == "undefined") {
-                            editor.push(CodeMirror.fromTextArea(document.getElementById("code" + i), {
+                            editor.push(CodeMirror.fromTextArea(document.getElementById("code" + m), {
                                 lineNumbers: true,
                                 lineWrapping: true,
                                 matchBrackets: true,
@@ -629,14 +628,16 @@ function load() {
                                 gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
                                 autoCloseBrackets: true
                             }));
-                            editor[i - 1].setOption("mode", "text/x-c++src")
+                            editor[m - 1].setOption("mode", "text/x-c++src")
 
                         }
 
                     } else {
                         break;
                     }
+                    i()
                 }
+
             } else {
                 mdui.$('#intro').empty()
                 mdui.$('#intro').append("欢迎来到MSC")
@@ -651,9 +652,7 @@ function load() {
 
         }
     });
-    setTimeout(() => {
-        i()
-    }, 500)
+
 }
 var setCookie = function(key, value) {
     // cookie 有效期为 1 年

@@ -1,10 +1,9 @@
 <?php
 
-if (isset($_SESSION['loged'])) {
+if (!isset($_SESSION['loged'])) {
     echo false;
     exit;
 }
-
 $uu = 'FL';
 $unum = $uu . $_POST['num'];
 //$unum = $uu . "114514";
@@ -17,6 +16,7 @@ $row = mysqli_fetch_array($result);
 
 $ans = $row[$unum];
 $mode = $row[$umod];
+
 if ($ans == NULL)
     $ans = "";
 if ($mode == NULL)
