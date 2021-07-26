@@ -81,10 +81,10 @@ $json = json_decode($json, true);
 </head>
 
 <body class="mdui-container-fluid mdui-drawer-body-left mdui-theme-layout-auto mdui-bottom-nav-fixed mdui-color-theme " style="font-family:Roboto,source,微软雅黑;height:100% " id="body">
-    <div class="row gmailStyle " id="login" style="display:none;height:100%">
+    <div class="row gmailStyle" id="login" style="display:none;height:100%">
         <div class="container-fluid" style="height:100%">
             <div class="valign-wrapper screenHeight">
-                <div class="col card s12 m8 l6 xl4 autoMargin setMaxWidth overflowHidden ">
+                <div class="col card s12 m8 l6 xl4 autoMargin setMaxWidth overflowHidden" >
                     <div class="mdui-progress progress-bar" id="">
                         <div class="mdui-progress-indeterminate"></div>
                     </div>
@@ -104,7 +104,7 @@ $json = json_decode($json, true);
                                     <label class="mdui-textfield-label">密码</label>
                                     <input id="pass_word" type="password" class="mdui-textfield-input" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')" required>
                                 </div>
-                                <div style="display:inline-block;width:40%;" class="mdui-text-color-black">
+                                <div style="display:inline-block;width:40%;" class="">
                                     没有账户？&nbsp;<a href="javascript:;" onclick="create()" class="backToLogin">创建账户</a></div>
                                 <div class="mdui-text-right" style="text-align:right;display:inline-block;right:10%;width:50%"> <a href="javascript:;" onclick="openf()">忘记密码</a>
                                 </div>
@@ -184,7 +184,7 @@ $json = json_decode($json, true);
                                     <label class="mdui-textfield-label">验证码</label>
                                     <input id="forget_verify" type="txt" class="mdui-textfield-input" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')" required>
                                 </div>
-                                <div style="display:inline-block;width:40%;" class="mdui-text-color-black">
+                                <div style="display:inline-block;width:40%;" class="">
                                 </div>
                                 <div class="mdui-text-right" style="text-align:right;display:inline-block;right:10%;width:50%"> <a href="javascript:;" onclick="send('forget')">获取验证码</a>
                                 </div>
@@ -246,7 +246,7 @@ $json = json_decode($json, true);
                                     <label class="mdui-textfield-label">新密码</label>
                                     <input id="new_password" type="password" class="mdui-textfield-input" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')" required>
                                 </div>
-                                <div style="display:inline-block;width:40%;" class="mdui-text-color-black">
+                                <div style="display:inline-block;width:40%;" class="">
                                 </div>
                                 <div class="mdui-invisible" style="text-align:right;display:inline-block;right:10%;width:50%">
                                 </div>
@@ -293,7 +293,7 @@ $json = json_decode($json, true);
                                 <div class="mdui-textfield mdui-textfield-floating-label">
                                     <textarea class="mdui-textfield-input" placeholder="个人介绍" id="self" style="width:96%"></textarea>
                                 </div>
-                                <div style="display:inline-block;width:40%;" class="mdui-text-color-black">
+                                <div style="display:inline-block;width:40%;" class="">
                                 </div>
                                 <div class="mdui-invisible" style="text-align:right;display:inline-block;right:10%;width:50%">
                                 </div>

@@ -404,12 +404,18 @@ var setDocsTheme = function(theme) {
         $body.addClass('mdui-theme-layout-' + theme.layout);
         setCookie('docs-theme-layout', theme.layout);
         mdui.$('input[name="doc-theme-layout"][value="' + theme.layout + '"]').prop('checked', true);
+        HTMLElement.prototype.__defineGetter__("currentStyle", function() {
+            return this.ownerDocument.defaultView.getComputedStyle(this, null);
+        });
+        var color = document.body.currentStyle.backgroundColor;
+        mdui.$('.sp').css('background-color', color)
+        console.log(color)
+        if (color == "rgb(255, 255, 255)")
+            mdui.$('.overflowHidden').css('background-color', '');
+        else {
+            mdui.$('.overflowHidden').css('background-color', '#212121');
+        }
     }
-    HTMLElement.prototype.__defineGetter__("currentStyle", function() {
-        return this.ownerDocument.defaultView.getComputedStyle(this, null);
-    });
-    var color = document.body.currentStyle.backgroundColor;
-    mdui.$('.sp').css('background-color', color)
 };
 
 function logout() {
