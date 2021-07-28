@@ -17,7 +17,7 @@ if (!$row) {
             $_SESSION['uid'] =  $row['id'];
             $_SESSION['name']=$row['uname'];
             $_SESSION['team']=$row['uteam'];
-            echo $row['uteam'];
+            echo 1;
         } else {
             echo 2;
         }
