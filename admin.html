@@ -118,7 +118,7 @@
                 method: 'POST',
                 success: function(data) {
                     if (data == 1) {
-                        open("secret.html")
+                        window.location.href = "secret.html"
                         i = 1
                     }
                 }
@@ -139,21 +139,13 @@
                             message: "登录成功"
                         });
                         setTimeout(function() {
-                            open("secret.html");
+                            window.location.href = "secret.html"
                             i = 1
                         }, 1000)
-
                     }
                 }
             })
-        }
-        setInterval(function() {
-            if (i == 1) {
-                window.opener = null;
-                window.open('', '_self');
-                window.close();
-            }
 
-        }, 10)
+        }
     </script>
 </body>

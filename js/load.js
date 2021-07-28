@@ -1,6 +1,5 @@
-var $ = mdui.$
 $(function() {
-    $.ajax({
+    mdui.$.ajax({
         url: 'test.json',
         method: 'POST',
         success: function(data) {
@@ -57,8 +56,10 @@ function details(email) {
         },
         success: function(data) {
             $('#deten').empty();
-            $('#p3').css('display', 'inherit')
-            $('#p1').css('display', 'none')
+            $('#p1').fadeOut(300)
+            setTimeout(function() {
+                $('#p3').fadeIn(300)
+            }, 500)
 
 
         }
@@ -71,10 +72,7 @@ function logout() {
         method: 'POST',
         data: {},
         success: function(data) {
-            open("admin.html")
-            window.opener = null;
-            window.open('', '_self');
-            window.close();
+            window.location.href = "secret.html"
         }
     })
 }
