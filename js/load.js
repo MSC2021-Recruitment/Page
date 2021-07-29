@@ -1,8 +1,11 @@
 $(function() {
     mdui.$.ajax({
-        url: 'test.json',
+        url: 'mes1.php',
         method: 'POST',
         success: function(data) {
+            if (data == 0) {
+                window.location.href = "admin.html"
+            }
             data = JSON.parse(data, true)
             for (var i of data) {
                 r = Math.floor(Math.random() * 255)
@@ -95,7 +98,7 @@ function logout() {
         method: 'POST',
         data: {},
         success: function(data) {
-            window.location.href = "secret.html"
+            window.location.href = "admin.html"
         }
     })
 }

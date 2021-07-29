@@ -440,7 +440,7 @@ function logout() {
     }, 500)
 }
 
-function save(dest) {
+function save(dest, group) {
     mdui.$.ajax({
 
         method: 'POST',
@@ -449,7 +449,8 @@ function save(dest) {
             stat: 4,
             text: editor[dest - 1].getValue(),
             num: dest - 1,
-            mode: editor[dest - 1].getOption('mode')
+            mode: editor[dest - 1].getOption('mode'),
+            group: group
         },
         success: function(x) {
             if (x)

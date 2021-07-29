@@ -1,6 +1,6 @@
 <?php
-
-if($_SESSION['aloged'] != 1) {
+session_start();
+if(!isset($_SESSION['aloged'])) {
     echo 0;
     exit;
 }
@@ -24,7 +24,10 @@ while ( $row= mysqli_fetch_array($result, MYSQLI_ASSOC) ) {
     $user->name = $row["uxm"];
     $user->number = $row["schoolid"];
     $user->email = $row["uname"];
+    if(array_key_exists('ugroup',$row))
     $user->will = $row["ugroup"];
+    else
+    $user->will ="暂无";
     $data[]=$user;
 }
 

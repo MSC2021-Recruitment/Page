@@ -142,7 +142,10 @@
                             window.location.href = "secret.html"
                             i = 1
                         }, 1000)
-                    }
+                    } else
+                        mdui.snackbar({
+                            message: "错误"
+                        });
                 }
             })
 
