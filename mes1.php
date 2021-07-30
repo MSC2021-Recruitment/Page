@@ -33,5 +33,3 @@ while ( $row= mysqli_fetch_array($result, MYSQLI_ASSOC) ) {
 
 $json = json_encode($data);//把数据转换为JSON数据.
 echo $json;
-
-?>

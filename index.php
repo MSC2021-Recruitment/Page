@@ -84,7 +84,7 @@ $json = json_decode($json, true);
     <div class="row gmailStyle" id="login" style="display:none;height:100%">
         <div class="container-fluid" style="height:100%">
             <div class="valign-wrapper screenHeight">
-                <div class="col card s12 m8 l6 xl4 autoMargin setMaxWidth overflowHidden" >
+                <div class="col card s12 m8 l6 xl4 autoMargin setMaxWidth overflowHidden">
                     <div class="mdui-progress progress-bar" id="">
                         <div class="mdui-progress-indeterminate"></div>
                     </div>
@@ -108,7 +108,9 @@ $json = json_decode($json, true);
                                     没有账户？&nbsp;<a href="javascript:;" onclick="create()" class="backToLogin">创建账户</a></div>
                                 <div class="mdui-text-right" style="text-align:right;display:inline-block;right:10%;width:50%"> <a href="javascript:;" onclick="openf()">忘记密码</a>
                                 </div>
-                                <p class="mdui-invisible">x</p></a></p>
+                                <p class="mdui-invisible">x</p>
+                                </a>
+                                </p>
                             </div>
                             <div class="input-fields-div autoMargin right-align">
                                 <div onclick="closex();" class="mdui-btn mdui-btn-ripple">返回</div>
@@ -188,7 +190,9 @@ $json = json_decode($json, true);
                                 </div>
                                 <div class="mdui-text-right" style="text-align:right;display:inline-block;right:10%;width:50%"> <a href="javascript:;" onclick="send('forget')">获取验证码</a>
                                 </div>
-                                <p class="mdui-invisible">x</p></a></p>
+                                <p class="mdui-invisible">x</p>
+                                </a>
+                                </p>
                             </div>
                             <div class="input-fields-div autoMargin right-align">
                                 <div onclick="closef();" class="mdui-btn mdui-btn-ripple">返回</div>
@@ -209,7 +213,9 @@ $json = json_decode($json, true);
                                 </div>
                                 <div class="mdui-text-right mdui-invisible" style="text-align:right;display:inline-block;right:10%;width:50%"> <a href="javascript:;" onclick="send('forget')">获取验证码</a>
                                 </div>
-                                <p class="mdui-invisible">x</p></a></p>
+                                <p class="mdui-invisible">x</p>
+                                </a>
+                                </p>
                             </div>
                             <div class="input-fields-div autoMargin right-align">
                                 <div onclick="rcreate('2');" class="mdui-btn mdui-btn-ripple">返回</div>
@@ -250,7 +256,9 @@ $json = json_decode($json, true);
                                 </div>
                                 <div class="mdui-invisible" style="text-align:right;display:inline-block;right:10%;width:50%">
                                 </div>
-                                <p class="mdui-invisible">x</p></a></p>
+                                <p class="mdui-invisible">x</p>
+                                </a>
+                                </p>
                             </div>
                             <div class="input-fields-div autoMargin right-align">
                                 <div onclick="closec()" class="mdui-btn mdui-btn-ripple">返回</div>
@@ -297,7 +305,9 @@ $json = json_decode($json, true);
                                 </div>
                                 <div class="mdui-invisible" style="text-align:right;display:inline-block;right:10%;width:50%">
                                 </div>
-                                <p class="mdui-invisible">x</p></a></p>
+                                <p class="mdui-invisible">x</p>
+                                </a>
+                                </p>
                             </div>
                             <div class="input-fields-div autoMargin right-align">
                                 <div onclick="closei()" class="mdui-btn mdui-btn-ripple">返回</div>
@@ -397,19 +407,27 @@ $json = json_decode($json, true);
                     </div>
                     <div class="" style="height: auto !important;">
                         <div class="mdui-typo" style="height: auto !important;">
-                            <h2 class=" mdui-text-color-theme">二级标题 <a class="doc-anchor" id="quick-start"></a></h2>
+                            <h2 class=" mdui-text-color-theme">二级标题
+                                <a class="doc-anchor" id="quick-start"></a>
+                            </h2>
                             <p>内容</p>
                         </div>
                         <div class="mdui-typo">
-                            <h4 class="" style="font-weight:bold">三级标题 <a class="doc-anchor" id="css"></a></h4>
+                            <h4 class="" style="font-weight:bold">三级标题
+                                <a class="doc-anchor" id="css"></a>
+                            </h4>
                             <p>内容</p>
                         </div>
                         <div class="mdui-typo">
-                            <h4 class="" style="font-weight:bold">三级标题 <a class="doc-anchor" id="js"></a></h4>
+                            <h4 class="" style="font-weight:bold">三级标题
+                                <a class="doc-anchor" id="js"></a>
+                            </h4>
                             <p>内容</p>
                         </div>
                         <div class="mdui-typo" style="height: auto !important;">
-                            <h2 class=" mdui-text-color-theme">二级标题 <a class="doc-anchor" id="template"></a></h2>
+                            <h2 class=" mdui-text-color-theme">二级标题
+                                <a class="doc-anchor" id="template"></a>
+                            </h2>
                             <p>以上就是一个完整的页面所需要的全部内容。你可以自行在其中添加更多组件和内容，来构建一个网站。</p>
                         </div>
                     </div>
@@ -458,7 +476,7 @@ $json = json_decode($json, true);
                                                     <textarea class="form-control" id="code' . $n . '" name="code"></textarea>
                                                     <div class="mdui-panel-item-actions">
                                                         <div class="mdui-btn mdui-ripple" mdui-panel-item-close>cancel</div>
-                                                        <div class="mdui-btn mdui-ripple" onclick="save(' . $n . ','.$group['name'].')">save</div>
+                                                        <div class="mdui-btn mdui-ripple" onclick="save(' . $n . ',' . $group['name'] . ')">save</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -505,6 +523,20 @@ $json = json_decode($json, true);
             echo "<div style='height:60px' class='mdui-invisible'></div> ";
             ?>
 
+        </div>
+        <div class="mdui-fab mdui-fab-fixed mdui-ripple mdui-theme mdui mdui-color-theme" id="me" mdui-dialog="{target: '#mes',modal:'false'}"><i class="mdui-icon material-icons">message</i></div>
+        <div class="mdui-dialog  mdui-shadow-15" id="mes" style="min-height:70%;min-width:50%">
+            <div class="mdui-dialog-title">聊天</div>
+            <div class="mdui-divider mdui-center"></div>
+            <div class="mdui-dialog-content">
+                <div class=" mdui-shadow-5 mdui-center" style="height:80%;width:80%" id="chat"></div>
+                <div class="mdui-container-fluid mdui-valign" style="width:82%">
+                <div class="mdui-textfield mdui-center mdui-col-xs-11 mdui-col-md-11" ><textarea class="mdui-textfield-input" placeholder="Message"></textarea></div><div class="mdui-btn mdui-btn-icon mdui-ripple mdui-text-center"><i class="mdui-icon material-icons mdui-col-xs-1 mdui-col-md-1">send</i></div>
+                </div>
+            </div>
+            <div class="mdui-dialog-actions">
+                <button class="mdui-btn mdui-ripple" mdui-dialog-close>cancel</button>
+            </div>
         </div>
     </main>
     <div class="mdui-dialog" id="dialog-docs-theme" style="top: 175.5px; display: none; height: 970px;">
@@ -798,11 +830,13 @@ $json = json_decode($json, true);
     </div>
     <div class='mdui-bottom-nav mdui-text-center' id='bot' style='z-index:-100;'>copyright</div>
     <script src="js/mdui.min.js"></script>
-    <script src="js/my.js?v=18"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/cash.min.js"></script>
     <script type="text/javascript" src="js/routie.min.js"></script>
     <script type="text/javascript" src="js/loginScript.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="js/my.js?v=18"></script>
+
 </body>
 
 </html>

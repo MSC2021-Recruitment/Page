@@ -1,4 +1,4 @@
-var $document = mdui.$(document);
+var $document = $(document);
 var log1 = new mdui.Dialog('#login');
 var DEFAULT_PRIMARY = 'light-blue';
 var DEFAULT_ACCENT = 'deep-orange';
@@ -6,6 +6,31 @@ var DEFAULT_LAYOUT = 'auto';
 editor = new Array()
 
 mdui.$('#mainpage').css('font-weight', 'bold')
+setInterval(function() {
+    mdui.$.ajax({
+        url: "talk.php",
+        method: "POST",
+        data: {
+            stat: 1
+        },
+        success: function(a) {
+            if (a) {
+                clearInterval(wap)
+                wap = setInterval(function() {
+                    if ($('#me').hasClass('mdui-fab-hide'))
+                        $('#me').removeClass('mdui-fab-hide')
+                    else
+                        $('#me').addClass('mdui-fab-hide')
+                }, 600)
+            }
+        }
+    })
+}, 600000)
+$('#me').on('mouseover', function() {
+    console.log(1)
+    clearInterval(wap)
+    $('#me').removeClass('mdui-fab-hide')
+})
 
 function login() {
     if (mdui.$('#user_name').val() == "" || mdui.$('#pass_word').val() == "") {
@@ -622,6 +647,27 @@ function load() {
                 mdui.$('.word').empty()
                 mdui.$('.mdui-divider').css('display', '')
                 mdui.$('.ans').css('display', '')
+                mdui.$.ajax({
+                    url: "talk.php",
+                    method: "POST",
+                    data: {
+                        stat: 1
+                    },
+                    success: function(a) {
+                        if (a) {
+                            wap = setInterval(function() {
+                                if ($('#me').hasClass('mdui-fab-hide'))
+                                    $('#me').removeClass('mdui-fab-hide')
+                                else
+                                    $('#me').addClass('mdui-fab-hide')
+                            }, 600)
+                            mdui.snackbar({
+                                message: "新消息"
+                            });
+
+                        }
+                    }
+                })
                 for (var m = 1;; m++) {
                     if (document.getElementById("code" + m)) {
                         if (typeof(editor[i - 1]) == "undefined") {
