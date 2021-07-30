@@ -524,7 +524,7 @@ $json = json_decode($json, true);
             ?>
 
         </div>
-        <div class="mdui-fab mdui-fab-fixed mdui-ripple mdui-theme mdui mdui-color-theme" id="me" mdui-dialog="{target: '#mes',modal:'false'}"><i class="mdui-icon material-icons">message</i></div>
+        <div class="mdui-fab mdui-fab-fixed mdui-ripple mdui-theme mdui mdui-color-theme mdui-fab-hide" id="me" mdui-dialog="{target: '#mes',modal:'false'}"><i class="mdui-icon material-icons">message</i></div>
         <div class="mdui-dialog  mdui-shadow-15" id="mes" style="min-height:70%;min-width:50%">
             <div class="mdui-dialog-title">聊天</div>
             <div class="mdui-divider mdui-center"></div>

@@ -6,26 +6,6 @@ var DEFAULT_LAYOUT = 'auto';
 editor = new Array()
 
 mdui.$('#mainpage').css('font-weight', 'bold')
-setInterval(function() {
-    mdui.$.ajax({
-        url: "talk.php",
-        method: "POST",
-        data: {
-            stat: 1
-        },
-        success: function(a) {
-            if (a) {
-                clearInterval(wap)
-                wap = setInterval(function() {
-                    if ($('#me').hasClass('mdui-fab-hide'))
-                        $('#me').removeClass('mdui-fab-hide')
-                    else
-                        $('#me').addClass('mdui-fab-hide')
-                }, 600)
-            }
-        }
-    })
-}, 600000)
 $('#me').on('mouseover', function() {
     console.log(1)
     clearInterval(wap)
@@ -647,6 +627,26 @@ function load() {
                 mdui.$('.word').empty()
                 mdui.$('.mdui-divider').css('display', '')
                 mdui.$('.ans').css('display', '')
+                setInterval(function() {
+                    mdui.$.ajax({
+                        url: "talk.php",
+                        method: "POST",
+                        data: {
+                            stat: 1
+                        },
+                        success: function(a) {
+                            if (a) {
+                                clearInterval(wap)
+                                wap = setInterval(function() {
+                                    if ($('#me').hasClass('mdui-fab-hide'))
+                                        $('#me').removeClass('mdui-fab-hide')
+                                    else
+                                        $('#me').addClass('mdui-fab-hide')
+                                }, 600)
+                            }
+                        }
+                    })
+                }, 600000)
                 mdui.$.ajax({
                     url: "talk.php",
                     method: "POST",
