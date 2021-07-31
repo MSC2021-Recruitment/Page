@@ -24,7 +24,7 @@ $ques->ans = $uans;
 $ques->mode = $umod;
 
 $json = json_encode($ques);
-
+$json=addslashes($json);
 //echo $unum, $uans, $umod;
 
 $sql1 = "ALTER TABLE msc ADD $unum JSON";

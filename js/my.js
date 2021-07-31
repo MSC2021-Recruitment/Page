@@ -458,6 +458,7 @@ function save(dest, group) {
             group: group
         },
         success: function(x) {
+            console.log(x)
             if (x)
                 mdui.snackbar({
                     message: "已保存"
