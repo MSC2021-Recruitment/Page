@@ -33,12 +33,12 @@ $json = json_decode($json, true);
     <title>Hello, world!</title>
     <style>
         .tab {
-            margin-top: 80px;
+            padding-top: 96px!important;
             z-index: 0;
             margin-left: 0%;
             display: none;
         }
-
+        
         #bot {
             justify-content: center;
         }
@@ -47,6 +47,7 @@ $json = json_decode($json, true);
             .mdui-drawer {
                 top: 64px;
             }
+
 
             .img {
                 height: 25%;
@@ -58,6 +59,9 @@ $json = json_decode($json, true);
             .img {
                 height: 50%;
                 width: 50%
+            }
+            body{
+                padding-left:  0 !important;
             }
         }
 
@@ -80,7 +84,7 @@ $json = json_decode($json, true);
     </style>
 </head>
 
-<body class="mdui-container-fluid mdui-drawer-body-left mdui-theme-layout-auto mdui-bottom-nav-fixed mdui-color-theme " style="font-family:Roboto,source,微软雅黑;height:100% " id="body" onload="load()">
+<body class="mdui-container-fluid mdui-drawer-body-left mdui-theme-layout-auto mdui-color-theme " style="font-family:Roboto,source,微软雅黑;height:100%;padding-right:0;padding-left:240px  " id="body" onload="load()">
     <div class="row gmailStyle" id="login" style="display:none;height:100%">
         <div class="container-fluid" style="height:100%">
             <div class="valign-wrapper screenHeight">
@@ -328,10 +332,10 @@ $json = json_decode($json, true);
             <div class="mdui-btn mdui-ripple " mdui-dialog-confirm onclick="sub()">提交</div>
         </div>
     </div>
-    <main id="main">
+    <main id="main" style="height:100%">
         <header class=" mdui-appbar mdui-appbar-fixed ">
             <div class="mdui-toolbar full mdui-toolbar-spacer mdui-color-theme">
-                <a href="javascript:;" class="mdui-btn mdui-btn-icon" onclick="changedraw()"><i class="mdui-icon material-icons">menu</i></a>
+                <a href="javascript:;" class="mdui-btn mdui-btn-icon" onclick="changedraw();"><i class="mdui-icon material-icons">menu</i></a>
                 <span class="mdui-typo-title" id="intro"></span>
                 <div class="mdui-toolbar-spacer"></div>
                 <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-dialog="{target: '#dialog-docs-theme'}" mdui-tooltip="{content: '设置主题'}"><i class="mdui-icon material-icons">color_lens</i></span>
@@ -398,43 +402,10 @@ $json = json_decode($json, true);
 
             </div>
         </div>
-        <div id="pages">
-            <div id='example1-tab0' class='mdui-p-a-2 tab' style="display:inherit">
-                <div class="mdui-container sp" style="height: auto !important;">
-                    <h1 class="mdui-text-color-theme">标题</h1>
-                    <div class="mdui-typo" style="height: auto !important;">
-                        <p>总介绍</p>
-                    </div>
-                    <div class="" style="height: auto !important;">
-                        <div class="mdui-typo" style="height: auto !important;">
-                            <h2 class=" mdui-text-color-theme">二级标题
-                                <a class="doc-anchor" id="quick-start"></a>
-                            </h2>
-                            <p>内容</p>
-                        </div>
-                        <div class="mdui-typo">
-                            <h4 class="" style="font-weight:bold">三级标题
-                                <a class="doc-anchor" id="css"></a>
-                            </h4>
-                            <p>内容</p>
-                        </div>
-                        <div class="mdui-typo">
-                            <h4 class="" style="font-weight:bold">三级标题
-                                <a class="doc-anchor" id="js"></a>
-                            </h4>
-                            <p>内容</p>
-                        </div>
-                        <div class="mdui-typo" style="height: auto !important;">
-                            <h2 class=" mdui-text-color-theme">二级标题
-                                <a class="doc-anchor" id="template"></a>
-                            </h2>
-                            <p>以上就是一个完整的页面所需要的全部内容。你可以自行在其中添加更多组件和内容，来构建一个网站。</p>
-                        </div>
-                    </div>
-                    <div class="img">
-                        <img src="images/rx.jpg" class="mdui-img-fluid">
-                    </div>
-                </div>
+        <div id="pages" style="height:100%">
+        <div id='example1-tab0' class='mdui-p-a-2 tab' style="display:inherit;height:100%;padding: 0 !important;padding: top 96px !important;height:100%">
+                <iframe style="height:100%;width:100%;padding:0;border-width: 0px;" src="index.html">
+                </iframe>
             </div>
             <?php
             $json = file_get_contents("1.json");
@@ -520,7 +491,6 @@ $json = json_decode($json, true);
                     $count++;
                 }
             }
-            echo "<div style='height:60px' class='mdui-invisible'></div> ";
             ?>
 
         </div>
@@ -828,7 +798,6 @@ $json = json_decode($json, true);
             <div class="mdui-btn mdui-ripple" mdui-dialog-confirm="">ok</div>
         </div>
     </div>
-    <div class='mdui-bottom-nav mdui-text-center' id='bot' style='z-index:-100;'>copyright</div>
     <script src="js/mdui.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/cash.min.js"></script>

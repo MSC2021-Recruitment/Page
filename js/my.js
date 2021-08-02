@@ -476,6 +476,25 @@ function a(x, y) {
     mdui.$(document.getElementById(x)).css('display', 'inherit')
     mdui.$(y).css('font-weight', 'bold')
     mdui.$(y).children().children().css('font-weight', 'bold')
+    if (x != 'example1-tab0') {
+        $('.re').removeClass('mdui-invisible')
+        $('.re').addClass('mdui-hidden')
+    } else {
+        $('.re').removeClass('mdui-hidden')
+        $('.re').addClass('mdui-invisible')
+
+
+    }
+}
+$('body').css('padding-bottom', "0")
+
+function log() {
+    if ($('body').css('padding-left') == '8px') {
+        $('body').css('padding-left', '0px')
+    } else {
+        $('body').css('padding-left', '240px')
+    }
+
 }
 
 function changelang(lan, n) {
@@ -564,6 +583,12 @@ function closef() {
 
 function changedraw() {
     inst.toggle();
+    if (inst.getState() == 'opening') {
+        $('body').css('padding-left', '240px')
+    }
+    if (inst.getState() == 'closing') {
+        $('body').css('padding-left', '0px')
+    }
 }
 
 function refresh(n) {
