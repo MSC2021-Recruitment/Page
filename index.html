@@ -9,7 +9,9 @@
     <link rel="icon" href="./icons/13.png" type="image/x-icon">
     <link rel="bookmark" href="./icons/13.png" type="image/x-icon">
     <link href="https://cdn.bootcss.com/fullPage.js/3.0.4/fullpage.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/fullPage.js/3.0.4/vendors/scrolloverflow.min.js"></script>
     <script src="https://cdn.bootcss.com/fullPage.js/3.0.4/fullpage.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/fullPage.js/3.0.4/fullpage.extensions.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <script>
         (function($) {
@@ -202,55 +204,35 @@
 
 <body>
     <div id="fullpage" align="center">
-        <div class="section " id="hello">
-            <h1> 江苏省南通中学望岳奖学金</h1>
+        <div class="section " id="hello" style="background-image: url('images/1.jpg');background-size: cover;
+        background-position: center center;">
+
+            <h1> 西安电子科技大学·MSC</h1>
             <h2> </h2>
         </div>
-        <div class="section" id="intro1">
+        <div class="section" id="intro1" style="background-image: url('images/2.jpg');background-size: cover;
+        background-position: center 80%;">
+
             <h1>
-                奖学金介绍
+                技术部
             </h1>
-            <div id="text">
-                望岳奖学金旨在激励通中学子们在科技创新上不断进取，不断发现，不断创造，自2016年第一届奖学金举办来，给了有才能的学生一个展现自己的舞台，更给学生以激励，让更多的学生了解和投入到科技创新的实践中。每一个项目的确定到开发再到实践，都以学生为主导，过程不仅提高了学生独立开发，自主实践的能力，同时也促进学生创新意识的提升。望岳奖学金的设立，让通中校园内科技创新的氛围日渐浓厚，学生们的创新热情日益增长。
-            </div>
+
         </div>
         <div class="section" id="intro2-1">
-
-            <div style="font-size:35px">
-
-            </div>
-            <div class>
-                <h1>获奖展示</h1>
-            </div>
-            <div class="grid">
-                <div class="one">2016 <br/>仰望星空奖 <br/> 张嘉麒</div>
-                <div class="two">2016 <br/>安全卫士奖 <br/> 黄曹阳</div>
-                <div class="three">2016 <br/>凌绝望岳奖 <br/> 周鹤洋</div>
-                <div class="four">2016 <br/>坚韧登岳奖 <br/> 蒋政廷</div>
-                <div class="five">2017 <br/>坚韧登岳奖 <br/> 于吴桐 <br/>周子皓</div>
-            </div>
-
-
+            <h1>活动部</h1>
         </div>
         <div class="section" id="end">
-            <h1>关于我们</h1>
-            <h2>
-                这是一个由NTZX DEVELOPERS制作的网站
-                <br/> 我们是通中一群热爱科技的学生
-            </h2>
 
-            <div class="footer">
-                <a class="button" href="https://ntzx.github.io/Geek-/Geek_0.html">极客社</a>
-                <a class="button" href="http://www.ntzx.cn">南通中学</a>
-                <a class="button" href="https://ntzx.github.io/cloud/Cloud_1.html">云平台</a>
-            </div>
+            <h1>媒体部</h1>
 
-
+        </div>
+        <div class="section" style="background-color: #55bb8a;">
+            <h1>欢迎加入</h1>
         </div>
     </div>
     <script type="text/javascript">
         new fullpage('#fullpage', {
-            anchors: ['page1', 'page2', 'page3', 'page4'],
+            anchors: ['page1', 'page2', 'page3', 'page4', 'page5'],
             css3: true,
             menu: '#menu',
             scrollingSpeed: 1000,
@@ -258,7 +240,13 @@
             slidesNavigation: true,
             responsiveHeight: 330,
             controlArrows: false,
-            scrollOverflow: true
+            scrollOverflow: true,
+            parallax: true,
+            parallaxOptions: {
+                type: 'reveal',
+                percentage: 62,
+                property: 'translate'
+            }
 
         });
     </script>

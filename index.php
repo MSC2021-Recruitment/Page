@@ -53,9 +53,10 @@ $json = json_decode($json, true);
                 height: 25%;
                 width: 25%
             }
+            
         }
-
-        @media (max-width: 1024px) {
+        
+        @media (max-width: 1023.9px) {
             .img {
                 height: 50%;
                 width: 50%
@@ -84,7 +85,7 @@ $json = json_decode($json, true);
     </style>
 </head>
 
-<body class="mdui-container-fluid mdui-drawer-body-left mdui-theme-layout-auto mdui-color-theme " style="font-family:Roboto,source,微软雅黑;height:100%;padding-right:0;padding-left:240px  " id="body" onload="load()">
+<body class="mdui-container-fluid mdui-drawer-body-left mdui-theme-layout-auto mdui-color-theme " style="font-family:Roboto,source,微软雅黑;height:100%;padding-right:0;padding-left:0px  " id="body" onload="load()">
     <div class="row gmailStyle" id="login" style="display:none;height:100%">
         <div class="container-fluid" style="height:100%">
             <div class="valign-wrapper screenHeight">

@@ -616,9 +616,6 @@ function rcreate(a = "1") {
 function load() {
     inst = new mdui.Drawer('#draw');
     mdui.$('#ans1').prop('onclick', 'refresh()')
-    if (document.body.clientWidth >= 1024) {
-        inst.open()
-    }
     if (cook("docs-theme-primary") == undefined) {
         setCookie('docs-theme-primary', DEFAULT_PRIMARY);
     }
