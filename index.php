@@ -243,7 +243,7 @@ $json = json_decode($json, true);
                     </div>
                     <div class="clearfix mar-all pad-all"></div>
                     <img src="images/Googlelogo.png" class="logoImage" />
-                    <h5 class="center-align mar-top mar-bottom formTitle">忘记密码</h5>
+                    <h5 class="center-align mar-top mar-bottom ">忘记密码</h5>
                     <p class="center-align pad-no mar-no"></p>
                     <div class="clearfix mar-all pad-all"></div>
                     <div id="formContainer3" class="goRight">
@@ -287,7 +287,7 @@ $json = json_decode($json, true);
                     </div>
                     <div class="clearfix mar-all pad-all"></div>
                     <img src="images/Googlelogo.png" class="logoImage" />
-                    <h5 class="center-align mar-top mar-bottom formTitle">完善信息</h5>
+                    <h5 class="center-align mar-top mar-bottom ">完善信息</h5>
                     <p class="center-align pad-no mar-no"></p>
                     <div class="clearfix mar-all pad-all"></div>
                     <div id="formContainer4" class="goRight">
@@ -495,7 +495,6 @@ $json = json_decode($json, true);
             ?>
 
         </div>
-        <div class="mdui-fab mdui-fab-fixed mdui-ripple mdui-theme mdui mdui-color-theme mdui-fab-hide" id="me" mdui-dialog="{target: '#mes',modal:'false'}"><i class="mdui-icon material-icons">message</i></div>
         <div class="mdui-dialog  mdui-shadow-15" id="mes" style="min-height:70%;min-width:50%">
             <div class="mdui-dialog-title">聊天</div>
             <div class="mdui-divider mdui-center"></div>
@@ -805,7 +804,7 @@ $json = json_decode($json, true);
     <script type="text/javascript" src="js/routie.min.js"></script>
     <script type="text/javascript" src="js/loginScript.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
-    <script src="js/my.js?v=18"></script>
+    <script src="js/my.js?v=20"></script>
 
 </body>
 
