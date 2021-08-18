@@ -1,4 +1,5 @@
 <?php
+
 echo '{
     "name": "顾晨",
     "number": "20009200044",
@@ -11,4 +12,7 @@ echo '{
         "题2": "int main()"
     }
 }';
-?>
+
+/*
+echo '{"name": "测试2","number": "123","email": "1@3.com","will": "","major": "","intro": "","questions": {"题1": "1Hello World!","题2": "NULL","题3": "1","题4": "2"}}';
+*/?>
