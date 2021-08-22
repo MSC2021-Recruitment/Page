@@ -1,5 +1,57 @@
 <?php
+include_once("connect.php");
+$uemail = $_POST["email"];
+# $uemail = "1@3.com";
+$sql ="select * from msc";
+$result =mysqli_query($conn,$sql);
 
+$sta = 0;
+$end = 0;
+while ($end < mysqli_num_fields($result)){
+    $field = mysqli_fetch_field_direct($result, $end);
+    $fieldName=$field->name;
+    if($fieldName == "reg_date"){
+        $sta = $end;
+        break;
+    }
+    $end = $end + 1;
+}
+
+$end = mysqli_num_fields($result);
+
+$result = mysqli_query($conn, "SELECT * FROM msc WHERE uname='$uemail' ");
+
+$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+$s = '{';
+$s = $s . '"name": ' . '"' . $row["uxm"] . '",';
+$s = $s . '"number": ' . '"' . $row["schoolid"] . '",';
+$s = $s . '"email": ' . '"' . $row["uname"] . '",';
+$s = $s . '"will": ' . '"' . $row["ugroup"] . '",';
+$s = $s . '"major": ' . '"' . $row["major"] . '",';
+$s = $s . '"intro": ' . '"' . $row["intro"] . '",';
+$i = 0;
+$t = '"questions": {';
+foreach ( $row as $field ) {
+    if($i > $sta) {
+        $t1 = $i - $sta;
+        $t = $t . '"题' . $t1 . '": ';
+        $array = json_decode($field, true);
+        if(empty($array['ans'])) {
+            # echo "NULL<br>";
+            $t = $t . '"NULL"';
+        } else {
+            # echo $array['ans'] . "<br>";
+            $t = $t . '"' . $array['ans'] .'"';
+        }
+        if($end - $i > 1 ){
+            $t = $t . ",";
+        }
+    }
+    $i = $i + 1;
+}
+$s = $s . $t . '}}';
+echo $s;
+/*
 echo '{
     "name": "顾晨",
     "number": "20009200044",
@@ -12,7 +64,6 @@ echo '{
         "题2": "int main()"
     }
 }';
+*/
 
-/*
-echo '{"name": "测试2","number": "123","email": "1@3.com","will": "","major": "","intro": "","questions": {"题1": "1Hello World!","题2": "NULL","题3": "1","题4": "2"}}';
-*/?>
+?>
