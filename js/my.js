@@ -25,6 +25,12 @@ function login() {
         });
         return;
     }
+    if (typeof state == "undefined" || state == 0) {
+        mdui.snackbar({
+            message: '请进行验证'
+        });
+        return;
+    }
     mdui.$.ajax({
         method: 'POST',
         url: '1.php',
@@ -49,10 +55,14 @@ function login() {
                 var a = new mdui.Dialog('#tips')
                 a.open()
                 $('body').css('padding-left', '240px')
+                obj.reset()
+                state = 0
             } else {
                 mdui.snackbar({
                     message: "用户名或密码错误"
                 });
+                obj.reset()
+                state = 0
             }
         }
     });

@@ -18,6 +18,7 @@ $json = json_decode($json, true);
     <script src="codemirror/lib/codemirror.js"></script>
     <link rel="stylesheet" href="codemirror/addon/fold/foldgutter.css" />
     <link rel="stylesheet" href="codemirror/theme/panda-syntax.css" />
+    <script src="https://v-cn.vaptcha.com/v3.js"></script>
     <script src="codemirror/mode/clike/clike.js"></script>
     <script src="codemirror/mode/go/go.js"></script>
     <script src="codemirror/mode/python/python.js"></script>
@@ -32,13 +33,40 @@ $json = json_decode($json, true);
     <link rel="stylesheet" type="text/css" href="css/loginStyle.css">
     <title>Hello, world!</title>
     <style>
+        .vaptcha-init-main {
+            display: table;
+            width: 100%;
+            height: 100%;
+            background-color: #eeeeee;
+        }
+
+        .vaptcha-init-loading {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .vaptcha-init-loading>a {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: none;
+        }
+
+        .vaptcha-init-loading .vaptcha-text {
+            font-family: sans-serif;
+            font-size: 12px;
+            color: #cccccc;
+            vertical-align: middle;
+        }
+
         .tab {
-            padding-top: 96px!important;
+            padding-top: 96px !important;
             z-index: 0;
             margin-left: 0%;
             display: none;
         }
-        
+
         #bot {
             justify-content: center;
         }
@@ -53,16 +81,17 @@ $json = json_decode($json, true);
                 height: 25%;
                 width: 25%
             }
-            
+
         }
-        
+
         @media (max-width: 1023.9px) {
             .img {
                 height: 50%;
                 width: 50%
             }
-            body{
-                padding-left:  0 !important;
+
+            body {
+                padding-left: 0 !important;
             }
         }
 
@@ -113,13 +142,14 @@ $json = json_decode($json, true);
                                     没有账户？&nbsp;<a href="javascript:;" onclick="create()" class="backToLogin">创建账户</a></div>
                                 <div class="mdui-text-right" style="text-align:right;display:inline-block;right:10%;width:50%"> <a href="javascript:;" onclick="openf()">忘记密码</a>
                                 </div>
+                                <div id="vaptchaContainer" style="width: 100%;height: 36px;margin-top:2.5%"></div>
                                 <p class="mdui-invisible">x</p>
                                 </a>
                                 </p>
                             </div>
                             <div class="input-fields-div autoMargin right-align">
                                 <div onclick="closex();" class="mdui-btn mdui-btn-ripple">返回</div>
-                                <div onclick="login()" class=" mdui-btn mdui-btn-ripple">登录</div>
+                                <div onclick="login()" id="lo" class=" mdui-btn mdui-btn-ripple">登录</div>
                             </div>
                         </form>
                         <form class="signUpForm">
@@ -404,7 +434,7 @@ $json = json_decode($json, true);
             </div>
         </div>
         <div id="pages" style="height:100%">
-        <div id='example1-tab0' class='mdui-p-a-2 tab' style="display:inherit;height:100%;padding: 0 !important;padding: top 96px !important;height:100%">
+            <div id='example1-tab0' class='mdui-p-a-2 tab' style="display:inherit;height:100%;padding: 0 !important;padding: top 96px !important;height:100%">
                 <iframe style="height:100%;width:100%;padding:0;border-width: 0px;" src="index.html">
                 </iframe>
             </div>
@@ -501,7 +531,8 @@ $json = json_decode($json, true);
             <div class="mdui-dialog-content">
                 <div class=" mdui-shadow-5 mdui-center" style="height:80%;width:80%" id="chat"></div>
                 <div class="mdui-container-fluid mdui-valign" style="width:82%">
-                <div class="mdui-textfield mdui-center mdui-col-xs-11 mdui-col-md-11" ><textarea class="mdui-textfield-input" placeholder="Message"></textarea></div><div class="mdui-btn mdui-btn-icon mdui-ripple mdui-text-center"><i class="mdui-icon material-icons mdui-col-xs-1 mdui-col-md-1">send</i></div>
+                    <div class="mdui-textfield mdui-center mdui-col-xs-11 mdui-col-md-11"><textarea class="mdui-textfield-input" placeholder="Message"></textarea></div>
+                    <div class="mdui-btn mdui-btn-icon mdui-ripple mdui-text-center"><i class="mdui-icon material-icons mdui-col-xs-1 mdui-col-md-1">send</i></div>
                 </div>
             </div>
             <div class="mdui-dialog-actions">
@@ -804,7 +835,35 @@ $json = json_decode($json, true);
     <script type="text/javascript" src="js/routie.min.js"></script>
     <script type="text/javascript" src="js/loginScript.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
-    <script src="js/my.js?v=20"></script>
+    <script src="js/my.js?v=21"></script>
+    <script>
+        vaptcha({
+            vid: '6121ff3db849dfa2f02958f4', // 验证单元id
+            type: 'click',
+            container: '#vaptchaContainer', // 显示类型 隐藏式
+            scene: 0, // 场景值 默认0
+            //可选参数
+            //lang: 'auto', // 语言 默认auto,可选值auto,zh-CN,en,zh-TW,jp
+            https: false, // 使用https 默认 true
+            //area: 'auto' //验证节点区域,默认 cn,可选值 auto,sea,na,cn
+        }).then(function(vaptchaObj) {
+            obj = vaptchaObj //将VAPTCHA验证实例保存到局部变量中
+            vaptchaObj.render() // 调用验证实例 vpObj 的 render 方法加载验证按钮
+            //获取token的方式一：
+            //vaptchaObj.renderTokenInput('.login-form')//以form的方式提交数据时，使用此函数向表单添加server,token值
+            //获取token的方式二：
+            vaptchaObj.listen('pass', function() {
+
+                serverToken = vaptchaObj.getServerToken()
+
+                state = 1
+            })
+            //关闭验证弹窗时触发
+            vaptchaObj.listen('close', function() {
+                state = 0
+            })
+        })
+    </script>
 
 </body>
 
