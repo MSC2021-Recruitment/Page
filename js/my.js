@@ -25,6 +25,12 @@ function login() {
         });
         return;
     }
+    if (typeof state == "undefined" || state == 0) {
+        mdui.snackbar({
+            message: '请进行验证'
+        });
+        return;
+    }
     mdui.$.ajax({
         method: 'POST',
         url: '1.php',
@@ -48,10 +54,15 @@ function login() {
                 load()
                 var a = new mdui.Dialog('#tips')
                 a.open()
+                $('body').css('padding-left', '240px')
+                obj.reset()
+                state = 0
             } else {
                 mdui.snackbar({
                     message: "用户名或密码错误"
                 });
+                obj.reset()
+                state = 0
             }
         }
     });
@@ -503,6 +514,7 @@ function changelang(lan, n) {
 
 function openx() {
     inst.close()
+    $('body').css('padding-left', '0')
     setTimeout(() => {
         $('#main').css('display', 'none');
         $('#login').css('display', '');
@@ -522,11 +534,13 @@ function closex() {
     $('#login').css('display', 'none');
     if (document.body.clientWidth >= 1024) {
         inst.open()
+        $('body').css('padding-left', '240px')
     }
 }
 
 function openi() {
     inst.close()
+    $('body').css('padding-left', '0')
     setTimeout(() => {
         $('#main').css('display', 'none');
         $('#info').css('display', '');
@@ -541,11 +555,13 @@ function closei() {
     $('#info').css('display', 'none');
     if (document.body.clientWidth >= 1024) {
         inst.open()
+        $('body').css('padding-left', '240px')
     }
 }
 
 function openc() {
     inst.close()
+    $('body').css('padding-left', '0')
     setTimeout(() => {
         $('#main').css('display', 'none');
         $('#change').css('display', '');
@@ -560,6 +576,7 @@ function closec() {
     $('#change').css('display', 'none');
     if (document.body.clientWidth >= 1024) {
         inst.open()
+        $('body').css('padding-left', '240px')
     }
 }
 
@@ -670,28 +687,11 @@ function load() {
                         }
                     })
                 }, 600000)
-                mdui.$.ajax({
-                    url: "talk.php",
-                    method: "POST",
-                    data: {
-                        stat: 1
-                    },
-                    success: function(a) {
-                        if (a) {
-                            wap = setInterval(function() {
-                                if ($('#me').hasClass('mdui-fab-hide'))
-                                    $('#me').removeClass('mdui-fab-hide')
-                                else
-                                    $('#me').addClass('mdui-fab-hide')
-                            }, 600)
-                            mdui.snackbar({
-                                message: "新消息"
-                            });
 
-                        }
-                    }
-                })
                 for (var m = 1;; m++) {
+                    if (typeof(flag1) == "undefined")
+                        flag1 = 1;
+                    else break;
                     if (document.getElementById("code" + m)) {
                         if (typeof(editor[i - 1]) == "undefined") {
                             editor.push(CodeMirror.fromTextArea(document.getElementById("code" + m), {
@@ -711,8 +711,9 @@ function load() {
                     } else {
                         break;
                     }
-                    i()
+
                 }
+                i()
 
             } else {
                 mdui.$('#intro').empty()
