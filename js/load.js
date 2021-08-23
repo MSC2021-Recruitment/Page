@@ -58,6 +58,13 @@ function details(email) {
 
         },
         success: function(data) {
+            c = data.indexOf('{')
+            b = data.length
+            data = data.substring(c, b)
+            for (i = 0; i <= data.length; i++) {
+                data = data.replace('\n', '\\n')
+                data = data.replace('\r', '\\r')
+            }
             data = JSON.parse(data)
             $('#deten').empty();
             $('#deten').append('\

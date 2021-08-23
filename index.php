@@ -142,8 +142,8 @@ $json = json_decode($json, true);
                                     没有账户？&nbsp;<a href="javascript:;" onclick="create()" class="backToLogin">创建账户</a></div>
                                 <div class="mdui-text-right" style="text-align:right;display:inline-block;right:10%;width:50%"> <a href="javascript:;" onclick="openf()">忘记密码</a>
                                 </div>
-                                <div id="vaptchaContainer" style="width: 100%;height: 36px;margin-top:2.5%"></div>
-                                <p class="mdui-invisible">x</p>
+                                <div id="v1" style="width: 100%;height: 36px;margin-top:2.5%;margin-bottom:4%"></div>
+                                
                                 </a>
                                 </p>
                             </div>
@@ -184,6 +184,7 @@ $json = json_decode($json, true);
                                         我有账户&nbsp;<a href="javascript:;" onclick="rcreate()" class="backToLogin">现在登录</a></div>
                                     <div class="mdui-text-right" style="text-align:right;display:inline-block;right:10%;width:50%"> <a href="javascript:;" onclick="send('reg')">发送验证码</a></div>
                                 </div>
+                                <div id="v2" style="width: 100%;height: 36px;margin-top:2.5%;margin-bottom:4%"></div>
                                 <div class="mdui-invisible">sd</div>
                             </div>
                             <div class="input-fields-div autoMargin right-align">
@@ -225,9 +226,10 @@ $json = json_decode($json, true);
                                 </div>
                                 <div class="mdui-text-right" style="text-align:right;display:inline-block;right:10%;width:50%"> <a href="javascript:;" onclick="send('forget')">获取验证码</a>
                                 </div>
-                                <p class="mdui-invisible">x</p>
+                                <div id="v3" style="width: 100%;height: 36px;margin-top:2.5%;margin-bottom:4%"></div>
+                                
                                 </a>
-                                </p>
+
                             </div>
                             <div class="input-fields-div autoMargin right-align">
                                 <div onclick="closef();" class="mdui-btn mdui-btn-ripple">返回</div>
@@ -248,7 +250,7 @@ $json = json_decode($json, true);
                                 </div>
                                 <div class="mdui-text-right mdui-invisible" style="text-align:right;display:inline-block;right:10%;width:50%"> <a href="javascript:;" onclick="send('forget')">获取验证码</a>
                                 </div>
-                                <p class="mdui-invisible">x</p>
+                                
                                 </a>
                                 </p>
                             </div>
@@ -273,7 +275,7 @@ $json = json_decode($json, true);
                     </div>
                     <div class="clearfix mar-all pad-all"></div>
                     <img src="images/Googlelogo.png" class="logoImage" />
-                    <h5 class="center-align mar-top mar-bottom ">忘记密码</h5>
+                    <h5 class="center-align mar-top mar-bottom ">修改密码</h5>
                     <p class="center-align pad-no mar-no"></p>
                     <div class="clearfix mar-all pad-all"></div>
                     <div id="formContainer3" class="goRight">
@@ -291,9 +293,10 @@ $json = json_decode($json, true);
                                 </div>
                                 <div class="mdui-invisible" style="text-align:right;display:inline-block;right:10%;width:50%">
                                 </div>
-                                <p class="mdui-invisible">x</p>
+                                <div id="v4" style="width: 100%;height: 36px;margin-top:2.5%;margin-bottom:4%"></div>
+                                
                                 </a>
-                                </p>
+                                
                             </div>
                             <div class="input-fields-div autoMargin right-align">
                                 <div onclick="closec()" class="mdui-btn mdui-btn-ripple">返回</div>
@@ -840,7 +843,7 @@ $json = json_decode($json, true);
         vaptcha({
             vid: '6121ff3db849dfa2f02958f4', // 验证单元id
             type: 'click',
-            container: '#vaptchaContainer', // 显示类型 隐藏式
+            container: '#v1', // 显示类型 隐藏式
             scene: 0, // 场景值 默认0
             //可选参数
             //lang: 'auto', // 语言 默认auto,可选值auto,zh-CN,en,zh-TW,jp
@@ -863,6 +866,85 @@ $json = json_decode($json, true);
                 state = 0
             })
         })
+        vaptcha({
+            vid: '6121ff3db849dfa2f02958f4', // 验证单元id
+            type: 'click',
+            container: '#v2', // 显示类型 隐藏式
+            scene: 0, // 场景值 默认0
+            //可选参数
+            //lang: 'auto', // 语言 默认auto,可选值auto,zh-CN,en,zh-TW,jp
+            https: false, // 使用https 默认 true
+            //area: 'auto' //验证节点区域,默认 cn,可选值 auto,sea,na,cn
+        }).then(function(vaptchaObj) {
+            obj = vaptchaObj //将VAPTCHA验证实例保存到局部变量中
+            vaptchaObj.render() // 调用验证实例 vpObj 的 render 方法加载验证按钮
+            //获取token的方式一：
+            //vaptchaObj.renderTokenInput('.login-form')//以form的方式提交数据时，使用此函数向表单添加server,token值
+            //获取token的方式二：
+            vaptchaObj.listen('pass', function() {
+
+                serverToken = vaptchaObj.getServerToken()
+
+                state = 1
+            })
+            //关闭验证弹窗时触发
+            vaptchaObj.listen('close', function() {
+                state = 0
+            })
+        })
+        vaptcha({
+            vid: '6121ff3db849dfa2f02958f4', // 验证单元id
+            type: 'click',
+            container: '#v3', // 显示类型 隐藏式
+            scene: 0, // 场景值 默认0
+            //可选参数
+            //lang: 'auto', // 语言 默认auto,可选值auto,zh-CN,en,zh-TW,jp
+            https: false, // 使用https 默认 true
+            //area: 'auto' //验证节点区域,默认 cn,可选值 auto,sea,na,cn
+        }).then(function(vaptchaObj) {
+            obj = vaptchaObj //将VAPTCHA验证实例保存到局部变量中
+            vaptchaObj.render() // 调用验证实例 vpObj 的 render 方法加载验证按钮
+            //获取token的方式一：
+            //vaptchaObj.renderTokenInput('.login-form')//以form的方式提交数据时，使用此函数向表单添加server,token值
+            //获取token的方式二：
+            vaptchaObj.listen('pass', function() {
+
+                serverToken = vaptchaObj.getServerToken()
+
+                state = 1
+            })
+            //关闭验证弹窗时触发
+            vaptchaObj.listen('close', function() {
+                state = 0
+            })
+        })
+        vaptcha({
+            vid: '6121ff3db849dfa2f02958f4', // 验证单元id
+            type: 'click',
+            container: '#v4', // 显示类型 隐藏式
+            scene: 0, // 场景值 默认0
+            //可选参数
+            //lang: 'auto', // 语言 默认auto,可选值auto,zh-CN,en,zh-TW,jp
+            https: false, // 使用https 默认 true
+            //area: 'auto' //验证节点区域,默认 cn,可选值 auto,sea,na,cn
+        }).then(function(vaptchaObj) {
+            obj = vaptchaObj //将VAPTCHA验证实例保存到局部变量中
+            vaptchaObj.render() // 调用验证实例 vpObj 的 render 方法加载验证按钮
+            //获取token的方式一：
+            //vaptchaObj.renderTokenInput('.login-form')//以form的方式提交数据时，使用此函数向表单添加server,token值
+            //获取token的方式二：
+            vaptchaObj.listen('pass', function() {
+
+                serverToken = vaptchaObj.getServerToken()
+
+                state = 1
+            })
+            //关闭验证弹窗时触发
+            vaptchaObj.listen('close', function() {
+                state = 0
+            })
+        })
+    
     </script>
 
 </body>
