@@ -669,9 +669,6 @@ function load() {
                 mdui.$('.ans').css('display', '')
 
                 for (var m = 1;; m++) {
-                    if (typeof(flag1) == "undefined")
-                        flag1 = 1;
-                    else break;
                     if (document.getElementById("code" + m)) {
                         if (typeof(editor[m - 1]) == "undefined") {
                             editor.push(CodeMirror.fromTextArea(document.getElementById("code" + m), {
