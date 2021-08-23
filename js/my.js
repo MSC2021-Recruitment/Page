@@ -673,7 +673,7 @@ function load() {
                         flag1 = 1;
                     else break;
                     if (document.getElementById("code" + m)) {
-                        if (typeof(editor[i - 1]) == "undefined") {
+                        if (typeof(editor[m - 1]) == "undefined") {
                             editor.push(CodeMirror.fromTextArea(document.getElementById("code" + m), {
                                 lineNumbers: true,
                                 lineWrapping: true,
