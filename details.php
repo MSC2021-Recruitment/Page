@@ -1,9 +1,12 @@
 <?php
 include_once("connect.php");
+session_start();
 $uemail = $_POST["email"];
 # $uemail = "1@3.com";
 $sql ="select * from msc";
 $result =mysqli_query($conn,$sql);
+$uteam = $_SESSION['team'];
+
 
 $sta = 0;
 $end = 0;
@@ -32,10 +35,14 @@ $s = $s . '"intro": ' . '"' . $row["intro"] . '",';
 $i = 0;
 $t = '"questions": {';
 foreach ( $row as $field ) {
-    if($i > $sta) {
+    if($i <= $sta){
+        $i = $i + 1;
+        continue;
+    }
+    $array = json_decode($field, true);
+    if($array['group'] == $uteam || $uteam == 'root'){
         $t1 = $i - $sta;
         $t = $t . '"题' . $t1 . '": ';
-        $array = json_decode($field, true);
         if(empty($array['ans'])) {
             # echo "NULL<br>";
             $t = $t . '"NULL"';
@@ -46,9 +53,14 @@ foreach ( $row as $field ) {
         if($end - $i > 1 ){
             $t = $t . ",";
         }
+        $i = $i + 1; 
     }
-    $i = $i + 1;
+
+
 }
+
+if( $i == 0) {$t = $t . '"题1："NULL""';}
+
 $s = $s . $t . '}}';
 echo $s;
 /*
@@ -65,5 +77,3 @@ echo '{
     }
 }';
 */
-
-?>
