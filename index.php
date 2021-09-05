@@ -32,7 +32,7 @@ $json = json_decode($json, true);
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/materialize.css">
     <link rel="stylesheet" type="text/css" href="css/loginStyle.css">
-    <title>Hello, world!</title>
+    <title>欢迎来到MSC</title>
     <style>
         .vaptcha-init-main {
             display: table;
@@ -429,7 +429,7 @@ $json = json_decode($json, true);
         </div>
         <div id="pages" style="height:100%">
             <div id='example1-tab0' class='mdui-p-a-2 tab' style="display:inherit;height:100%;padding: 0 !important;padding: top 96px !important;height:100%">
-                <iframe style="height:100%;width:100%;padding:0;border-width: 0px;"  src="index.html">
+                <iframe style="height:100%;width:100%;padding:0;border-width: 0px;"  src="in.html">
                 </iframe>
             </div>
             <?php
