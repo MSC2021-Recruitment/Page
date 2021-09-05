@@ -30,21 +30,21 @@
                     "q1": {
                         "title": "hello",
                         "sub-title": "xxx",
-                        "content": "sadsda\nadas",
+                        "content": "sadsda<br/>adas",
                         "img-num": 2,
                         "img-url": ""
                     },
                     "q2": {
                         "title": "你好",
                         "sub-title": "xxx",
-                        "content": "sadsda\nadas",
+                        "content": "sadsda<br/>adas",
                         "img-num": 2,
                         "img-url": ""
                     },
                     "q3": {
                         "title": "你好",
                         "sub-title": "xxx",
-                        "content": "sadsda\nadas",
+                        "content": "sadsda<br/>adas",
                         "img-num": 2,
                         "img-url": ""
                     }
@@ -73,33 +73,6 @@
                             "content": "技术实践：建模及基础项目编程",
                             "next": {}
                         }
-                    }
-                }
-            },
-            "p2": {
-                "title": "福利题",
-                "type": "question",
-                "body": {
-                    "q1": {
-                        "title": "hello",
-                        "sub-title": "xxx",
-                        "content": "sadsda\nadas",
-                        "img-num": 2,
-                        "img-url": ""
-                    },
-                    "q2": {
-                        "title": "你好",
-                        "sub-title": "xxx",
-                        "content": "sadsda\nadas",
-                        "img-num": 2,
-                        "img-url": ""
-                    },
-                    "q3": {
-                        "title": "你好",
-                        "sub-title": "xxx",
-                        "content": "sadsda\nadas",
-                        "img-num": 2,
-                        "img-url": ""
                     }
                 }
             }
@@ -131,33 +104,6 @@
                             "content": "Web安全方向这一块主要围绕着CTF进行入门，从基本的F12等工具的利用去理解掌握浏览器原理以及其他的安全方向的EXP和漏洞知识，在良好掌握之后可以深入代码审计和漏洞挖掘等等。",
                             "next": {}
                         }
-                    }
-                }
-            },
-            "p2": {
-                "title": "福利题",
-                "type": "question",
-                "body": {
-                    "q1": {
-                        "title": "hello",
-                        "sub-title": "xxx",
-                        "content": "sadsda\nadas",
-                        "img-num": 2,
-                        "img-url": ""
-                    },
-                    "q2": {
-                        "title": "你好",
-                        "sub-title": "xxx",
-                        "content": "sadsda\nadas",
-                        "img-num": 2,
-                        "img-url": ""
-                    },
-                    "q3": {
-                        "title": "你好",
-                        "sub-title": "xxx",
-                        "content": "sadsda\nadas",
-                        "img-num": 2,
-                        "img-url": ""
                     }
                 }
             }
@@ -202,23 +148,30 @@
                 "type": "question",
                 "body": {
                     "q1": {
-                        "title": "hello",
-                        "sub-title": "xxx",
-                        "content": "sadsda\nadas",
+                        "title": "1.滤波器",
+                        "sub-title": "",
+                        "content": "YJY被甲方要求做一个滤波器，做不出来就要把YJY煮了吃，请你帮帮YJY做一个满足要求的滤波器：<br/>低通，有源（使用运算放大器，型号不限），截止频率1kHz，运放个数小于等于2",
                         "img-num": 2,
                         "img-url": ""
                     },
                     "q2": {
-                        "title": "你好",
-                        "sub-title": "xxx",
-                        "content": "sadsda\nadas",
+                        "title": "2.三极管",
+                        "sub-title": "",
+                        "content": "YJY被人邀请去教有关三极管的知识，但是YJY是一只很懒的鸽子，他厚颜无耻地让你帮他准备下列问题的答案:<br/>(1)三极管大致可分为两类，分别称作？<br/>(2)上述两种三极管，他们的三个电极分别被称为？<br/>(3)说说三极管在电路中的用处",
                         "img-num": 2,
                         "img-url": ""
                     },
                     "q3": {
-                        "title": "你好",
-                        "sub-title": "xxx",
-                        "content": "sadsda\nadas",
+                        "title": "3.单片机",
+                        "sub-title": "",
+                        "content": "3，YJY觉得你很勇，想让你回答下列有关单片机的问题，答上来就给你康好康的:<br/>(1)请你翻阅下列文档，找到相关说明，回答：这个型号的单片机的主频是多高？<a href='https://www.st.com/resource/en/datasheet/stm32f103c8.pdf'>https://www.st.com/resource/en/datasheet/stm32f103c8.pdf</a><br/>(2)请你查阅网上资料，给出一套单片机实现流水灯代码（单片机型号不限，几个灯不限）",
+                        "img-num": 2,
+                        "img-url": ""
+                    },
+                    "q4": {
+                        "title": "4.硬件本身？？？",
+                        "sub-title": "",
+                        "content": "#模拟部分：<br/>基础款：用万能板焊接，搭建一个放大器。（没有指标要求）<br/>进阶款：用万能板焊接，搭建一个放大器。要求：增益40dB，直流输入时，增益误差不大于10dB。<br/>超进化：用万能板焊接，搭建一个放大器。要求：增益40dB，直流输入时，增益误差不大于0.1dB。输入0V时，输出电压漂移不大于20mV。输入阻抗>100k。放大带宽: DC~不低于50kHz。（自行设计各项指标测试方法及步骤）<br/><br/><br/>#单片机部分：<br/>基础款：使用任意一种单片机，点亮一排流水灯。<br/>进阶款：使用任意一种单片机，点亮一排流水灯。要求：LED灯闪烁间隔时间为1s<br/>超进化：使用任意一种单片机，点亮一排流水灯。要求：LED灯闪烁间隔时间为1s，并能通过摁键控制LED以1s为周期亮灭、所有LED全部熄灭之间切换。具体按键控制方式自由定义。",
                         "img-num": 2,
                         "img-url": ""
                     }
@@ -259,33 +212,6 @@
                         }
                     }
                 }
-            },
-            "p2": {
-                "title": "福利题",
-                "type": "question",
-                "body": {
-                    "q1": {
-                        "title": "hello",
-                        "sub-title": "xxx",
-                        "content": "sadsda\nadas",
-                        "img-num": 2,
-                        "img-url": ""
-                    },
-                    "q2": {
-                        "title": "你好",
-                        "sub-title": "xxx",
-                        "content": "sadsda\nadas",
-                        "img-num": 2,
-                        "img-url": ""
-                    },
-                    "q3": {
-                        "title": "你好",
-                        "sub-title": "xxx",
-                        "content": "sadsda\nadas",
-                        "img-num": 2,
-                        "img-url": ""
-                    }
-                }
             }
         }
     },
@@ -315,33 +241,6 @@
                             "content": "问题的给出方式比如福利题，根据题目描述和样例写程序能够处理输入数据输出正确答案。",
                             "next": {}
                         }
-                    }
-                }
-            },
-            "p2": {
-                "title": "福利题",
-                "type": "question",
-                "body": {
-                    "q1": {
-                        "title": "hello",
-                        "sub-title": "xxx",
-                        "content": "sadsda\nadas",
-                        "img-num": 2,
-                        "img-url": ""
-                    },
-                    "q2": {
-                        "title": "你好",
-                        "sub-title": "xxx",
-                        "content": "sadsda\nadas",
-                        "img-num": 2,
-                        "img-url": ""
-                    },
-                    "q3": {
-                        "title": "你好",
-                        "sub-title": "xxx",
-                        "content": "sadsda\nadas",
-                        "img-num": 2,
-                        "img-url": ""
                     }
                 }
             }
@@ -378,7 +277,7 @@
                     "q1": {
                         "title": "1.林克的冒险",
                         "sub-title": "",
-                        "content": "林克在荒野冒险时，不小心掉入一处神秘洞穴中。神奇的是，这个洞穴中有一只高等哥布林。哥布林对林克说：如果想从洞穴中出去，则必须陪他玩一个游戏，游戏获胜后林克才能离开洞穴。\n游戏规则如下：\n林克和哥布林相互攻击对方， 但是两人约定每人必须轮流攻击林克的生命值有100点， 哥布林的生命值有50点林克每次攻击哥布林， 有50 % 的概率成功攻击到哥布林， 造成10点伤害； 否则， 则哥布林不受伤害；而哥布林每次攻击林克， 必定对林克造成10点伤害；林克和哥布林谁的生命值先变为0， 则算谁输。已知林克先出手， 求林克获胜的概率。 ",
+                        "content": "林克在荒野冒险时，不小心掉入一处神秘洞穴中。神奇的是，这个洞穴中有一只高等哥布林。哥布林对林克说：如果想从洞穴中出去，则必须陪他玩一个游戏，游戏获胜后林克才能离开洞穴。<br/>游戏规则如下：<br/>林克和哥布林相互攻击对方， 但是两人约定每人必须轮流攻击林克的生命值有100点， 哥布林的生命值有50点林克每次攻击哥布林， 有50 % 的概率成功攻击到哥布林， 造成10点伤害； 否则， 则哥布林不受伤害；而哥布林每次攻击林克， 必定对林克造成10点伤害；林克和哥布林谁的生命值先变为0， 则算谁输。已知林克先出手， 求林克获胜的概率。 ",
                         "img-num": 2,
                         "img-url": ""
                     },

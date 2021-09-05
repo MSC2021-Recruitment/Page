@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" style="font-family:Roboto,source,微软雅黑; height: 100%;">
+<html lang="zh" style="font-family:Roboto,微软雅黑; height: 100%;">
 <?php
 $json = file_get_contents("1.json");
 $json = json_decode($json, true);
@@ -14,20 +14,21 @@ $json = json_decode($json, true);
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <link rel="stylesheet" href="css/mdui.min.css">
-    <link rel="stylesheet" href="codemirror/lib/codemirror.css">
-    <script src="codemirror/lib/codemirror.js"></script>
-    <link rel="stylesheet" href="codemirror/addon/fold/foldgutter.css" />
-    <link rel="stylesheet" href="codemirror/theme/panda-syntax.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.62.3/lib/codemirror.css">
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.62.3/lib/codemirror.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.62.3/addon/fold/foldgutter.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.62.3/theme/panda-syntax.css" />
     <script src="https://v-cn.vaptcha.com/v3.js"></script>
-    <script src="codemirror/mode/clike/clike.js"></script>
-    <script src="codemirror/mode/go/go.js"></script>
-    <script src="codemirror/mode/python/python.js"></script>
-    <script src="codemirror/mode/perl/perl.js"></script>
-    <script src="codemirror/addon/fold/foldcode.js"></script>
-    <script src="codemirror/addon/fold/foldgutter.js"></script>
-    <script src="codemirror/addon/fold/brace-fold.js"></script>
-    <script src="codemirror/addon/fold/comment-fold.js"></script>
-    <script src="codemirror/addon/display/autorefresh.js"></script>
+    <script type="text/javascript" src="js/output.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.62.3/mode/clike/clike.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.62.3/mode/go/go.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.62.3/mode/python/python.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.62.3/mode/perl/perl.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.62.3/addon/fold/foldcode.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.62.3/addon/fold/foldgutter.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.62.3/addon/fold/brace-fold.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.62.3/addon/fold/comment-fold.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.62.3/addon/display/autorefresh.js"></script>
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/materialize.css">
     <link rel="stylesheet" type="text/css" href="css/loginStyle.css">
@@ -95,16 +96,6 @@ $json = json_decode($json, true);
             }
         }
 
-        @font-face {
-            font-family: source;
-            src: url("fonts/SourceHanSansSC-Regular.ttf");
-        }
-
-        @font-face {
-            font-family: source;
-            src: url("fonts/SourceHanSansSC-Bold.ttf");
-            font-weight: bold;
-        }
 
         .forms {
             position: relative;
@@ -114,7 +105,7 @@ $json = json_decode($json, true);
     </style>
 </head>
 
-<body class="mdui-container-fluid mdui-drawer-body-left mdui-theme-layout-auto mdui-color-theme mdui-theme-primary-light-blue" style="font-family:Roboto,source,微软雅黑;height:100%;padding-right:0;padding-left:0px  " id="body" onload="load()">
+<body class="mdui-container-fluid mdui-drawer-body-left mdui-theme-layout-auto mdui-color-theme mdui-theme-primary-light-blue" style="font-family:Roboto,微软雅黑;height:100%;padding-right:0;padding-left:0px  " id="body" onload="load()">
     <div class="row gmailStyle" id="login" style="display:none;height:100%">
         <div class="container-fluid" style="height:100%">
             <div class="valign-wrapper screenHeight">
@@ -370,7 +361,7 @@ $json = json_decode($json, true);
         <header class=" mdui-appbar mdui-appbar-fixed ">
             <div class="mdui-toolbar full mdui-toolbar-spacer mdui-color-theme">
                 <a href="javascript:;" class="mdui-btn mdui-btn-icon" onclick="changedraw();"><i class="mdui-icon material-icons">menu</i></a>
-                <span class="mdui-typo-title" id="intro"></span>
+                <span class="mdui-typo-title" id="intro">欢迎来到MSC</span>
                 <div class="mdui-toolbar-spacer"></div>
                 <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-dialog="{target: '#dialog-docs-theme'}" mdui-tooltip="{content: '设置主题'}"><i class="mdui-icon material-icons">color_lens</i></span>
                 <a href="javascript:;" class=" mdui-typo-title" onclick="openx()" style="display:none" id="log">登录</a>
@@ -831,11 +822,6 @@ $json = json_decode($json, true);
             <div class="mdui-btn mdui-ripple" mdui-dialog-confirm="">ok</div>
         </div>
     </div>
-    <script src="js/mdui.min.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
-    <script type="text/javascript" src="js/cash.min.js"></script>
-    <script type="text/javascript" src="js/routie.min.js"></script>
-    <script type="text/javascript" src="js/loginScript.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script src="js/my.js?v=21"></script>
     <script>
