@@ -52,10 +52,8 @@ function login() {
                 }, 100)
                 closex()
                 load()
-                var a = new mdui.Dialog('#tips')
-                a.open()
                 $('body').css('padding-left', '240px')
-                obj.reset()
+                obj[0].reset()
                 state = 0
             } else {
                 mdui.snackbar({
@@ -160,6 +158,12 @@ function register() {
         });
         return;
     }
+    if (typeof state == "undefined" || state == 0) {
+        mdui.snackbar({
+            message: '请进行验证'
+        });
+        return;
+    }
     mdui.$.ajax({
         method: 'POST',
         url: '2.php',
@@ -179,6 +183,8 @@ function register() {
                 showProgress()
                     /* Show Signup Form */
                 $("#formContainer").removeClass("goLeft").addClass("goRight")
+                state = 0
+                obj[1].reset()
             } else if (data == 2) {
                 mdui.snackbar({
                     message: "注册失败，请重试"
@@ -231,6 +237,12 @@ function check() {
 }
 
 function forget() {
+    if (typeof state == "undefined" || state == 0) {
+        mdui.snackbar({
+            message: '请进行验证'
+        });
+        return;
+    }
     if (mdui.$('#forget_password').val() == mdui.$('#re_forget_password').val() && mdui.$('#forget_password').val() != "") {
         mdui.$.ajax({
             method: 'POST',
@@ -244,6 +256,9 @@ function forget() {
                     mdui.snackbar({
                         message: "修改成功"
                     });
+                    state = 0
+                    obj[2].reset()
+                    create('2');
                     closef();
                 } else {
                     mdui.snackbar({
@@ -267,6 +282,12 @@ function change() {
         });
         return;
     }
+    if (typeof state == "undefined" || state == 0) {
+        mdui.snackbar({
+            message: '请进行验证'
+        });
+        return;
+    }
     mdui.$.ajax({
         method: 'POST',
         url: '1.php',
@@ -280,6 +301,8 @@ function change() {
                 mdui.snackbar({
                     message: "修改成功"
                 });
+                state = 0
+                obj[3].reset()
                 closec();
             } else if (data == 0) {
                 mdui.snackbar({
@@ -328,36 +351,35 @@ function sub() {
     });
 
 }
-i = function() {
-    for (let [m, index] of editor.entries()) {
-        mdui.$.ajax({
-            method: 'POST',
-            url: '1.php',
-            data: {
-                stat: 5,
-                num: m
-            },
-            success: function(dat) {
-                var s = dat.indexOf('{')
-                var e = dat.indexOf('}')
-                dat = dat.substr(s, e + 1)
-                dat = JSON.parse(dat)
-                index.setValue(dat.ans);
-                index.setOption("mode", dat.mode);
-                var st = dat.mode;
-                var c = Number(m) + 1
-                st = "o" + c + st.slice(7);
-                if (st == "o" + c + "c++src")
-                    st = "o" + c + "csrc";
-                mdui.$('.' + st).attr('selected', 'true')
-                if (!mdui.$('#s' + c).siblings().is('.mdui-select-position-bottom'))
-                    new mdui.Select('#s' + c, {
-                        position: 'bottom'
-                    });
-            }
-        });
-    }
+i = function(num) {
+    mdui.$.ajax({
+        method: 'POST',
+        url: '1.php',
+        data: {
+            stat: 5,
+            num: num
+        },
+        success: function(dat) {
+            var s = dat.indexOf('{')
+            var e = dat.indexOf('}')
+            dat = dat.substr(s, e + 1)
+            dat = JSON.parse(dat)
+            editor[num - 1].setValue(dat.ans);
+            editor[num - 1].setOption("mode", dat.mode);
+            var st = dat.mode;
+            var c = Number(num)
+            st = "o" + c + st.slice(7);
+            if (st == "o" + c + "c++src")
+                st = "o" + c + "csrc";
+            mdui.$('.' + st).attr('selected', 'true')
+            if (!mdui.$('#s' + c).siblings().is('.mdui-select-position-bottom'))
+                new mdui.Select('#s' + c, {
+                    position: 'bottom'
+                });
+        }
+    });
 }
+
 
 function cook(cname) {
     if (document.cookie != "") {
@@ -610,6 +632,7 @@ function changedraw() {
 
 function refresh(n) {
     setTimeout(() => {
+        i(n)
         editor[n - 1].refresh()
     }, 100)
 }
@@ -633,13 +656,13 @@ function rcreate(a = "1") {
 function load() {
     inst = new mdui.Drawer('#draw');
     mdui.$('#ans1').prop('onclick', 'refresh()')
-    if (cook("docs-theme-primary") == undefined) {
+    if (cook("docs-theme-primary") == undefined || cook("docs-theme-primary") == "") {
         setCookie('docs-theme-primary', DEFAULT_PRIMARY);
     }
-    if (cook("docs-theme-accent") == undefined) {
+    if (cook("docs-theme-accent") == undefined || cook("docs-theme-accent") == "") {
         setCookie('docs-theme-accent', DEFAULT_ACCENT);
     }
-    if (cook("docs-theme-layout") == undefined) {
+    if (cook("docs-theme-layout") == undefined || cook("docs-theme-layout") == "") {
         setCookie('docs-theme-layout', DEFAULT_LAYOUT);
     }
     setDocsTheme({
@@ -660,6 +683,7 @@ function load() {
         },
         success: function(data) {
             if (data) {
+                $("iframe").contents().find("#tip").hide()
                 mdui.$('#intro').empty()
                 mdui.$('#intro').append(data + ",欢迎来到MSC")
                 mdui.$('#log').css('display', 'none')
@@ -667,7 +691,6 @@ function load() {
                 mdui.$('.word').empty()
                 mdui.$('.mdui-divider').css('display', '')
                 mdui.$('.ans').css('display', '')
-
                 for (var m = 1;; m++) {
                     if (document.getElementById("code" + m)) {
                         if (typeof(editor[m - 1]) == "undefined") {
@@ -690,9 +713,9 @@ function load() {
                     }
 
                 }
-                i()
 
             } else {
+
                 mdui.$('#intro').empty()
                 mdui.$('#intro').append("欢迎来到MSC")
                 mdui.$('#log').css('display', '')

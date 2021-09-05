@@ -1,32 +1,24 @@
 {
     "0": {
         "pagenum": 2,
-        "name": "web组",
+        "name": "活动部",
         "body": {
             "p1": {
                 "title": "简介",
                 "type": "text",
                 "a1": {
-                    "title": "WEB组",
+                    "title": "Game组",
                     "content": "",
                     "next": {
                         "b1": {
-                            "title": "方向",
-                            "content": "Web组主要分开发和安全两个方向。",
-                            "next": {
-                            }
+                            "title": "介绍",
+                            "content": "游戏的发展及未来展望：涉及游戏的设计及概念流程",
+                            "next": {}
                         },
                         "b2": {
-                            "title": "开发",
-                            "content": "开发中主要的学习有服务器的搭建与各种响应的原理，微信小程序后端开发(目前是用Django)，还有一些网页的简单开发(比如MSC的招新网站)等等，只要和开发有关都可以学习。(欢迎萌佬来带带我们前端)",
-                            "next": {
-                            }
-                        },
-                        "b3": {
-                            "title": "安全",
-                            "content": "Web安全方向这一块主要围绕着CTF进行入门，从基本的F12等工具的利用去理解掌握浏览器原理以及其他的安全方向的EXP和漏洞知识，在良好掌握之后可以深入代码审计和漏洞挖掘等等。",
-                            "next": {
-                            }
+                            "title": "技术实践",
+                            "content": "技术实践：建模及基础项目编程",
+                            "next": {}
                         }
                     }
                 }
@@ -57,8 +49,34 @@
                         "img-url": ""
                     }
                 }
+            }
+        }
+    },
+    "1": {
+        "pagenum": 2,
+        "name": "媒体部",
+        "body": {
+            "p1": {
+                "title": "简介",
+                "type": "text",
+                "a1": {
+                    "title": "Game组",
+                    "content": "",
+                    "next": {
+                        "b1": {
+                            "title": "介绍",
+                            "content": "游戏的发展及未来展望：涉及游戏的设计及概念流程",
+                            "next": {}
+                        },
+                        "b2": {
+                            "title": "技术实践",
+                            "content": "技术实践：建模及基础项目编程",
+                            "next": {}
+                        }
+                    }
+                }
             },
-            "p3": {
+            "p2": {
                 "title": "福利题",
                 "type": "question",
                 "body": {
@@ -75,12 +93,77 @@
                         "content": "sadsda\nadas",
                         "img-num": 2,
                         "img-url": ""
+                    },
+                    "q3": {
+                        "title": "你好",
+                        "sub-title": "xxx",
+                        "content": "sadsda\nadas",
+                        "img-num": 2,
+                        "img-url": ""
                     }
                 }
             }
         }
     },
-    "1": {
+    "2": {
+        "pagenum": 3,
+        "name": "Web组",
+        "body": {
+            "p1": {
+                "title": "简介",
+                "type": "text",
+                "a1": {
+                    "title": "WEB组",
+                    "content": "",
+                    "next": {
+                        "b1": {
+                            "title": "方向",
+                            "content": "Web组主要分开发和安全两个方向。",
+                            "next": {}
+                        },
+                        "b2": {
+                            "title": "开发",
+                            "content": "开发中主要的学习有服务器的搭建与各种响应的原理，微信小程序后端开发(目前是用Django)，还有一些网页的简单开发(比如MSC的招新网站)等等，只要和开发有关都可以学习。",
+                            "next": {}
+                        },
+                        "b3": {
+                            "title": "安全",
+                            "content": "Web安全方向这一块主要围绕着CTF进行入门，从基本的F12等工具的利用去理解掌握浏览器原理以及其他的安全方向的EXP和漏洞知识，在良好掌握之后可以深入代码审计和漏洞挖掘等等。",
+                            "next": {}
+                        }
+                    }
+                }
+            },
+            "p2": {
+                "title": "福利题",
+                "type": "question",
+                "body": {
+                    "q1": {
+                        "title": "hello",
+                        "sub-title": "xxx",
+                        "content": "sadsda\nadas",
+                        "img-num": 2,
+                        "img-url": ""
+                    },
+                    "q2": {
+                        "title": "你好",
+                        "sub-title": "xxx",
+                        "content": "sadsda\nadas",
+                        "img-num": 2,
+                        "img-url": ""
+                    },
+                    "q3": {
+                        "title": "你好",
+                        "sub-title": "xxx",
+                        "content": "sadsda\nadas",
+                        "img-num": 2,
+                        "img-url": ""
+                    }
+                }
+            }
+        }
+    },
+    "3": {
         "pagenum": 2,
         "name": "硬件组",
         "body": {
@@ -94,26 +177,22 @@
                         "b1": {
                             "title": "大概情况",
                             "content": "硬件组身为微软俱乐部技术部中人数最多的组（我也不知道为什么会有这么多人），主要负责与硬件和电路有关的技术支持与交流。",
-                            "next": {
-                            }
+                            "next": {}
                         },
                         "b2": {
                             "title": "参赛情况",
                             "content": "可组团报名参加全国大学生电子设计竞赛、星火杯、挑战杯、互联网+等比赛。",
-                            "next": {
-                            }
+                            "next": {}
                         },
                         "b3": {
                             "title": "mentor活动",
                             "content": "在平日，mentor主要分布在科协及学院的实验室中研（苟）究（且）学（偷）习（生）。",
-                            "next": {
-                            }
+                            "next": {}
                         },
                         "b4": {
                             "title": "收获",
                             "content": "在这里，你可以迅速掌握电路焊接及检修、单片机编程能技能，做出属于自己的避（智）障小车、四轴无人机、智能家居等。如果有爱好动手、对硬件与电路感兴趣、或者想要参与工程项目并做出实物的同学，欢迎加入硬件组。",
-                            "next": {
-                            }
+                            "next": {}
                         }
                     }
                 }
@@ -144,30 +223,10 @@
                         "img-url": ""
                     }
                 }
-            },
-            "p3": {
-                "title": "福利题",
-                "type": "question",
-                "body": {
-                    "q1": {
-                        "title": "hello",
-                        "sub-title": "xxx",
-                        "content": "sadsda\nadas",
-                        "img-num": 2,
-                        "img-url": ""
-                    },
-                    "q2": {
-                        "title": "你好",
-                        "sub-title": "xxx",
-                        "content": "sadsda\nadas",
-                        "img-num": 2,
-                        "img-url": ""
-                    }
-                }
             }
         }
     },
-    "2": {
+    "4": {
         "pagenum": 2,
         "name": "科研组",
         "body": {
@@ -181,26 +240,22 @@
                         "b1": {
                             "title": "基本情况",
                             "content": "喜欢科研或者希望读研的同学一起相互交流。",
-                            "next": {
-                            }
+                            "next": {}
                         },
                         "b2": {
                             "title": "个人帮助",
                             "content": "对于大一同学来说，可以给予学业和科研方面的指导，同时积累经验，以便在大一下或者其他时间找到导师。",
-                            "next": {
-                            }
+                            "next": {}
                         },
                         "b3": {
                             "title": "平时活动",
                             "content": "平时可以一起看paper、交流感悟，也可以讨论课内学习经验。",
-                            "next": {
-                            }
+                            "next": {}
                         },
                         "b4": {
                             "title": "个人要求",
                             "content": "不太看重基础，更看重学习态度和学习能力，有强烈意愿者优先。",
-                            "next": {
-                            }
+                            "next": {}
                         }
                     }
                 }
@@ -231,30 +286,10 @@
                         "img-url": ""
                     }
                 }
-            },
-            "p3": {
-                "title": "福利题",
-                "type": "question",
-                "body": {
-                    "q1": {
-                        "title": "hello",
-                        "sub-title": "xxx",
-                        "content": "sadsda\nadas",
-                        "img-num": 2,
-                        "img-url": ""
-                    },
-                    "q2": {
-                        "title": "你好",
-                        "sub-title": "xxx",
-                        "content": "sadsda\nadas",
-                        "img-num": 2,
-                        "img-url": ""
-                    }
-                }
             }
         }
     },
-    "3": {
+    "5": {
         "pagenum": 2,
         "name": "ACM组",
         "body": {
@@ -268,20 +303,17 @@
                         "b1": {
                             "title": "ACM介绍",
                             "content": "ACM-ICPC（其实你了解下他应该叫JB-ICPC）是在一定时间内用程序解决尽量多的问题的欢乐竞赛。",
-                            "next": {
-                            }
+                            "next": {}
                         },
                         "b2": {
                             "title": "涉及知识",
                             "content": "涉及知识主要是各种算法思想和数据结构，数学等。",
-                            "next": {
-                            }
+                            "next": {}
                         },
                         "b3": {
                             "title": "出题方式",
                             "content": "问题的给出方式比如福利题，根据题目描述和样例写程序能够处理输入数据输出正确答案。",
-                            "next": {
-                            }
+                            "next": {}
                         }
                     }
                 }
@@ -312,30 +344,10 @@
                         "img-url": ""
                     }
                 }
-            },
-            "p3": {
-                "title": "福利题",
-                "type": "question",
-                "body": {
-                    "q1": {
-                        "title": "hello",
-                        "sub-title": "xxx",
-                        "content": "sadsda\nadas",
-                        "img-num": 2,
-                        "img-url": ""
-                    },
-                    "q2": {
-                        "title": "你好",
-                        "sub-title": "xxx",
-                        "content": "sadsda\nadas",
-                        "img-num": 2,
-                        "img-url": ""
-                    }
-                }
             }
         }
     },
-    "4": {
+    "6": {
         "pagenum": 2,
         "name": "Game组",
         "body": {
@@ -349,14 +361,12 @@
                         "b1": {
                             "title": "介绍",
                             "content": "游戏的发展及未来展望：涉及游戏的设计及概念流程",
-                            "next": {
-                            }
+                            "next": {}
                         },
                         "b2": {
                             "title": "技术实践",
                             "content": "技术实践：建模及基础项目编程",
-                            "next": {
-                            }
+                            "next": {}
                         }
                     }
                 }
@@ -366,43 +376,44 @@
                 "type": "question",
                 "body": {
                     "q1": {
-                        "title": "hello",
-                        "sub-title": "xxx",
-                        "content": "sadsda\nadas",
+                        "title": "1.林克的冒险",
+                        "sub-title": "",
+                        "content": "林克在荒野冒险时，不小心掉入一处神秘洞穴中。神奇的是，这个洞穴中有一只高等哥布林。哥布林对林克说：如果想从洞穴中出去，则必须陪他玩一个游戏，游戏获胜后林克才能离开洞穴。\n游戏规则如下：\n林克和哥布林相互攻击对方， 但是两人约定每人必须轮流攻击林克的生命值有100点， 哥布林的生命值有50点林克每次攻击哥布林， 有50 % 的概率成功攻击到哥布林， 造成10点伤害； 否则， 则哥布林不受伤害；而哥布林每次攻击林克， 必定对林克造成10点伤害；林克和哥布林谁的生命值先变为0， 则算谁输。已知林克先出手， 求林克获胜的概率。 ",
                         "img-num": 2,
                         "img-url": ""
                     },
                     "q2": {
-                        "title": "你好",
-                        "sub-title": "xxx",
-                        "content": "sadsda\nadas",
+                        "title": "2.介绍一款游戏",
+                        "sub-title": "",
+                        "content": "介绍一款你最喜欢的游戏，并对其有吸引力的原因进行叙述（包括但不限于剧情，文案，游戏性，音乐，美术设计等）。",
                         "img-num": 2,
                         "img-url": ""
                     },
                     "q3": {
-                        "title": "你好",
-                        "sub-title": "xxx",
-                        "content": "sadsda\nadas",
-                        "img-num": 2,
-                        "img-url": ""
-                    }
-                }
-            },
-            "p3": {
-                "title": "福利题",
-                "type": "question",
-                "body": {
-                    "q1": {
-                        "title": "hello",
-                        "sub-title": "xxx",
-                        "content": "sadsda\nadas",
+                        "title": "3.说一说不合理的设计",
+                        "sub-title": "",
+                        "content": "说一说自己喜欢的一款游戏中不合理的设计，如何改进。（包括但不限于数值平衡，任务，装备，人物。）",
                         "img-num": 2,
                         "img-url": ""
                     },
-                    "q2": {
-                        "title": "你好",
-                        "sub-title": "xxx",
-                        "content": "sadsda\nadas",
+                    "q4": {
+                        "title": "4.设计关卡",
+                        "sub-title": "",
+                        "content": "给自己喜欢的游戏设计一个新关卡。",
+                        "img-num": 2,
+                        "img-url": ""
+                    },
+                    "q5": {
+                        "title": "5.游戏引擎与游戏制作",
+                        "sub-title": "",
+                        "content": "说明游戏引擎是什么，一款游戏的制作都需要什么职位的人员分工合作完成，如果可能的话，尝试使用unity引擎制作一款吃豆人游戏（在网上找找教程，并不是很难，一面时携带u盘/移动硬盘/laptop）。",
+                        "img-num": 2,
+                        "img-url": ""
+                    },
+                    "q6": {
+                        "title": "6.对于电子游戏性别影响看法",
+                        "sub-title": "",
+                        "content": "为什么电子游戏的市场男性玩家居多，你对此有什么看法，有什么改进的想法。",
                         "img-num": 2,
                         "img-url": ""
                     }

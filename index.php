@@ -114,7 +114,7 @@ $json = json_decode($json, true);
     </style>
 </head>
 
-<body class="mdui-container-fluid mdui-drawer-body-left mdui-theme-layout-auto mdui-color-theme " style="font-family:Roboto,source,微软雅黑;height:100%;padding-right:0;padding-left:0px  " id="body" onload="load()">
+<body class="mdui-container-fluid mdui-drawer-body-left mdui-theme-layout-auto mdui-color-theme mdui-theme-primary-light-blue" style="font-family:Roboto,source,微软雅黑;height:100%;padding-right:0;padding-left:0px  " id="body" onload="load()">
     <div class="row gmailStyle" id="login" style="display:none;height:100%">
         <div class="container-fluid" style="height:100%">
             <div class="valign-wrapper screenHeight">
@@ -123,7 +123,7 @@ $json = json_decode($json, true);
                         <div class="mdui-progress-indeterminate"></div>
                     </div>
                     <div class="clearfix mar-all pad-all"></div>
-                    <img src="images/Googlelogo.png" class="logoImage" />
+                    <img src="images/msc.png" style="margin: 10px auto; display:block;max-height:50px"/>
                     <h5 class="center-align mar-top mar-bottom formTitle1" id="tit">登录</h5>
                     <p class="center-align pad-no mar-no"></p>
                     <div class="clearfix mar-all pad-all"></div>
@@ -207,7 +207,7 @@ $json = json_decode($json, true);
                         <div class="mdui-progress-indeterminate"></div>
                     </div>
                     <div class="clearfix mar-all pad-all"></div>
-                    <img src="images/Googlelogo.png" class="logoImage" />
+                    <img src="images/msc.png" style="margin: 10px auto; display:block;max-height:50px"/>
                     <h5 class="center-align mar-top mar-bottom formTitle">忘记密码</h5>
                     <p class="center-align pad-no mar-no"></p>
                     <div class="clearfix mar-all pad-all"></div>
@@ -226,7 +226,7 @@ $json = json_decode($json, true);
                                 </div>
                                 <div class="mdui-text-right" style="text-align:right;display:inline-block;right:10%;width:50%"> <a href="javascript:;" onclick="send('forget')">获取验证码</a>
                                 </div>
-                                <div id="v3" style="width: 100%;height: 36px;margin-top:2.5%;margin-bottom:4%"></div>
+                                
                                 
                                 </a>
 
@@ -250,7 +250,7 @@ $json = json_decode($json, true);
                                 </div>
                                 <div class="mdui-text-right mdui-invisible" style="text-align:right;display:inline-block;right:10%;width:50%"> <a href="javascript:;" onclick="send('forget')">获取验证码</a>
                                 </div>
-                                
+                                <div id="v3" style="width: 100%;height: 36px;margin-top:2.5%;margin-bottom:4%"></div>
                                 </a>
                                 </p>
                             </div>
@@ -274,7 +274,7 @@ $json = json_decode($json, true);
                         <div class="mdui-progress-indeterminate"></div>
                     </div>
                     <div class="clearfix mar-all pad-all"></div>
-                    <img src="images/Googlelogo.png" class="logoImage" />
+                    <img src="images/msc.png" style="margin: 10px auto; display:block;max-height:50px"/>
                     <h5 class="center-align mar-top mar-bottom ">修改密码</h5>
                     <p class="center-align pad-no mar-no"></p>
                     <div class="clearfix mar-all pad-all"></div>
@@ -319,7 +319,7 @@ $json = json_decode($json, true);
                         <div class="mdui-progress-indeterminate"></div>
                     </div>
                     <div class="clearfix mar-all pad-all"></div>
-                    <img src="images/Googlelogo.png" class="logoImage" />
+                    <img src="images/msc.png" style="margin: 10px auto; display:block;max-height:50px"/>
                     <h5 class="center-align mar-top mar-bottom ">完善信息</h5>
                     <p class="center-align pad-no mar-no"></p>
                     <div class="clearfix mar-all pad-all"></div>
@@ -438,7 +438,7 @@ $json = json_decode($json, true);
         </div>
         <div id="pages" style="height:100%">
             <div id='example1-tab0' class='mdui-p-a-2 tab' style="display:inherit;height:100%;padding: 0 !important;padding: top 96px !important;height:100%">
-                <iframe style="height:100%;width:100%;padding:0;border-width: 0px;" src="index.html">
+                <iframe style="height:100%;width:100%;padding:0;border-width: 0px;"  src="index.html">
                 </iframe>
             </div>
             <?php
@@ -526,7 +526,6 @@ $json = json_decode($json, true);
                 }
             }
             ?>
-
         </div>
         <div class="mdui-dialog  mdui-shadow-15" id="mes" style="min-height:70%;min-width:50%">
             <div class="mdui-dialog-title">聊天</div>
@@ -840,6 +839,7 @@ $json = json_decode($json, true);
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script src="js/my.js?v=21"></script>
     <script>
+        obj=new Array()
         vaptcha({
             vid: '6121ff3db849dfa2f02958f4', // 验证单元id
             type: 'click',
@@ -850,7 +850,7 @@ $json = json_decode($json, true);
             https: false, // 使用https 默认 true
             //area: 'auto' //验证节点区域,默认 cn,可选值 auto,sea,na,cn
         }).then(function(vaptchaObj) {
-            obj = vaptchaObj //将VAPTCHA验证实例保存到局部变量中
+            obj.push(vaptchaObj) //将VAPTCHA验证实例保存到局部变量中
             vaptchaObj.render() // 调用验证实例 vpObj 的 render 方法加载验证按钮
             //获取token的方式一：
             //vaptchaObj.renderTokenInput('.login-form')//以form的方式提交数据时，使用此函数向表单添加server,token值
@@ -876,7 +876,7 @@ $json = json_decode($json, true);
             https: false, // 使用https 默认 true
             //area: 'auto' //验证节点区域,默认 cn,可选值 auto,sea,na,cn
         }).then(function(vaptchaObj) {
-            obj = vaptchaObj //将VAPTCHA验证实例保存到局部变量中
+            obj.push(vaptchaObj) //将VAPTCHA验证实例保存到局部变量中
             vaptchaObj.render() // 调用验证实例 vpObj 的 render 方法加载验证按钮
             //获取token的方式一：
             //vaptchaObj.renderTokenInput('.login-form')//以form的方式提交数据时，使用此函数向表单添加server,token值
@@ -902,7 +902,7 @@ $json = json_decode($json, true);
             https: false, // 使用https 默认 true
             //area: 'auto' //验证节点区域,默认 cn,可选值 auto,sea,na,cn
         }).then(function(vaptchaObj) {
-            obj = vaptchaObj //将VAPTCHA验证实例保存到局部变量中
+            obj.push(vaptchaObj) //将VAPTCHA验证实例保存到局部变量中
             vaptchaObj.render() // 调用验证实例 vpObj 的 render 方法加载验证按钮
             //获取token的方式一：
             //vaptchaObj.renderTokenInput('.login-form')//以form的方式提交数据时，使用此函数向表单添加server,token值
@@ -928,7 +928,7 @@ $json = json_decode($json, true);
             https: false, // 使用https 默认 true
             //area: 'auto' //验证节点区域,默认 cn,可选值 auto,sea,na,cn
         }).then(function(vaptchaObj) {
-            obj = vaptchaObj //将VAPTCHA验证实例保存到局部变量中
+            obj.push(vaptchaObj) //将VAPTCHA验证实例保存到局部变量中
             vaptchaObj.render() // 调用验证实例 vpObj 的 render 方法加载验证按钮
             //获取token的方式一：
             //vaptchaObj.renderTokenInput('.login-form')//以form的方式提交数据时，使用此函数向表单添加server,token值
