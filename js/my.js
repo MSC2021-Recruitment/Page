@@ -376,6 +376,7 @@ i = function(num) {
                 new mdui.Select('#s' + c, {
                     position: 'bottom'
                 });
+            editor[num - 1].refresh()
         }
     });
 }
@@ -631,10 +632,7 @@ function changedraw() {
 }
 
 function refresh(n) {
-    setTimeout(() => {
-        i(n)
-        editor[n - 1].refresh()
-    }, 100)
+    i(n)
 }
 
 function create(a = "1") {
